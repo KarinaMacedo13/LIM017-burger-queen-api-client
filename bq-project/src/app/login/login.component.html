@@ -1,27 +1,72 @@
-<p>login works!</p>
-<div class="container login-container">
-  <div class="row">
+<section class="login-section">
+  <div class="container login-container">
+    <div class="row">
       <div class="col-sm-12 col-md-6 login-form-1">
-        <h3>Ingresa Sesión</h3>
-        <form>
-          <div class="form-group">
-            <label for="validationEmail" class="form-label">Correo</label>
-            <input type="email" class="form-control" id="validationEmail" placeholder="Ingresa tu Correo" required>
+        <div class="card mt-5">
+          <div class="card-body p-5">
+            <h3 class="title text-center">Ingresa Sesión</h3>
+            <form [formGroup]="loginForm" (ngSubmit)="loginPerson()">
+              <div class="form-group">
+                <label for="validationEmail" class="form-label mt-2">
+                  Correo
+                </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  formControlName="email"
+                  id="validationEmail"
+                  placeholder="Ingresa tu Correo" />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('email')?.hasError('required') &&
+                    loginForm.get('email')?.touched
+                  ">
+                  <span>El correo <strong> es obligatorio.</strong></span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="validationPassword" class="form-label mt-2">
+                  Contraseña
+                </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                  id="validationPassword"
+                  placeholder="Ingresa tu Contraseña" />
+                <div
+                  class="text-danger"
+                  *ngIf="
+                    loginForm.get('password')?.hasError('required') &&
+                    loginForm.get('password')?.touched
+                  ">
+                  <span>La contraseña <strong>es obligatoria.</strong></span>
+                </div>
+              </div>
+              <div class="form-group mt-1 float-end">
+                <a href="#" class="ForgetPassword">
+                  ¿Olvidaste tu contraseña?
+                </a>
+              </div>
+              <div class="form-group mt-5 text-center">
+                <input
+                  type="submit"
+                  [disabled]="loginForm.invalid"
+                  class="btnSubmit"
+                  value="Iniciar Sesión" />
+              </div>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="validationPassword" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="validationPassword" placeholder="Ingresa tu Contraseña" required>
-          </div>
-          <div class="form-group">
-            <input type="submit" class="btnSubmit" value="Iniciar Sesión" />
-          </div>
-          <div class="form-group">
-            <a href="#" class="ForgetPassword">¿Olvidaste tu contraseña?</a>
-          </div>
-        </form>
+        </div>
       </div>
-      <div class="col-md-6">
-        <img src="assets/logo.png" class="img-fluid" alt="">
+      <div class="col-md-6 text-center">
+        <img src="assets/logo.png" class="img-fluid logo" alt="" />
+        <img
+          src="assets/burgerimg.png"
+          class="img-fluid mt-0 burgerimg"
+          alt="" />
       </div>
+    </div>
   </div>
-</div>
+</section>
