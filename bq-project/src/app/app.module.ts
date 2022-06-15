@@ -12,7 +12,12 @@ import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent],
-  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

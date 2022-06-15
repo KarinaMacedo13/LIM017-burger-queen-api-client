@@ -36,16 +36,19 @@ export class LoginComponent implements OnInit {
     };
     console.log(USER);
   }
-  
+
   obtenerBd() {
     class bduserService {
-      constructor(private _bduserService: BdUserService) {
-      }
-      bdService () {
-      this._bduserService.getBdUserService().subscribe(user => {
-        console.log(user);},
-        error => {console.log(error);
-      })
+      constructor(private _bduserService: BdUserService) {}
+      bdService() {
+        this._bduserService.getBdUserService().subscribe(
+          user => {
+            console.log(user);
+          },
+          error => {
+            console.log(error);
+          }
+        );
       }
     }
   }
