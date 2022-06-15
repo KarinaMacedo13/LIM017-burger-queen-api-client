@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
-    "serverAPI": "json-server --port 5000 --watch bd-workers.json"
+    "serverAPI": "json-server --port 5000 --watch bd.json"
   },
   "private": true,
   "dependencies": {
