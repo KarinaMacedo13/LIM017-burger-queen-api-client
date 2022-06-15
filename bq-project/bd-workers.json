@@ -1,0 +1,16 @@
+{
+    "workers": [
+        {
+            "email": "admin@burguerqueen.com",
+            "password": "123456"
+        },
+        {
+            "email": "mozo1@gmail.com",
+            "password": "123456"
+        },
+        {
+            "email": "cocinero1@burguerqueen.com",
+            "password": "123456"
+        }
+    ]
+}
