@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { BdUserService } from '../services/bd-user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,10 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
-  ngOnInit(): void {}
+
+  ngOnInit(): void {
+    this.obtenerBd();
+  }
 
   loginPerson() {
     console.log(this.loginForm);
@@ -32,4 +36,38 @@ export class LoginComponent implements OnInit {
     };
     console.log(USER);
   }
+  
+  obtenerBd() {
+    class bduserService {
+      constructor(private _bduserService: BdUserService) {
+      }
+      bdService () {
+      this._bduserService.getBdUserService().subscribe(user => {
+        console.log(user);},
+        error => {console.log(error);
+      })
+      }
+    }
+  }
 }
+// class bduserService {
+//   constructor(private bduserService: BdUserService) {}
+//   ngOnInit():
+//   obtenerBd() {
+//     this.bduserService.getBdUserService().subscribe(user => {
+//     console.log(user);},
+//     error => {console.log(error);
+//     })
+//   }
+// }
+
+// export class loginComponent implements OnInit {
+//   constructor(private _bduserService: BdUserService) {
+//   }
+//   bdService () {
+//   this._bduserService.getBdUserService().subscribe(user => {
+//     console.log(user);},
+//     error => {console.log(error);
+//   })
+//   }
+// }
