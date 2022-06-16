@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { Workers } from '../models/workers';
 
 @Component({
   selector: 'app-admin-user-list',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-user-list.component.scss']
 })
 export class AdminUserListComponent implements OnInit {
-
+   @Input()
+  users!: Workers[];
   constructor() { }
 
   ngOnInit(): void {

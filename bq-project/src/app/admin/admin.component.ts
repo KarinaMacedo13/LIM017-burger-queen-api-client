@@ -11,8 +11,8 @@ export class AdminComponent implements OnInit {
 
   constructor(private bduserService: BdUserService) {}
   ngOnInit(): void {
-    this.bduserService.getBdUserService().subscribe(worker => {
-      (this.listWorkers = worker), console.log(worker);
+    this.bduserService.getBdUserService().subscribe(que => {
+      (this.listWorkers = que), console.log(que);
     });
   }
 

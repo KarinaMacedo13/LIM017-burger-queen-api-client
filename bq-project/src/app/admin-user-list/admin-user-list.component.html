@@ -1,1 +1,16 @@
 <p>admin-user-list works!</p>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th scope="col">Correo</th>
+      <th scope="col">Contraseña</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pepito of users">
+      <td>{{ pepito.email }}</td>
+      <td>{{ pepito.password }}</td>
+    </tr>
+  </tbody>
+</table>
