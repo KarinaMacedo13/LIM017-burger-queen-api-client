@@ -6,7 +6,7 @@ import { Workers } from '../models/workers';
   providedIn: 'root',
 })
 export class BdUserService {
-  url = 'http://localhost:5000/workers';
+  url = 'http://localhost:5000/users';
 
   constructor(private http: HttpClient) {}
 
