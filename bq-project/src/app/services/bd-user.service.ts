@@ -13,4 +13,8 @@ export class BdUserService {
   getBdUserService(): Observable<Workers[]> {
     return this.http.get<Workers[]>(this.url);
   }
+  deleteBdUserService(workers: Workers): Observable<Workers> {
+    const urlDelete = `${this.url}/${workers.id}`;
+    return this.http.delete<Workers>(urlDelete);
+  }
 }
