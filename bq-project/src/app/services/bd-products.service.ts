@@ -13,4 +13,8 @@ export class BdProductsService {
   getBdProductsService(): Observable<Products[]> {
     return this.http.get<Products[]>(this.url);
   }
+  deleteProductsService(products:Products):Observable<Products> {
+    const url = `${this.url}/${products.id}`;
+    return this.http.delete<Products>(url);
+  }
 }

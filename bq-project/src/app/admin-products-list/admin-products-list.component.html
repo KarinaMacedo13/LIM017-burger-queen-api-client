@@ -1,8 +1,13 @@
-<div class="card" style="width: 18rem">
-  <img class="card-img-top" src="..." alt="Card image cap" />
+<div class="card" style="width: 16rem">
+  <span class="badge bg-success rounded-pill mt-2" style="width: 8rem">{{ products.type }}</span>
+  <img class="card-img- mt-2" style="height: 12rem" src="{{ products.image }}" alt="Card image cap" />
   <div class="card-body">
-    <h5 class="card-title">{{ products.name }}</h5>
-    <p class="card-text">{{ products.price }}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+
+    <h5 class="card-title">{{ products.id }} | {{ products.name }}</h5>
+    <p class="card-text"><strong> Price: </strong>{{ products.price }}</p>
+    <p class="card-text"><strong> Date: </strong> {{ products.dateEntry }}</p>
+    <a href="#" class="btn btn-primary" onClick="onDelete(products)">
+      Eliminar
+    </a>
   </div>
 </div>

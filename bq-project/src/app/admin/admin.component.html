@@ -1,6 +1,12 @@
+<div class="container">
+  <div class="row row-cols-2 row-cols-lg-3">
+    <app-admin-products-list
+      class="col"
+      *ngFor="let product of listProducts"
+      [products]="product"
+      (onDeleteProducts)="deleteProducts(product)"></app-admin-products-list>
+  </div>
+</div>
 <app-admin-user-list
   *ngFor="let worker of listWorkers"
   [workers]="worker"></app-admin-user-list>
-<app-admin-products-list
-  *ngFor="let product of listProducts"
-  [products]="product"></app-admin-products-list>

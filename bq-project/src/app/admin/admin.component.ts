@@ -24,6 +24,12 @@ export class AdminComponent implements OnInit {
       (this.listProducts = product), console.log(this.listProducts);
     });
   }
+  deleteProducts(products:Products) {
+    this.bdproductsService
+    .deleteProductsService(products)
+    .subscribe(
+      ()=>(this.listProducts = this.listProducts.filter(t => t.id !== products.id)))
+  }
 
   // bdService() {
   //   this._bduserService.getBdUserService().subscribe(user =>
