@@ -8,9 +8,8 @@ describe('AdminUserListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminUserListComponent ]
-    })
-    .compileComponents();
+      declarations: [AdminUserListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AdminUserListComponent);
     component = fixture.componentInstance;
