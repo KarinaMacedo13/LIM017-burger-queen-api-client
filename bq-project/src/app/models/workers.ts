@@ -6,3 +6,11 @@ export interface Workers {
     admin: boolean;
   }
 }
+
+export interface Users {
+  email: string;
+  password: string;
+  roles : {
+    admin: boolean;
+  }
+}
