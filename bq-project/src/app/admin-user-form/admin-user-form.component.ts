@@ -17,9 +17,9 @@ export class AdminUserFormComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  requests!:boolean;
+  
   addPerson() {
-    console.log('holaaa', this.userForm);
+    console.log('holaaa', this.userForm.value);
     console.log(this.userForm.get('roles')?.value);
     const USERS: Users = {
       email: this.userForm.get('email')?.value,
