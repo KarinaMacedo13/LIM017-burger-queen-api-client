@@ -18,12 +18,11 @@ export class AdminUserListComponent implements OnInit {
       (this.listWorkers = worker), console.log(worker);
     });
   }
-  deleteUser(workers: Workers) {
-    this.bduserService.deleteBdUserService(workers).subscribe(() => {
-      this.listWorkers = this.listWorkers.filter(
-        workerUnDelete => workerUnDelete.id !== workers.id
-      );
+  deleteUser(workers:Workers) {
+    this.bduserService.deleteBdUserService(workers).subscribe(() =>{
+      this.listWorkers = this.listWorkers.filter(workerUnDelete => workerUnDelete.id !== workers.id)
       console.log('El usuario fue eliminado');
-    });
+    })
   }
 }
+

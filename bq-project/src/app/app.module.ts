@@ -15,21 +15,11 @@ import { AdminProductsFormComponent } from './admin-products-form/admin-products
 import { AdminProductsListComponent } from './admin-products-list/admin-products-list.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    AdminComponent,
-    AdminUserFormComponent,
-    AdminUserListComponent,
-    AdminProductsFormComponent,
-    AdminProductsListComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
     HttpClientModule,
   ],
   providers: [],

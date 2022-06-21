@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-products-list.component.scss'],
 })
 export class AdminProductsListComponent implements OnInit {
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
 }

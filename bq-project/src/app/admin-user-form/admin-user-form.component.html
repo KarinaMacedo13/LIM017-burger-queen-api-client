@@ -1,1 +1,70 @@
 <p>admin-user-form works!</p>
+<div class="card mt-5">
+    <div class="card-body p-5">
+      <h3 class="title text-center">Agregar Usuario</h3>
+      <form [formGroup]="userForm" (ngSubmit)="addPerson()">
+        <div class="form-group">
+          <label for="validationEmail" class="form-label mt-2"> Correo </label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+            id="validationEmail"
+            placeholder="Ingresa tu Correo" />
+          <div
+            class="text-danger"
+            *ngIf="
+              userForm.get('email')?.hasError('required') &&
+              userForm.get('email')?.touched
+            ">
+            <span>El correo <strong> es obligatorio.</strong></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="validationPassword" class="form-label mt-2">
+            Contraseña
+          </label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+            id="validationPassword"
+            placeholder="Ingresa tu Contraseña" />
+          <div
+            class="text-danger"
+            *ngIf="
+              userForm.get('password')?.hasError('required') &&
+              userForm.get('password')?.touched
+            ">
+            <span>La contraseña <strong>es obligatoria.</strong></span>
+          </div>
+        </div>
+        <label class="form-label mt-2"> ¿Es Administrador? </label>
+        <div>
+          <input
+            id="yes"
+            type="radio"
+            value="yes"
+            name="roles"
+            formControlName="roles" />
+          <label for="yes">Yes</label>
+        </div>
+        <div>
+          <input
+            id="no"
+            type="radio"
+            value="no"
+            name="roles"
+            formControlName="roles" />
+          <label for="no">No</label>
+        </div>
+        <div class="form-group mt-5 text-center">
+          <input
+            type="submit"
+            [disabled]="userForm.invalid"
+            class="btnSubmit"
+            value="Agregar Usuario" />
+        </div>
+      </form>
+    </div>
+  </div>
