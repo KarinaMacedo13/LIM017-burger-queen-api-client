@@ -4,7 +4,7 @@ import { Workers } from '../models/workers';
 @Component({
   selector: 'app-admin-user-list',
   templateUrl: './admin-user-list.component.html',
-  styleUrls: ['./admin-user-list.component.scss']
+  styleUrls: ['./admin-user-list.component.scss'],
 })
 export class AdminUserListComponent implements OnInit {
   listWorkers: Workers[] = [];
@@ -25,3 +25,4 @@ export class AdminUserListComponent implements OnInit {
     })
   }
 }
+
