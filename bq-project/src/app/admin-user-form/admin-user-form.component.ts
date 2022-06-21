@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BdUserService } from '../services/bd-user.service';
 import { Users } from '../models/workers';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-user-form',
   templateUrl: './admin-user-form.component.html',
@@ -9,7 +10,7 @@ import { Users } from '../models/workers';
 })
 export class AdminUserFormComponent implements OnInit {
   userForm: FormGroup;
-  constructor(private fb: FormBuilder,private bduserService: BdUserService) {
+  constructor(private fb: FormBuilder,private bduserService: BdUserService, private router:Router) {
     this.userForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -29,6 +30,10 @@ export class AdminUserFormComponent implements OnInit {
       }
     };
     console.log(USERS);
+    this.bduserService.postBdUserService(USERS).subscribe(data => {
+      console.log('Producto agregado con éxito');
+      this.router.navigate(['/admin']);
+    })
   }
   
 }
