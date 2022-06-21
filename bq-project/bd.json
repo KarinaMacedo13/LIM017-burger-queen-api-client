@@ -5,41 +5,73 @@
       "email": "admin@burguerqueen.com",
       "password": "123456",
       "roles": {
-          "admin": true
+        "admin": true
       }
-  },
-  {
+    },
+    {
       "id": 2,
       "email": "mozo1@gmail.com",
       "password": "123456",
       "roles": {
-          "admin": false
+        "admin": false
       }
-  },
-  {
+    },
+    {
       "id": 3,
       "email": "cocinero1@burguerqueen.com",
       "password": "123456",
       "roles": {
-          "admin": false
+        "admin": false
       }
-  },
-  {
+    },
+    {
       "id": 4,
       "email": "anita.borg@systers.xyz",
       "password": "123456",
       "roles": {
-          "admin": true
+        "admin": true
       }
-  },
-  {
+    },
+    {
       "id": 5,
       "email": "grace.hopper@systers.xyz",
       "password": "123456",
       "roles": {
-          "admin": true
+        "admin": true
       }
-  }
+    },
+    {
+      "email": "jammie@hotmail.com",
+      "password": "123456",
+      "roles": {
+        "admin": true
+      },
+      "id": 6
+    },
+    {
+      "email": "20160133@lamolina.edu.pe",
+      "password": "1234567",
+      "roles": {
+        "admin": true
+      },
+      "id": 7
+    },
+    {
+      "email": "rutca13@gmail.com",
+      "password": "123456789",
+      "roles": {
+        "admin": false
+      },
+      "id": 8
+    },
+    {
+      "email": "erika@gmail.com",
+      "password": "1234567",
+      "roles": {
+        "admin": true
+      },
+      "id": 9
+    }
   ],
   "products": [
     {

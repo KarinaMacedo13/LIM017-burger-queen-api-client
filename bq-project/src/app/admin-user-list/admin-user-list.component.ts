@@ -24,5 +24,8 @@ export class AdminUserListComponent implements OnInit {
       console.log('El usuario fue eliminado');
     })
   }
+  updateUser() {
+    
+  }
 }
 

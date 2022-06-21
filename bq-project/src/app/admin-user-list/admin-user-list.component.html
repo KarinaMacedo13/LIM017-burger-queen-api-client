@@ -6,6 +6,6 @@
     <h5 class="card-title">{{ worker.email }}</h5>
     <p class="card-text">{{ worker.password | currency: 'USD' }}</p>
     <a class="btn btn-primary" (click)="deleteUser(worker)"> Eliminar </a>
-    <a class="btn btn-secondary"> Editar </a>
+    <a class="btn btn-secondary" (click)="updateUser(worker)"> Editar </a>
   </div>
 </div>
