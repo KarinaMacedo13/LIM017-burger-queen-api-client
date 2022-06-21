@@ -8,38 +8,38 @@
           "admin": true
       }
   },
-    {
+  {
       "id": 2,
       "email": "mozo1@gmail.com",
       "password": "123456",
       "roles": {
-        "admin": false
+          "admin": false
       }
-    },
-    {
+  },
+  {
       "id": 3,
       "email": "cocinero1@burguerqueen.com",
       "password": "123456",
       "roles": {
-        "admin": false
+          "admin": false
       }
-    },
-    {
+  },
+  {
       "id": 4,
       "email": "anita.borg@systers.xyz",
       "password": "123456",
       "roles": {
-        "admin": true
+          "admin": true
       }
-    },
-    {
+  },
+  {
       "id": 5,
       "email": "grace.hopper@systers.xyz",
       "password": "123456",
       "roles": {
-        "admin": true
+          "admin": true
       }
-    }
+  }
   ],
   "products": [
     {

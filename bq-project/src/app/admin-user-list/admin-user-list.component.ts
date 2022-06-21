@@ -8,7 +8,7 @@ import { Workers } from '../models/workers';
 })
 export class AdminUserListComponent implements OnInit {
   listWorkers: Workers[] = [];
-  constructor(private bduserService: BdUserService) {}
+  constructor(private bduserService: BdUserService) { }
 
   ngOnInit(): void {
     this.getUser();
