@@ -1,11 +1,18 @@
 <p>admin-user-list works!</p>
-<div class="card" style="width: 12rem" *ngFor="let worker of listWorkers">
-  <div class="card-body">
-    <p class="card-text" *ngIf="worker.roles.admin">Administrador</p>
-    <h4 class="card-title">{{ worker.id }}</h4>
-    <h5 class="card-title">{{ worker.email }}</h5>
-    <p class="card-text">{{ worker.password | currency: 'USD' }}</p>
-    <a class="btn btn-primary" (click)="deleteUser(worker)"> Eliminar </a>
-    <a class="btn btn-secondary"> Editar </a>
+<div class="row row-cols-2 row-cols-lg-3">
+  <div class="card col" style="width: 20rem" *ngFor="let worker of listWorkers">
+    <div class="card-body">
+      <span class="badge rounded-pill mt-2" *ngIf="worker.roles.admin">
+        Administrador
+      </span>
+      <h5 class="card-title">{{ worker.email }}</h5>
+      <p class="card-text">
+        <strong> Contraseña: </strong>{{ worker.password }}
+      </p>
+      <a class="btn" (click)="deleteUser(worker)">
+        <i class="fa-solid fa-trash"> </i>
+      </a>
+      <a class="btn"><i class="fa-solid fa-pen-to-square"></i> </a>
+    </div>
   </div>
 </div>
