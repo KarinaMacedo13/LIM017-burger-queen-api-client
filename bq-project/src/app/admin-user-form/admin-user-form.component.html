@@ -40,23 +40,23 @@
         </div>
       </div>
       <label class="form-label mt-2"> ¿Es Administrador? </label>
-      <div>
+      <div class="form-check form-check-inline">
         <input
-          id="yes"
+          id="optionYes"
           type="radio"
-          value="yes"
+          value="true"
           name="roles"
           formControlName="roles" />
-        <label for="yes">Yes</label>
+        <label for="optionYes">Yes</label>
       </div>
-      <div>
-        <input
-          id="no"
+      <div class="form-check form-check-inline">
+        <input 
+          id="optionNo"
           type="radio"
-          value="no"
+          value="false"
           name="roles"
           formControlName="roles" />
-        <label for="no">No</label>
+        <label for="optionNo">No</label>
       </div>
       <div class="form-group mt-5 text-center">
         <input
