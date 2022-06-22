@@ -1,10 +1,10 @@
-<p>admin-user-list works!</p>
-<div class="row row-cols-2 row-cols-lg-3">
-  <div class="card col" style="width: 20rem" *ngFor="let worker of listWorkers">
+<div class="row p-4" style="justify-content: space-evenly;">
+  <div class="card col-sm-5 m-2" *ngFor="let worker of listWorkers">    
     <div class="card-body">
       <span class="badge rounded-pill mt-2" *ngIf="worker.roles.admin">
         Administrador
       </span>
+      <h5 class="card-title">{{ worker.id }}</h5>
       <h5 class="card-title">{{ worker.email }}</h5>
       <p class="card-text">
         <strong> Contraseña: </strong>{{ worker.password }}
@@ -16,5 +16,5 @@
         ><i class="fa-solid fa-pen-to-square"></i>
       </a>
     </div>
-  </div>
+</div>
 </div>
