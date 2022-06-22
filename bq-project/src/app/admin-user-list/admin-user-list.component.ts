@@ -8,6 +8,7 @@ import { Workers } from '../models/workers';
 })
 export class AdminUserListComponent implements OnInit {
   listWorkers: Workers[] = [];
+  idUser!: number;
   constructor(private bduserService: BdUserService) { }
 
   ngOnInit(): void {
@@ -24,7 +25,9 @@ export class AdminUserListComponent implements OnInit {
       console.log('El usuario fue eliminado');
     })
   }
-  updateUser() {
+  updateUser(workers: Workers) {
+    this.idUser = workers.id;
+    console.log(this.idUser)
     
   }
 }

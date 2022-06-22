@@ -63,6 +63,14 @@
         "admin": false
       },
       "id": 8
+    },
+    {
+      "email": "erika@gmail.com",
+      "password": "13456",
+      "roles": {
+        "admin": true
+      },
+      "id": 9
     }
   ],
   "products": [
