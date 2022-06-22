@@ -20,6 +20,7 @@ import { AdminProductsListComponent } from './admin-products-list/admin-products
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
   ],
   providers: [],
