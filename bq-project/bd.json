@@ -9,12 +9,12 @@
       }
     },
     {
-      "id": 2,
-      "email": "mozo1@gmail.com",
-      "password": "123456",
+      "email": "margareto@hhhhotmadn.com",
+      "password": "1fherdh",
       "roles": {
-        "admin": false
-      }
+        "admin": true
+      },
+      "id": 2
     },
     {
       "id": 3,
@@ -57,20 +57,36 @@
       "id": 7
     },
     {
-      "email": "rutca13@gmail.com",
+      "email": "rutca13",
       "password": "123456789",
       "roles": {
-        "admin": false
+        "admin": true
       },
       "id": 8
     },
     {
-      "email": "erika@gmail.com",
-      "password": "13456",
+      "email": "reererrerr@",
+      "password": "efwsefef",
+      "roles": {
+        "admin": false
+      },
+      "id": 9
+    },
+    {
+      "email": "234234@gmail.com",
+      "password": "123445",
+      "roles": {
+        "admin": false
+      },
+      "id": 10
+    },
+    {
+      "email": "111111111111111111",
+      "password": "2134243",
       "roles": {
         "admin": true
       },
-      "id": 9
+      "id": 11
     }
   ],
   "products": [
