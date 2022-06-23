@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { BdUserService } from '../services/bd-user.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { BdUserService } from '../services/bd-user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private toastr: ToastrService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password')?.value,
     };
     console.log(USER);
+    this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen');
   }
 
   // obtenerBd() {

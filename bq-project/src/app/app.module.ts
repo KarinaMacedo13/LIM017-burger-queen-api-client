@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 // Components
 import { AppComponent } from './app.component';
@@ -15,6 +17,7 @@ import { AdminProductsFormComponent } from './admin-products-form/admin-products
 import { AdminProductsListComponent } from './admin-products-list/admin-products-list.component';
 import { FilterPipe } from './pipes/filter.pipe';
 
+
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe],
   imports: [
@@ -23,6 +26,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

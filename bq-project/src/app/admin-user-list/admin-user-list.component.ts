@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BdUserService } from '../services/bd-user.service';
 import { Workers } from '../models/workers';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin-user-list',
   templateUrl: './admin-user-list.component.html',
@@ -12,7 +13,7 @@ export class AdminUserListComponent implements OnInit {
   valueSearch: string = '';
   optionAdmin !: any;
   boolValue!:boolean;
-  constructor(private bduserService: BdUserService) { }
+  constructor(private bduserService: BdUserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getUser();
@@ -21,13 +22,14 @@ export class AdminUserListComponent implements OnInit {
   getUser() {
     this.bduserService.getBdUserService().subscribe(worker => {
       (this.listWorkers = worker), console.log(worker);
-    });
+    },error => {console.log(error)});
   }
   deleteUser(workers:Workers) {
     this.bduserService.deleteBdUserService(workers).subscribe(() =>{
       this.listWorkers = this.listWorkers.filter(workerUnDelete => workerUnDelete.id !== workers.id)
+      this.toastr.error('El usuario fue eliminado con éxito', 'Usuario Eliminado');
       console.log('El usuario fue eliminado');
-    })
+    },error => {console.log(error)})
   }
   updateUser(workers: Workers) {
     this.Users = workers;
