@@ -35,5 +35,5 @@ export class AdminUserFormComponent implements OnInit {
       this.router.navigate(['/admin']);
     })
   }
-  
+
 }

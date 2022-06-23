@@ -1,1 +1,19 @@
 <p>admin-products-list works!</p>
+<div class="row p-4" style="justify-content: space-evenly">
+  <div class="card col-sm-5 m-2" *ngFor="let product of listProducts">
+    <div class="card-body">
+      <h5 class="card-title">{{ product.id }}</h5>
+      <h5 class="card-title">{{ product.name }}</h5>
+      <h5 class="card-title">{{ product.price | currency: 'USD' }}</h5>
+      <h5 class="card-title">{{ product.image }}</h5>
+      <h5 class="card-title">{{ product.type }}</h5>
+      <h5 class="card-title">{{ product.dataEntry }}</h5>
+      <a class="btn" (click)="deleteProduct(product)">
+        <i class="fa-solid fa-trash"> </i>
+      </a>
+      <a class="btn" (click)="updateProduct(product)"
+        ><i class="fa-solid fa-pen-to-square"></i>
+      </a>
+    </div>
+  </div>
+</div>

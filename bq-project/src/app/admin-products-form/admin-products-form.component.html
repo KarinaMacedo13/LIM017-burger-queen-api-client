@@ -1,1 +1,63 @@
-<p>admin-products-form works!</p>
+<!-- <p>admin-products-form works!</p>
+<div class="card">
+  <div class="card-body p-5">
+    <h3 class="title text-center">Agregar Usuario</h3>
+    <form [formGroup]="userForm" (ngSubmit)="addProduct()">
+      <div class="form-group">
+        <label for="validationCustom01" class="form-label">Name</label>
+        <input type="text"  formControlName="name" class="form-control" id="validationCustom01" placeholder="Ingresa el nombre" />
+        <div
+          class="text-danger"
+          *ngIf="
+            userForm.get('text')?.hasError('required') &&
+            userForm.get('text')?.touched
+          ">
+          <span>El nombre <strong> es obligatorio.</strong></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="validationCustom02" class="form-label">Price</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="price"
+          id="validationCustom02"
+          placeholder="Ingresa el precio" />
+        <div
+          class="text-danger"
+          *ngIf="
+            userForm.get('text')?.hasError('required') &&
+            userForm.get('text')?.touched
+          ">
+          <span>La contraseña <strong>es obligatoria.</strong></span>
+        </div>
+      </div>
+      <label class="form-label mt-2"> ¿Es Administrador? </label>
+      <div class="form-check form-check-inline">
+        <input
+          id="optionYes"
+          type="radio"
+          value="true"
+          name="roles"
+          formControlName="roles" />
+        <label for="optionYes">Yes</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input
+          id="optionNo"
+          type="radio"
+          value="false"
+          name="roles"
+          formControlName="roles" />
+        <label for="optionNo">No</label>
+      </div>
+      <div class="form-group mt-5 text-center">
+        <input
+          type="submit"
+          [disabled]="userForm.invalid"
+          class="btnSubmit"
+          value="Agregar Usuario" />
+      </div>
+    </form>
+  </div>
+</div> -->
