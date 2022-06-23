@@ -1,5 +1,16 @@
-<div class="row p-4" style="justify-content: space-evenly;">
-  <div class="card col-sm-5 m-2" *ngFor="let worker of listWorkers | filter:valueSearch">
+<div class="row p-4" style="justify-content: space-evenly">
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    #txtSearch
+    (change)="optionClick(txtSearch.value)">
+    <option value="none" selected>Filtrar por Rol</option>
+    <option value="true">Administrador</option>
+    <option value="false">No Administrador</option>
+  </select>
+  <div
+    class="card col-sm-5 m-2"
+    *ngFor="let worker of listWorkers | filter: valueSearch:optionAdmin">
     <div class="card-body">
       <span class="badge rounded-pill mt-2" *ngIf="worker.roles.admin">
         Administrador
@@ -18,4 +29,3 @@
     </div>
   </div>
 </div>
-
