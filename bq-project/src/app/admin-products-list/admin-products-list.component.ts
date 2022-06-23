@@ -9,7 +9,7 @@ import { BdProductService } from '../services/bd-product.service';
 })
 export class AdminProductsListComponent implements OnInit {
   listProducts: Products[] = [];
-  idProduc!: number;
+  Produc!: Products;
   constructor(private bdproductsService:  BdProductService) {}
 
   ngOnInit(): void {
@@ -27,7 +27,10 @@ export class AdminProductsListComponent implements OnInit {
     })
   }
   updateProduct(product: Products) {
-    this.idProduc = product.id;
-    console.log(this.idProduc);
+    this.Produc = product;
+    console.log(this.Produc);
+    this.bdproductsService.disparador.emit({
+      dataProduct: this.Produc
+    });
   }
 }

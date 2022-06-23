@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BdUserService } from '../services/bd-user.service';
-import { Users} from '../models/workers';
+import { Users } from '../models/workers';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-user-form',
@@ -47,7 +47,7 @@ export class AdminUserFormComponent implements OnInit {
     if(this.userID!== undefined) {
       //Edit product
       console.log(this.userID)
-      this.bduserService.editBdUserService(this.userID,USERS).subscribe(data =>{
+      this.bduserService.editBdUserService(this.userID,USERS).subscribe( () => {
         console.log('Actualizado con éxito');
       }
       )

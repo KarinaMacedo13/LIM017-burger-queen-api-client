@@ -21,11 +21,6 @@ export class BdUserService {
   postBdUserService(workers: Users): Observable<Users> {
     return this.http.post<Users>(this.url, workers);
   }
-  //No esta en uso
-  getIdBdUserService(workers: Workers): Observable<Workers> {
-    const urlGetId = `${this.url}/${workers.id}`;
-    return this.http.get<Workers>(urlGetId);
-  }
 // Este es nuestro editor
   editBdUserService(id:number, workers: Users): Observable<Users>{
     const urlUpdate = `${this.url}/${id}`;
