@@ -8,7 +8,7 @@ import { Workers } from '../models/workers';
 })
 export class AdminUserListComponent implements OnInit {
   listWorkers: Workers[] = [];
-  idUser!: number;
+  Users!: Workers;
   constructor(private bduserService: BdUserService) { }
 
   ngOnInit(): void {
@@ -26,9 +26,11 @@ export class AdminUserListComponent implements OnInit {
     })
   }
   updateUser(workers: Workers) {
-    this.idUser = workers.id;
-    console.log(this.idUser)
-    
+    this.Users = workers;
+    console.log(this.Users)
+    this.bduserService.disparador.emit({
+      dataUser: this.Users
+    });
   }
 }
 
