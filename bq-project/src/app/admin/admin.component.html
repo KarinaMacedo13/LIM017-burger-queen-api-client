@@ -46,12 +46,14 @@
             <input
               class="form-control me-2 bg-light"
               style="height: 50px"
-              type="search"
-              placeholder="Search"
-              aria-label="Search" />
-            <button class="btn btn-outline-success" type="submit">
+              type="text"
+              placeholder="Buscar"
+              aria-label="Search" 
+              #txtSearch
+              (keyup)="searchInput(txtSearch.value)"/>
+            <!-- <button class="btn btn-outline-success" type="submit">
               Search
-            </button>
+            </button> -->
           </form>
         </div>
       </div>

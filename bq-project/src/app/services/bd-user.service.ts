@@ -7,6 +7,7 @@ import { Workers, Users} from '../models/workers';
 })
 export class BdUserService {
   @Output() disparador: EventEmitter<any> = new EventEmitter();
+  @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
   url = 'http://localhost:5000/users';
 
   constructor(private http: HttpClient) {}

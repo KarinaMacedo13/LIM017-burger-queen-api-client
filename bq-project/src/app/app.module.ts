@@ -13,9 +13,10 @@ import { AdminUserFormComponent } from './admin-user-form/admin-user-form.compon
 import { AdminUserListComponent } from './admin-user-list/admin-user-list.component';
 import { AdminProductsFormComponent } from './admin-products-form/admin-products-form.component';
 import { AdminProductsListComponent } from './admin-products-list/admin-products-list.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

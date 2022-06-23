@@ -9,10 +9,12 @@ import { Workers } from '../models/workers';
 export class AdminUserListComponent implements OnInit {
   listWorkers: Workers[] = [];
   Users!: Workers;
+  valueSearch: string = '';
   constructor(private bduserService: BdUserService) { }
 
   ngOnInit(): void {
     this.getUser();
+    this.obtainValueSearh();
   }
   getUser() {
     this.bduserService.getBdUserService().subscribe(worker => {
@@ -32,5 +34,12 @@ export class AdminUserListComponent implements OnInit {
       dataUser: this.Users
     });
   }
+  obtainValueSearh() {
+    this.bduserService.disparadorSearch.subscribe(data => {
+      // console.log('asdasdasdasdsadasdasdasdasd', data)
+      // console.log(data.valueSearch)
+      this.valueSearch = data.valueSearch;
+    })
+    }
 }
 
