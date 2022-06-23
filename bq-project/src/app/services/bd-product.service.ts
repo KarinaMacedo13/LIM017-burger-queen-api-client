@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Products } from '../models/products';
+import { Products, productSinId } from '../models/products';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BdProductService {
+  @Output() disparador: EventEmitter<any> = new EventEmitter();
   urlProduct = 'http://localhost:5000/products';
 
   constructor(private http: HttpClient) {}
   
-  // Servicio de borrado para productos
   getBdProductService(): Observable<Products[]> {
     return this.http.get<Products[]>(this.urlProduct);
   }
@@ -19,11 +19,11 @@ export class BdProductService {
     const urlDeleteProduct = `${this.urlProduct}/${products.id}`;
     return this.http.delete<Products>(urlDeleteProduct);
   }
-  postBdProductService(products: Products): Observable<Products>{
-    return this.http.post<Products>(this.urlProduct, products);
+  postBdProductService(products: productSinId): Observable<productSinId>{
+    return this.http.post<productSinId>(this.urlProduct, products);
   }
- updateBdProductService(products: Products): Observable<Products>{
-   const urlUpdateProduct = `${this.urlProduct}/${products.id}`;
-   return this.http.put<Products>(urlUpdateProduct, products);
+ editBdProductService(id:number, products: productSinId): Observable<productSinId>{
+   const urlUpdateProduct = `${this.urlProduct}/${id}`;
+   return this.http.put<productSinId>(urlUpdateProduct, products);
  }
 }

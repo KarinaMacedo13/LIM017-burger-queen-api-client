@@ -1,63 +1,85 @@
-<!-- <p>admin-products-form works!</p>
+<p>admin-products-form works!</p>
 <div class="card">
   <div class="card-body p-5">
-    <h3 class="title text-center">Agregar Usuario</h3>
-    <form [formGroup]="userForm" (ngSubmit)="addProduct()">
+    <h3 class="title text-center">{{ title }}</h3>
+    <form [formGroup]="productForm" (ngSubmit)="addProduct()">
       <div class="form-group">
-        <label for="validationCustom01" class="form-label">Name</label>
-        <input type="text"  formControlName="name" class="form-control" id="validationCustom01" placeholder="Ingresa el nombre" />
+        <label for="validationName " class="form-label">Name</label>
+        <input
+          type="name"
+          formControlName="name"
+          class="form-control"
+          id="validationName"
+          placeholder="Ingresa el nombre" />
         <div
           class="text-danger"
           *ngIf="
-            userForm.get('text')?.hasError('required') &&
-            userForm.get('text')?.touched
+            productForm.get('name')?.hasError('required') &&
+            productForm.get('name')?.touched
           ">
           <span>El nombre <strong> es obligatorio.</strong></span>
         </div>
       </div>
       <div class="form-group">
-        <label for="validationCustom02" class="form-label">Price</label>
+        <label for="validationPrice" class="form-label">Price</label>
         <input
-          type="text"
+          type="price"
           class="form-control"
           formControlName="price"
-          id="validationCustom02"
+          id="validationPrice"
           placeholder="Ingresa el precio" />
         <div
           class="text-danger"
           *ngIf="
-            userForm.get('text')?.hasError('required') &&
-            userForm.get('text')?.touched
+            productForm.get('price')?.hasError('required') &&
+            productForm.get('price')?.touched
           ">
-          <span>La contraseña <strong>es obligatoria.</strong></span>
+          <span>El precio <strong>es obligatorio.</strong></span>
         </div>
       </div>
-      <label class="form-label mt-2"> ¿Es Administrador? </label>
-      <div class="form-check form-check-inline">
+
+      <div class="form-group">
+        <label for="validateUrl" class="form-label">Imagen</label>
         <input
-          id="optionYes"
-          type="radio"
-          value="true"
-          name="roles"
-          formControlName="roles" />
-        <label for="optionYes">Yes</label>
+          type="url"
+          class="form-control"
+          formControlName="image"
+          id="validateUrl"
+          placeholder="Ingresa la url" />
+        <div
+          class="text-danger"
+          *ngIf="
+            productForm.get('image')?.hasError('required') &&
+            productForm.get('image')?.touched
+          ">
+          <span>La url <strong>es obligatoria.</strong></span>
+        </div>
       </div>
-      <div class="form-check form-check-inline">
+      <div class="form-group">
+        <label for="validationType" class="form-label">Tipo</label>
         <input
-          id="optionNo"
-          type="radio"
-          value="false"
-          name="roles"
-          formControlName="roles" />
-        <label for="optionNo">No</label>
+          type="type"
+          class="form-control"
+          formControlName="type"
+          id="validationType"
+          placeholder="Desayuno/Almuerzo y cena" />
+        <div
+          class="text-danger"
+          *ngIf="
+            productForm.get('type')?.hasError('required') &&
+            productForm.get('type')?.touched
+          ">
+          <span>Elige entre <strong>Desayuno / Almuerzo y cena.</strong></span>
+        </div>
       </div>
+
       <div class="form-group mt-5 text-center">
         <input
           type="submit"
-          [disabled]="userForm.invalid"
+          [disabled]="productForm.invalid"
           class="btnSubmit"
-          value="Agregar Usuario" />
+          value="{{ title }}" />
       </div>
     </form>
   </div>
-</div> -->
+</div>
