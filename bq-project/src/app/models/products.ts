@@ -4,7 +4,7 @@ name: string;
 price: string;
 image: string;
 type: string;
-dataEntry: string;
+dateEntry: string;
 }
 
 export interface productSinId {

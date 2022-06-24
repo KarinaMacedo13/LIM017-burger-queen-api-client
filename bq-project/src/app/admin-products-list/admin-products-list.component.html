@@ -1,5 +1,14 @@
-<div class="row p-4" style="justify-content: space-evenly">
-  <div class="card col-sm-5 m-2" *ngFor="let product of listProducts">
+<div
+  class="overflow-auto row p-4 mb-md-0 mr-md-3"
+  style="justify-content: space-evenly; max-height: 480px">
+  <select class="form-select" aria-label="Default select example">
+    <option value="none" selected>Filtrar por categoría</option>
+    <option value="desayuno">Desayuno</option>
+    <option value="almuerzo">Almuerzo y cena</option>
+  </select>
+  <div
+    class="card col-sm-5 m-2"
+    *ngFor="let product of listProducts | filtroP: valueSearch">
     <span class="badge bg-success rounded-pill mt-2" style="width: 8rem">{{
       product.type
     }}</span>
@@ -13,7 +22,7 @@
       <p class="card-text">
         <strong> Price: </strong>{{ product.price | currency: 'USD' }}
       </p>
-      <p class="card-text"><strong> Data: </strong> {{ product.dataEntry }}</p>
+      <p class="data_entry">{{ product.dateEntry | date: 'short' }}</p>
       <a class="btn btn-primary" (click)="deleteProduct(product)">
         <i class="fa-solid fa-trash"> </i>
       </a>

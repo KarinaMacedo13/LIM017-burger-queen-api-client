@@ -10,14 +10,16 @@ import { BdProductService } from '../services/bd-product.service';
 export class AdminProductsListComponent implements OnInit {
   listProducts: Products[] = [];
   Produc!: Products;
+  valueSearch: string = '';
   constructor(private bdproductsService:  BdProductService) {}
 
   ngOnInit(): void {
     this.getProducts();
+    this.obtainValueSearh();
   }
   getProducts(){
     this.bdproductsService. getBdProductService().subscribe(product => {
-      (this.listProducts = product), console.log(product);
+      (this.listProducts = product), console.log('esto devuelve getproduct', product);
     })
   }
   deleteProduct(product: Products) {
@@ -32,5 +34,13 @@ export class AdminProductsListComponent implements OnInit {
     this.bdproductsService.disparador.emit({
       dataProduct: this.Produc
     });
+  }
+   // Obteniendo los datos del filtrador general
+ // mediante un disparadorSearch
+ //valueSearch contiene el valor de la busqueda.
+ obtainValueSearh() {
+  this.bdproductsService.disparadorSearchProducts.subscribe(data => {
+    this.valueSearch = data.valueSearch;
+  });
   }
 }

@@ -7,7 +7,7 @@ import { Workers } from '../models/workers';
 export class FilterPipe implements PipeTransform {
   valueoption!: boolean;
 
-  transform(workers: Workers[], searchInput:string='',optionAdmin:string ='',): Workers[] {
+  transform(workers: Workers[], searchInput:string='', optionAdmin:string =''): Workers[] {
     // console.log(workers);
     // console.log(searchInput);
     // console.log('soy option', optionAdmin);
@@ -15,7 +15,7 @@ export class FilterPipe implements PipeTransform {
     // console.log('soy option con el tipo de:', optionAdmin.length);
     if(searchInput.length > 0 ){
       console.log('me estan buscando');
-      const filterSearch = workers.filter(value => value.email.includes(searchInput) || value.password.includes(searchInput));
+      const filterSearch = workers.filter(value => value.email.toLowerCase().includes(searchInput.toLowerCase()) || value.password.includes(searchInput));
       return filterSearch;
     }
 
