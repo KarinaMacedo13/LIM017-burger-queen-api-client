@@ -39,7 +39,8 @@
         </div>
       </div>
       <label class="form-label mt-2"> ¿Es Administrador? </label>
-      <div class="form-check form-check-inline">
+      <br />
+      <div class="form-check form-check-inline m-4">
         <input
           id="optionYes"
           type="radio"
@@ -49,7 +50,7 @@
         <label for="optionYes">Yes</label>
       </div>
       <div class="form-check form-check-inline">
-        <input 
+        <input
           id="optionNo"
           type="radio"
           value="false"
@@ -57,7 +58,7 @@
           formControlName="roles" />
         <label for="optionNo">No</label>
       </div>
-      <div class="form-group mt-5 text-center">
+      <div class="form-group mt-3 text-center">
         <input
           type="submit"
           [disabled]="userForm.invalid"
