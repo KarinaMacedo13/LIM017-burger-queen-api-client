@@ -43,7 +43,7 @@ export class AdminUserListComponent implements OnInit {
       // console.log('asdasdasdasdsadasdasdasdasd', data)
       // console.log(data.valueSearch)
       this.valueSearch = data.valueSearch;
-    })
+    });
     }
   optionClick(option:any){
     this.optionAdmin = option;

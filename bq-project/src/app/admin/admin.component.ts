@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BdProductService } from '../services/bd-product.service';
 import { BdUserService } from '../services/bd-user.service';
 
 @Component({
@@ -9,14 +10,19 @@ import { BdUserService } from '../services/bd-user.service';
 export class AdminComponent implements OnInit {
   workers: Worker[] = [];
   searchValue: string = '';
-  constructor(private bduserService: BdUserService) {}
+  constructor(private bduserService: BdUserService, private bdproductsService:  BdProductService) {}
   ngOnInit(): void {
   }
   searchInput(search: string) {
     this.searchValue = search;
-    // console.log(this.searchValue);
+   //Enviando el valor de la busqueda a user-list en la variable ValueSearch
     this.bduserService.disparadorSearch.emit({
+      valueSearch: this.searchValue,
+    });
+    // Enviando el valor de la busqueda a product-list en la variable ValueSearch
+    this.bdproductsService.disparadorSearchProducts.emit({
       valueSearch: this.searchValue,
     });
   }
 }
+

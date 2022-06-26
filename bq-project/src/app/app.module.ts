@@ -16,10 +16,11 @@ import { AdminUserListComponent } from './admin-user-list/admin-user-list.compon
 import { AdminProductsFormComponent } from './admin-products-form/admin-products-form.component';
 import { AdminProductsListComponent } from './admin-products-list/admin-products-list.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { FiltroPPipe } from './pipes/filtro-p.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,
