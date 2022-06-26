@@ -11,6 +11,7 @@ export class AdminProductsListComponent implements OnInit {
   listProducts: Products[] = [];
   Produc!: Products;
   valueSearch: string = '';
+  optionPCategory!: string;
   constructor(private bdproductsService:  BdProductService) {}
 
   ngOnInit(): void {
@@ -42,5 +43,9 @@ export class AdminProductsListComponent implements OnInit {
   this.bdproductsService.disparadorSearchProducts.subscribe(data => {
     this.valueSearch = data.valueSearch;
   });
+  }
+  optionClick(option:string){
+this.optionPCategory = option;
+console.log('Que es optionClick', this.optionPCategory);
   }
 }

@@ -1,14 +1,18 @@
 <div
   class="overflow-auto row p-4 mb-md-0 mr-md-3"
   style="justify-content: space-evenly; max-height: 480px">
-  <select class="form-select" aria-label="Default select example">
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    #txtSearch
+    (change)="optionClick(txtSearch.value)">
     <option value="none" selected>Filtrar por categoría</option>
     <option value="desayuno">Desayuno</option>
     <option value="almuerzo">Almuerzo y cena</option>
   </select>
   <div
     class="card col-sm-5 m-2"
-    *ngFor="let product of listProducts | filtroP: valueSearch">
+    *ngFor="let product of listProducts | filtroP: valueSearch:optionPCategory">
     <span class="badge bg-success rounded-pill mt-2" style="width: 8rem">{{
       product.type
     }}</span>
