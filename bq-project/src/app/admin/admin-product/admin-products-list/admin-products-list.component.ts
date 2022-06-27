@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Products } from '../models/products';
-import { BdProductService } from '../services/bd-product.service';
+import { Products } from '../../../models/products';
+import { BdProductService } from '../../../services/bd-product.service';
 
 @Component({
   selector: 'app-admin-products-list',
@@ -26,7 +26,7 @@ export class AdminProductsListComponent implements OnInit {
   }
   deleteProduct(product: Products) {
     this.bdproductsService.deleteBdProductService(product).subscribe(() => {
-      this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
+     // this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
       this.listProducts = this.listProducts.filter(productUnDelete => productUnDelete.id !== product.id)
       console.log('El producto fue eliminado');
     },error => {console.log(error)})

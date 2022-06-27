@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { BdUserService } from '../services/bd-user.service';
-import { Users } from '../models/workers';
+import { BdUserService } from '../../../services/bd-user.service';
+import { Users } from '../../../models/workers';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
