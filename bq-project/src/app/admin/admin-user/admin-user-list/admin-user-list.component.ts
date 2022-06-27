@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BdUserService } from '../services/bd-user.service';
-import { Workers } from '../models/workers';
+import { BdUserService } from '../../../services/bd-user.service';
+import { Workers } from '../../../models/workers';
 import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-admin-user-list',
