@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BdProductService } from '../services/bd-product.service';
 import {  productSinId } from '../models/products';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class AdminProductsFormComponent implements OnInit {
   productForm: FormGroup;
   title = 'Agregar Producto';
   productID !:number;
-  constructor(private fb: FormBuilder, private bdproductService:  BdProductService) {
+  constructor(private fb: FormBuilder, private bdproductService:  BdProductService, private toastr: ToastrService) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
@@ -43,13 +44,16 @@ obtainIdProduct() {
 if(this.productID!== undefined) {
   //editar Producto de
 this.bdproductService.editBdProductService(this.productID, PRODUCTS).subscribe(data => {
+   this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
   console.log('Editado con éxito');
-})
+},error => {console.log(error)})
 } else{
   // Crear producto
   this.bdproductService.postBdProductService(PRODUCTS).subscribe(data => {
+    this.toastr.success('El producto fue agregado con éxito', 'Producto Actualizado');
     console.log('Actualizado con éxito');
-  })
+  },error => {console.log(error)}
+  )
 }
   }
 

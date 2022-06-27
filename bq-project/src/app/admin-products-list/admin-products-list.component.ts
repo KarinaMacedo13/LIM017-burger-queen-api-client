@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Products } from '../models/products';
 import { BdProductService } from '../services/bd-product.service';
 
@@ -12,7 +13,7 @@ export class AdminProductsListComponent implements OnInit {
   Produc!: Products;
   valueSearch: string = '';
   optionPCategory!: string;
-  constructor(private bdproductsService:  BdProductService) {}
+  constructor(private bdproductsService:  BdProductService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getProducts();
@@ -21,13 +22,14 @@ export class AdminProductsListComponent implements OnInit {
   getProducts(){
     this.bdproductsService. getBdProductService().subscribe(product => {
       (this.listProducts = product), console.log('esto devuelve getproduct', product);
-    })
+    },error => {console.log(error)})
   }
   deleteProduct(product: Products) {
     this.bdproductsService.deleteBdProductService(product).subscribe(() => {
+      this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
       this.listProducts = this.listProducts.filter(productUnDelete => productUnDelete.id !== product.id)
       console.log('El producto fue eliminado');
-    })
+    },error => {console.log(error)})
   }
   updateProduct(product: Products) {
     this.Produc = product;
