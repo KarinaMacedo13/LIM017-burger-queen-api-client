@@ -30,7 +30,6 @@ export class AdminUserFormComponent implements OnInit {
     console.log(data.dataUser.id)
     this.userID = data.dataUser.id;
     return this.userID;
-    console.log(this.userID);
   })
   }
   addPerson() {
