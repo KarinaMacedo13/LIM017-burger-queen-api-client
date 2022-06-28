@@ -1,89 +1,170 @@
-<p>home-menu-form works!</p>
-<!-- <div class="card" style="border-radius: 25px">
-    <div class="card-body p-4">
-      <h3 class="title text-center">{{ title }}</h3>
-      <form [formGroup]="ordersForm" (ngSubmit)="addOrders()">
-        <div class="form-group">
-          <label for="validationName" class="form-label">Name</label>
-          <input
-            type="name"
-            formControlName="name"
-            class="form-control"
-            id="validationName"
-            placeholder="Ingresa el nombre" />
-          <div
-            class="text"
-            *ngIf="
+<div class="card" style="border-radius: 25px">
+  <div class="card-body p-4">
+    <h3 class="title text-center">{{ title }}</h3>
+    <form [formGroup]="ordersForm" (ngSubmit)="addOrders()">
+      <div class="form-group">
+        <label for="validationClient" class="form-label">Name</label>
+        <input
+          type="client"
+          formControlName="client"
+          class="form-control"
+          id="validationClient"
+          placeholder="Ingresa el nombre del cliente" />
+        <div
+          class="text"
+          *ngIf="
+            ordersForm.get('client')?.hasError('required') &&
+            ordersForm.get('client')?.touched
+          ">
+          <span>El nombre del cliente <strong> es obligatorio.</strong></span>
+        </div>
+      </div>
+      <div class="products-sales" *ngFor="let product of Products">
+        <div class="card">
+          <img
+            src="{{ product.image }}"
+            class="card-img"
+            alt=""
+            style="width: 2em" />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.price }}</p>
+          </div>
+          <div class="card-body">
+            <button
+              type="button"
+              class="btn btn-danger mx-2"
+              [disabled]="number <= 0"
+              (click)="deleteNumber()"
+              style="
+                font-size: 0.5em;
+                width: 3em;
+                height: 3em;
+                border-radius: 100%;
+                text-align: center;
+                justify-content: center;
+              ">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span> {{ number }} </span>
+            <button
+              type="button"
+              class="btn btn-warning mx-2"
+              (click)="addNumber()"
+              style="
+                font-size: 0.5em;
+                width: 3em;
+                height: 3em;
+                border-radius: 100%;
+                text-align: center;
+                justify-content: center;
+              ">
+              <i class="fa-solid fa-plus"></i>
+            </button>
+            <a class="btn" style="margin: 0px 12px; font-size: 25%" (click)="deleteProduct(product.id)">
+              <i class="fa-solid fa-trash" style="font-size: 380%"> </i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="form-group">
+        <label for="validationName" class="form-label">Name</label>
+        <input
+          type="name"
+          formControlName="name"
+          class="form-control"
+          id="validationName"
+          placeholder="Ingresa el nombre" />
+        <div
+          class="text"
+          *ngIf="
             ordersForm.get('name')?.hasError('required') &&
             ordersForm.get('name')?.touched
-            ">
-            <span>El nombre <strong> es obligatorio.</strong></span>
-          </div>
+          ">
+          <span>El nombre <strong> es obligatorio.</strong></span>
         </div>
-        <div class="form-group">
-          <label for="validationPrice" class="form-label">Price</label>
-          <input
-            type="price"
-            class="form-control"
-            formControlName="price"
-            id="validationPrice"
-            placeholder="Ingresa el precio" />
-          <div
-            class="text"
-            *ngIf="
+      </div>
+      <div class="form-group">
+        <label for="validationPrice" class="form-label">Price</label>
+        <input
+          type="price"
+          class="form-control"
+          formControlName="price"
+          id="validationPrice"
+          placeholder="Ingresa el precio" />
+        <div
+          class="text"
+          *ngIf="
             ordersForm.get('price')?.hasError('required') &&
             ordersForm.get('price')?.touched
-            ">
-            <span>El precio <strong>es obligatorio.</strong></span>
-          </div>
+          ">
+          <span>El precio <strong>es obligatorio.</strong></span>
         </div>
-  
-        <div class="form-group">
-          <label for="validateUrl" class="form-label">Imagen</label>
-          <input
-            type="url"
-            class="form-control"
-            formControlName="image"
-            id="validateUrl"
-            placeholder="Ingresa la url" />
-          <div
-            class="text"
-            *ngIf="
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="validateUrl" class="form-label">Imagen</label>
+        <input
+          type="url"
+          class="form-control"
+          formControlName="image"
+          id="validateUrl"
+          placeholder="Ingresa la url" />
+        <div
+          class="text"
+          *ngIf="
             ordersForm.get('image')?.hasError('required') &&
             ordersForm.get('image')?.touched
-            ">
-            <span>La url <strong>es obligatoria.</strong></span>
-          </div>
+          ">
+          <span>La url <strong>es obligatoria.</strong></span>
         </div>
-        <label for="validationType" class="form-label mt-4">Tipo</label>
-        <br />
-        <div class="form-check">
-          <input
-            id="validationType"
-            type="radio"
-            value="Desayuno"
-            name="type"
-            formControlName="type" />
-          <label class="text-type" for="validationType"> Desayuno</label>
-        </div>
-        <div class="form-check">
-          <input
-            id="validationType"
-            type="radio"
-            value="Almuerzo y cena"
-            name="type"
-            formControlName="type" />
-          <label class="text-type" for="validationType"> Almuerzo y cena</label>
-        </div>
-  
-        <div class="form-group mt-4 text-center">
-          <input
-            type="submit"
-            [disabled]="ordersForm.invalid"
-            class="btnSubmit"
-            value="{{ title }}" />
-        </div>
-      </form>
-    </div>
+      </div> -->
+      <!-- <label for="validationStatus" class="form-label mt-4">Status</label>
+      <br />
+      <div class="form-check">
+        <input
+          id="validationStatus"
+          type="radio"
+          value="pending"
+          name="status"
+          formControlName="status" />
+        <label class="text-status" for="validationStatus"> Pending </label>
+      </div>
+      <div class="form-check">
+        <input
+          id="validationStatus"
+          type="radio"
+          value="canceled"
+          name="status"
+          formControlName="status" />
+        <label class="text-status" for="validationStatus"> Canceled </label>
+      </div> -->
+      <!-- <div class="form-check">
+        <input
+          id="validationStatus"
+          type="radio"
+          value="delivering"
+          name="status"
+          formControlName="status" />
+        <label class="text-status" for="validationStatus"> Delivering </label>
+      </div>
+      <div class="form-check">
+        <input
+          id="validationStatus"
+          type="radio"
+          value="delivere"
+          name="status"
+          formControlName="status" />
+        <label class="text-status" for="validationStatus"> Delivere </label>
+      </div> -->
+      <div class="form-group mt-4 text-center">
+        <input
+          type="submit"
+          [disabled]="ordersForm.invalid"
+          class="btnSubmit"
+          value="{{ title }}" />
+      </div>
+    </form>
   </div>
-   -->
+</div>

@@ -1,0 +1,37 @@
+h5{
+    font-size: 13px;
+    font-weight: bold;
+}
+p{
+    font-size: 12px;
+}
+.btn-icons{
+    display: flex;
+    flex-direction: row;
+    row-gap: 2%;
+}
+.card{
+    border-radius: 1.5rem;
+}
+
+// .btn {
+//     background-color: #8CC63F;
+//     border-radius: 50%;
+//     border-color: none;
+//     color: #fff;
+//     margin-right: 2em;
+// }
+
+.form-select {
+    color: #FD090C;
+    border-color: #FD090C;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+.scroller-container::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */  
+    display: none;  /* Ocultar scroll */
+}
+.card-body{
+    justify-content: center;
+}

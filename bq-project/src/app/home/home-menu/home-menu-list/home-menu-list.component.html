@@ -8,6 +8,19 @@
   <option value="desayuno">Desayuno</option>
   <option value="almuerzo">Almuerzo y cena</option>
 </select>
+<!-- <div
+  class="btn-group"
+  role="group"
+  aria-label="Basic mixed styles example"
+  (change)="optionClick(txtSearch.value)">
+  <button type="button" value="none" class="btn btn-success active">Categoría</button>
+  <button type="button" value="desayuno" class="btn btn-danger" #txtSearch>
+    Desayuno
+  </button>
+  <button type="button" value="almuerzo" class="btn btn-warning" #txtSearch>
+    Almuerzo y cena
+  </button>
+</div> -->
 <div
   class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
   style="justify-content: space-evenly; max-height: 400px">
@@ -48,8 +61,53 @@
       <p class="data_entry" style="margin: 0">
         <strong>Date: </strong>{{ product.dateEntry | date: 'short' }}
       </p>
-      <!-- <div class="btn-icons p-1 m-1">
-        <a
+      <div class="btn-icons p-1 m-2">
+        <button
+          type="button"
+          class="btn btn-warning mx-2"
+          (click)="shareProduct(product)"
+          style="
+            font-size: 8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            text-align: center;
+            justify-content: center;
+          ">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <!-- botones de agregar y quitar -->
+        <!-- <button
+          type="button"
+          class="btn btn-danger mx-2"
+          [disabled]="number <= 0"
+          (click)="deleteNumber()"
+          style="
+            font-size: 8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            text-align: center;
+            justify-content: center;
+          ">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <span> {{ number }} </span>
+        <button
+          type="button"
+          class="btn btn-warning mx-2"
+          (click)="addNumber()"
+          style="
+            font-size: 8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            text-align: center;
+            justify-content: center;
+          ">
+          <i class="fa-solid fa-plus"></i>
+        </button> -->
+        <!-- <a
           class="btn"
           style="margin: 0px 12px; font-size: 25%"
           (click)="deleteProduct(product)">
@@ -60,8 +118,8 @@
           style="margin: 0px 12px; font-size: 25%"
           (click)="updateProduct(product)"
           ><i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
-        </a>
-      </div> -->
+        </a> -->
+      </div>
     </div>
   </div>
 </div>
