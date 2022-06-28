@@ -1,14 +1,27 @@
+.card {
+    border-radius: 1.5rem;
+}
+
 .title {
-    font-size: 2em;
+    font-size: 1.5em;
     color: #FD090C;
     font-family: 'Poppins', sans-serif;
 }
 
-.text-danger {
-    text-align:start;
-    margin-left: 1em;
+.form-label {
+    color: #822719;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8em;
 }
 
-.card{
-    border-radius: 1.5rem;
+.text {
+    font-size: 0.7em;
+    color: #FD090C;
 }
+
+.text-type {
+    font-size: 0.8em;
+    color: #822719;
+}
+
+

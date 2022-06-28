@@ -110,7 +110,7 @@
       "id": 3,
       "name": "Sandwich de jamón y queso",
       "price": 10,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
+      "image": "https://thumbs.dreamstime.com/b/queso-y-embutidos-tostados-cl%C3%A1sico-s%C3%A1ndwich-de-jam%C3%B3n-tostado-cortado-la-mitad-aislado-en-blanco-170821066.jpg",
       "type": "Desayuno",
       "dateEntry": "2022-03-05 15:14:10"
     },
@@ -118,7 +118,7 @@
       "id": 4,
       "name": "Jugo de frutas natural",
       "price": 7,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/sandwich.jpg",
+      "image": "https://i.pinimg.com/originals/82/d6/eb/82d6eb80539168bc12255649f76c849b.jpg",
       "type": "Desayuno",
       "dateEntry": "2022-03-05 15:14:10"
     },
@@ -126,7 +126,7 @@
       "id": 5,
       "name": "Hamburguesa simple",
       "price": 10,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
+      "image": "https://img.freepik.com/foto-gratis/deliciosa-hamburguesa-queso_1232-503.jpg?w=2000",
       "type": "Almuerzo y cena",
       "dateEntry": "2022-03-05 15:14:10"
     },
@@ -134,7 +134,7 @@
       "id": 6,
       "name": "Hamburguesa doble",
       "price": 15,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
+      "image": "http://bk-latam-prod.s3.amazonaws.com/sites/burgerking.com.pe/files/MegaTocino_300x270px_0.png",
       "type": "Almuerzo y cena",
       "dateEntry": "2022-03-05 15:14:10"
     },
@@ -142,7 +142,7 @@
       "id": 7,
       "name": "Papas fritas",
       "price": 5,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/sandwich.jpg",
+      "image": "https://images.vexels.com/media/users/3/149820/isolated/preview/73fb60c8f9821107d4f14d0c620919fe-dibujos-animados-de-personaje-de-caja-de-papas-fritas.png",
       "type": "Almuerzo y cena",
       "dateEntry": "2022-06-15 15:14:10"
     },
@@ -150,7 +150,7 @@
       "id": 8,
       "name": "Aros de cebolla",
       "price": 7,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
+      "image": "https://png.pngtree.com/png-vector/20210214/ourlarge/pngtree-food-fried-onion-rings-png-image_2904309.jpg",
       "type": "Almuerzo y cena",
       "dateEntry": "2022-06-15 15:14:10"
     },
@@ -158,7 +158,7 @@
       "id": 9,
       "name": "Agua 750ml",
       "price": 5,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
+      "image": "https://chalosgrocery.com/assets/uploads/11af91fbe89b458c1a16d2106f0eb876.png",
       "type": "Almuerzo y cena",
       "dateEntry": "2022-06-15 15:14:10"
     },
@@ -166,7 +166,7 @@
       "id": 10,
       "name": "Bebida/gaseosa 500ml",
       "price": 7,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
+      "image": "https://i0.wp.com/tienda.fogo.pe/wp-content/uploads/2021/10/inca-kola-gaseosas-sin-azucar-x-500-ml.png?resize=440%2C440&ssl=1",
       "type": "Almuerzo y cena",
       "dateEntry": "2022-06-15 15:14:10"
     },
@@ -174,7 +174,7 @@
       "id": 11,
       "name": "Bebida/gaseosa 750ml",
       "price": 10,
-      "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
+      "image": "https://s.cornershopapp.com/product-images/845998.png?versionId=Tz1im9Jlst5KjYuK_biWOHqzFX5WbUH_",
       "type": "Almuerzo y cena",
       "dateEntry": "2022-06-15 15:14:10"
     }

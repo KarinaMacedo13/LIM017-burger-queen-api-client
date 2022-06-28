@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
 /* .navbar{
@@ -31,3 +31,59 @@
     justify-content: center;
     align-items: center;
 }
+
+// nav-css----------------------------------------------------------------------------------------------------------------------------
+
+.offcanvas {
+    width: 250px;
+    background-color:#FFC501;
+}
+
+.btn-group-vertical {
+    align-items: center;
+}
+
+.btn-nav {
+    outline:none;
+    border: none;
+    width: 90%;
+    font-size: 18px;
+    height: 40px;
+    background-color: #FFC501;
+    color: #FD090C;
+    border-radius: 5px;
+}
+
+.btn-nav:hover {
+    background-color:#FD090C;
+    color: white;
+}
+
+.badge {
+    width: 90%;
+    background-color:#FD090C;
+}
+
+.text-nav {
+    text-align: center;
+}
+
+.badge-dashboard {
+    background-color:#FD090C;
+    text-align:center;
+    border-radius: 0.5rem;
+    color: white;
+    width: 90%;
+    font-size: 30px;
+}
+.out-btn {
+    margin-top: 230px;
+}
+.btn-out {
+    outline:none;
+    border: none;
+    color: #FD090C;
+    font-size: 20px;
+    background-color: #FFC501;
+}
+

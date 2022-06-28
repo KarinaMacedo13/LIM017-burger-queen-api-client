@@ -11,7 +11,7 @@
           id="validationEmail"
           placeholder="Ingresa tu Correo" />
         <div
-          class="text-danger"
+          class="text"
           *ngIf="
             userForm.get('email')?.hasError('required') &&
             userForm.get('email')?.touched
@@ -30,7 +30,7 @@
           id="validationPassword"
           placeholder="Ingresa tu Contraseña" />
         <div
-          class="text-danger"
+          class="text"
           *ngIf="
             userForm.get('password')?.hasError('required') &&
             userForm.get('password')?.touched
@@ -40,14 +40,14 @@
       </div>
       <label class="form-label mt-2"> ¿Es Administrador? </label>
       <br />
-      <div class="form-check form-check-inline m-4">
+      <div class="form-check form-check-inline">
         <input
           id="optionYes"
           type="radio"
           value="true"
           name="roles"
           formControlName="roles" />
-        <label for="optionYes">Yes</label>
+        <label class="text-type" for="optionYes">Yes</label>
       </div>
       <div class="form-check form-check-inline">
         <input
@@ -56,7 +56,7 @@
           value="false"
           name="roles"
           formControlName="roles" />
-        <label for="optionNo">No</label>
+        <label class="text-type" for="optionNo">No</label>
       </div>
       <div class="form-group mt-3 text-center">
         <input
