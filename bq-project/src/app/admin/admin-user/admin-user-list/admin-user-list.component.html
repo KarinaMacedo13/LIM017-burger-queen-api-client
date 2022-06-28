@@ -1,33 +1,37 @@
+<select
+  class="form-select"
+  style="width: 25%; border-radius: 10px; margin: 1.5%"
+  aria-label="Default select example"
+  #txtSearch
+  (change)="optionClick(txtSearch.value)">
+  <option value="none" selected>Rol</option>
+  <option value="true">Administrador</option>
+  <option value="false">No Administrador</option>
+</select>
 <div
-  class="overflow-auto row p-4 mb-md-0 mr-md-3"
-  style="justify-content: space-evenly; max-height: 480px">
-  <select
-    class="form-select"
-    aria-label="Default select example"
-    #txtSearch
-    (change)="optionClick(txtSearch.value)">
-    <option value="none" selected>Filtrar por Rol</option>
-    <option value="true">Administrador</option>
-    <option value="false">No Administrador</option>
-  </select>
+  class="overflow-auto row p-2 mb-md-0 mr-md-3 scroller-container"
+  style="justify-content: space-evenly; max-height: 400px">
   <div
-    class="card col-sm-5 m-2"
+    class="card col-12 col-sm-5 m-2"
+    style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)"
     *ngFor="let worker of listWorkers | filter: valueSearch:optionAdmin">
     <div class="card-body">
       <span class="badge rounded-pill mt-2" *ngIf="worker.roles.admin">
         Administrador
       </span>
-      <h5 class="card-title">{{ worker.id }}</h5>
+      <h5 class="card-title m-1">#{{ worker.id }}</h5>
       <h5 class="card-title">{{ worker.email }}</h5>
       <p class="card-text">
         <strong> Contraseña: </strong>{{ worker.password }}
       </p>
-      <a class="btn" (click)="deleteUser(worker)">
-        <i class="fa-solid fa-trash"> </i>
-      </a>
-      <a class="btn" (click)="updateUser(worker)"
-        ><i class="fa-solid fa-pen-to-square"></i>
-      </a>
+      <div class="btn-icons">
+        <a class="btn" (click)="deleteUser(worker)">
+          <i class="fa-solid fa-trash"> </i>
+        </a>
+        <a class="btn" (click)="updateUser(worker)"
+          ><i class="fa-solid fa-pen-to-square"></i>
+        </a>
+      </div>
     </div>
   </div>
 </div>

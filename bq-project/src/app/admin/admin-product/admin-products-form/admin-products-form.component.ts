@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BdProductService } from '../../../services/bd-product.service';
-import {  productSinId } from '../../../models/products';
+import { productSinId } from '../../../models/products';
 import { ToastrService } from 'ngx-toastr';
-
-
 @Component({
   selector: 'app-admin-products-form',
   templateUrl: './admin-products-form.component.html',
@@ -71,7 +69,6 @@ this.bdproductService.editBdProductService(this.productID, PRODUCTS).subscribe(d
       }
     })
   }
-  
 }
 
 

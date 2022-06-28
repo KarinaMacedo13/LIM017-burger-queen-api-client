@@ -26,7 +26,7 @@ export class AdminProductsListComponent implements OnInit {
   }
   deleteProduct(product: Products) {
     this.bdproductsService.deleteBdProductService(product).subscribe(() => {
-     // this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
+      this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
       this.listProducts = this.listProducts.filter(productUnDelete => productUnDelete.id !== product.id)
       console.log('El producto fue eliminado');
     },error => {console.log(error)})
