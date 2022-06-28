@@ -59,6 +59,7 @@ export class AdminUserFormComponent implements OnInit {
         this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
       },error => {console.log(error)})
     }
+    window.location.reload();
   }
   editForm() {
     this.bduserService.disparador.subscribe(data => {

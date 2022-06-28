@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BdProductService } from '../../../services/bd-product.service';
 import { productSinId } from '../../../models/products';
 import { ToastrService } from 'ngx-toastr';
+import { ResourceLoader } from '@angular/compiler';
 @Component({
   selector: 'app-admin-products-form',
   templateUrl: './admin-products-form.component.html',
@@ -41,8 +42,8 @@ obtainIdProduct() {
     console.log(PRODUCTS);
 if(this.productID!== undefined) {
   //editar Producto de
-this.bdproductService.editBdProductService(this.productID, PRODUCTS).subscribe(data => {
-   this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+  this.bdproductService.editBdProductService(this.productID, PRODUCTS).subscribe(data => {
+  this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
   console.log('Editado con éxito');
 },error => {console.log(error)})
 } else{
@@ -53,14 +54,15 @@ this.bdproductService.editBdProductService(this.productID, PRODUCTS).subscribe(d
   },error => {console.log(error)}
   )
 }
-  }
+window.location.reload();
+}
 
   editFormProduct() {
     this.bdproductService.disparador.subscribe(data => {
       console.log('Recibiendo dataProduct:', data);
       if(data.dataProduct.id !== null){
       this.title = 'Editar Producto';
-       this.productForm.setValue({
+      this.productForm.setValue({
     name: data.dataProduct.name,
     price: data.dataProduct.price,
     image: data.dataProduct.image,

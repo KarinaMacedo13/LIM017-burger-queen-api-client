@@ -47,7 +47,7 @@ export class AdminProductsListComponent implements OnInit {
   });
   }
   optionClick(option:string){
-this.optionPCategory = option;
-console.log('Que es optionClick', this.optionPCategory);
+    this.optionPCategory = option;
+    console.log('Que es optionClick', this.optionPCategory);
   }
 }

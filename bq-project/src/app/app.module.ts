@@ -19,10 +19,15 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { FiltroPPipe } from './pipes/filtro-p.pipe';
 import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
+import { HomeMenuComponent } from './home/home-menu/home-menu.component';
+import { HomePedidosComponent } from './home/home-pedidos/home-pedidos.component';
+import { HomeMenuListComponent } from './home/home-menu/home-menu-list/home-menu-list.component';
+import { HomeMenuFormComponent } from './home/home-menu/home-menu-form/home-menu-form.component';
+import { HomePedidosListComponent } from './home/home-pedidos/home-pedidos-list/home-pedidos-list.component';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

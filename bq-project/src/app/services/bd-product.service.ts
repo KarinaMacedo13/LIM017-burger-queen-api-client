@@ -12,7 +12,6 @@ export class BdProductService {
   urlProduct = 'http://localhost:5000/products';
 
   constructor(private http: HttpClient) {}
-  
   getBdProductService(): Observable<Products[]> {
     return this.http.get<Products[]>(this.urlProduct);
   }
@@ -23,8 +22,8 @@ export class BdProductService {
   postBdProductService(products: productSinId): Observable<productSinId>{
     return this.http.post<productSinId>(this.urlProduct, products);
   }
- editBdProductService(id:number, products: productSinId): Observable<productSinId>{
-   const urlUpdateProduct = `${this.urlProduct}/${id}`;
-   return this.http.put<productSinId>(urlUpdateProduct, products);
+  editBdProductService(id:number, products: productSinId): Observable<productSinId>{
+    const urlUpdateProduct = `${this.urlProduct}/${id}`;
+    return this.http.put<productSinId>(urlUpdateProduct, products);
  }
 }
