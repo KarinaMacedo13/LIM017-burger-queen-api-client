@@ -19,23 +19,23 @@
           <span>El nombre del cliente <strong> es obligatorio.</strong></span>
         </div>
       </div>
-      <div class="products-sales" *ngFor="let product of Products">
+      <div class="products-sales" *ngFor="let product of productNew">
         <div class="card">
           <img
-            src="{{ product.image }}"
+            src="{{ product.product.image }}"
             class="card-img"
             alt=""
             style="width: 2em" />
           <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.price }}</p>
+            <h5 class="card-title">{{ product.product.name }}</h5>
+            <p class="card-text">{{ product.product.price }}</p>
           </div>
           <div class="card-body">
             <button
               type="button"
               class="btn btn-danger mx-2"
-              [disabled]="number <= 0"
-              (click)="deleteNumber()"
+              [disabled]="product.qty <= 0"
+              (click)="product.qty = product.qty - 1"
               style="
                 font-size: 0.5em;
                 width: 3em;
@@ -46,11 +46,11 @@
               ">
               <i class="fa-solid fa-minus"></i>
             </button>
-            <span> {{ number }} </span>
+            <span> {{ product.qty }} </span>
             <button
               type="button"
               class="btn btn-warning mx-2"
-              (click)="addNumber()"
+              (click)="product.qty = product.qty + 1"
               style="
                 font-size: 0.5em;
                 width: 3em;
@@ -61,7 +61,10 @@
               ">
               <i class="fa-solid fa-plus"></i>
             </button>
-            <a class="btn" style="margin: 0px 12px; font-size: 25%" (click)="deleteProduct(product.id)">
+            <a
+              class="btn"
+              style="margin: 0px 12px; font-size: 25%"
+              (click)="deleteProduct(product.product.id)">
               <i class="fa-solid fa-trash" style="font-size: 380%"> </i>
             </a>
           </div>

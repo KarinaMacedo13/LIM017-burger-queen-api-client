@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from '../../../models/products';
+import { Products, ordersProduct } from '../../../models/products';
 import { BdProductService } from '../../../services/bd-product.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { BdProductService } from '../../../services/bd-product.service';
   styleUrls: ['./home-menu-list.component.scss']
 })
 export class HomeMenuListComponent implements OnInit {
+  listProductsOrder: ordersProduct[] = [];
   listProducts: Products[] = [];
   optionPCategory!: string;
   valueSearch: string = '';
@@ -40,6 +41,14 @@ export class HomeMenuListComponent implements OnInit {
     this.optionPCategory = option;
     console.log('Que es optionClick', this.optionPCategory);
   }
+  deleteProduct() {
+    // this.bdproductsService.disparadorID.subscribe(data => {
+    //   this.valueId = data.dataId;
+    //   console.log('Reciben mi ID:', this.valueId);
+    //   this.Products = this.Products.filter((item) => item.id !== this.valueId)
+    //   console.log('Nuevo Array borrado: ',this.Products)
+    // });
+  }
   shareProduct(product: Products) {
     // this.Products = this.Product;
     this.Products.push(product);
@@ -49,15 +58,5 @@ export class HomeMenuListComponent implements OnInit {
     this.bdproductsService.disparador.emit({
       dataProducts: mySet
     });
-  }
-  deleteProduct() {
-    // this.bdproductsService.disparadorID.subscribe(data => {
-    //   this.valueId = data.dataId;
-    //   console.log('Reciben mi ID:', this.valueId);
-    //   this.Product = this.Products.filter((item) => item.id !== this.valueId)
-    //   console.log('Nuevo Array borrado: ',this.Products)
-    // });
-    
-    
   }
 }
