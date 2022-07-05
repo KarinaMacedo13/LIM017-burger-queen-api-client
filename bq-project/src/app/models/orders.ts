@@ -1,3 +1,4 @@
+import { ordersProduct } from "./products";
 export interface orders {
       id: number;
       userId: number;
@@ -15,6 +16,13 @@ export interface orders {
                   }
             }
       ],
+      status: string;
+      dataEntry: string;
+}
+export interface order {
+      userId?: number;
+      client: string;
+      products: ordersProduct[];
       status: string;
       dataEntry: string;
 }
