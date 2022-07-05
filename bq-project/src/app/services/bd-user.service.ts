@@ -6,6 +6,9 @@ import { Workers, Users} from '../models/workers';
   providedIn: 'root',
 })
 export class BdUserService {
+  subscribe(arg0: (res: any) => void) {
+    throw new Error('Method not implemented.');
+  }
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
   url = 'http://localhost:5000/users';
