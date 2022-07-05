@@ -32,7 +32,7 @@ export class HomeMenuFormComponent implements OnInit {
     const ORDERS: order = {
       client: this.ordersForm.get('client')?.value,
       products: this.productNew,
-      status: "Pending",
+      status: "pending",
       dataEntry: this.ordersForm.get('dataEntry')?.value,
     }
     console.log(ORDERS);

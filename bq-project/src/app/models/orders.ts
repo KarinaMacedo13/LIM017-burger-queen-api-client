@@ -20,6 +20,7 @@ export interface orders {
       dataEntry: string;
 }
 export interface order {
+      id?:number;
       userId?: number;
       client: string;
       products: ordersProduct[];

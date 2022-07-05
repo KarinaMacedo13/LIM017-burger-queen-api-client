@@ -15,4 +15,8 @@ export class BdOrdersService {
   postBdOrderService(order: order): Observable<order> {
     return this.http.post<order>(this.url, order);
   }
+  deleteBdOrderService(order: order): Observable<order> {
+    const urlDelete = `${this.url}/${order.id}`;
+    return this.http.delete<order>(urlDelete);
+  }
 }
