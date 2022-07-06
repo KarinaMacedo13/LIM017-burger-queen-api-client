@@ -10,9 +10,10 @@ export class BdProductService {
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearchProducts: EventEmitter<any> = new EventEmitter();
   @Output() disparadorID: EventEmitter<any> = new EventEmitter();
-  urlProduct = 'http://localhost:5000/products';
+  urlProduct = 'http://localhost:8080/products';
 
   constructor(private http: HttpClient) {}
+
   getBdProductService(): Observable<Products[]> {
     return this.http.get<Products[]>(this.urlProduct);
   }

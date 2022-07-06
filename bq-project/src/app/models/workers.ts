@@ -15,3 +15,6 @@ export interface Users {
   }
 }
 
+export interface tokenLogin{
+  accessToken: string;
+}

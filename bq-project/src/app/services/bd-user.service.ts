@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Workers, Users} from '../models/workers';
+import { Workers, Users, tokenLogin} from '../models/workers';
 @Injectable({
   providedIn: 'root',
 })
@@ -11,13 +11,41 @@ export class BdUserService {
   }
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
-  url = 'http://localhost:5000/users';
+  urlOnly = 'http://localhost:8080/';
+  url = 'http://localhost:8080/users';
+  worker!: Workers;
 
   constructor(private http: HttpClient) {}
+  accessToken = localStorage.getItem('accessToken')
+  httpOptions = () => (
+    {
+    headers: new HttpHeaders(
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.accessToken}`
+      })
+  })
 
+  getToken(tokenLogin:any){
+    localStorage.setItem('accessToken', tokenLogin.accessToken);
+    this.accessToken = tokenLogin.accessToken;
+    console.log('imprimiendo get token', tokenLogin)
+  }
+
+  //Logueo de usuarios
+ loginUsers(credentials: Users): Observable<tokenLogin> {
+    return this.http.post<tokenLogin>(`${this.urlOnly}login`, credentials)
+  }
+
+  // Obtener todos los usuarios
   getBdUserService(): Observable<Workers[]> {
     return this.http.get<Workers[]>(this.url);
   }
+// Obteniendo usuarios por id
+  getOneUser(tokenLogin: any): Observable<Workers>{
+  return this.http.get<Workers>(`${this.url}/${tokenLogin.worker.id}`, this.httpOptions())
+  }
+
   deleteBdUserService(workers: Workers): Observable<Workers> {
     const urlDelete = `${this.url}/${workers.id}`;
     return this.http.delete<Workers>(urlDelete);

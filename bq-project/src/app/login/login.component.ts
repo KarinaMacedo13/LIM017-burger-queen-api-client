@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginPerson() {
-    console.log('soy loginForm', this.loginForm);
+   /*  console.log('soy loginForm', this.loginForm);
     this.bduserService.getBdUserService().subscribe(res =>{
       console.log('soy res', res);
       const user = res.find((a:Workers)=>{
@@ -40,21 +40,23 @@ export class LoginComponent implements OnInit {
         this.toastr.error('Permisos denegados', 'No tienes acceso');
         this.loginForm.reset();
       }
-    })
-   /*  class User {
+    }) */
+    class User {
       email: string;
       password: string;
       constructor(email: string, password: string) {
         this.email = email;
         this.password = password;
       }
-    } */
-    /* const USER: User = {
+    }
+    const USER: User = {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };
     console.log('soy user', USER);
-    this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'); */
+    this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen');
+  
+  
   }
 
   // obtenerBd() {
