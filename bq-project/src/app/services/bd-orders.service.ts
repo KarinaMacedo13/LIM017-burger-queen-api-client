@@ -19,4 +19,13 @@ export class BdOrdersService {
     const urlDelete = `${this.url}/${order.id}`;
     return this.http.delete<order>(urlDelete);
   }
+  editBdOrderService(order: order): Observable<order>{
+    const urlUpdateProduct = `${this.url}/${order.id}`;
+    return this.http.put<order>(urlUpdateProduct, order);
+  }
+//  editBdUserService(id:number, workers: Users): Observable<Users>{
+//   const urlUpdate = `${this.url}/${id}`;
+//   console.log(urlUpdate);
+//   return this.http.put<Users>(urlUpdate, workers);
+// }
 }

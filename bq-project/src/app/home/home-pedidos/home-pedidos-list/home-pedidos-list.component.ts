@@ -31,5 +31,59 @@ export class HomePedidosListComponent implements OnInit {
     },error => {console.log(error)})
   }
   updateOrder(order: order) {
+    console.log(order.status)
+    if(order.status==="delivery"){
+      console.log("Actualizo a delivery")
+      const ORDERS: order = {
+        id: order.id,
+        status: "pending",
+        client: order.client,
+        products: order.products,
+        dataEntry: order.dataEntry,
+        total: order.total,
+      }
+      this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
+        this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+        this.getOrders();
+        console.log('Editado con éxito');
+      })
+      } else {
+        console.log("Actualizo a delivery")
+      const ORDERS: order = {
+        id: order.id,
+        status: "delivery",
+        client: order.client,
+        products: order.products,
+        dataEntry: order.dataEntry,
+        total: order.total,
+      }
+      this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
+        this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+        this.getOrders();
+        console.log('Editado con éxito');
+      })
+      }
+  }
+  optionClick(option:string,order:order) {
+    console.log('Que es optionClick', option);
+    console.log("la orden seleccionada", order)
+    if(option !=="none"){
+      console.log("Actualizo a delivery")
+      const ORDERS: order = {
+        id: order.id,
+        status: option,
+        client: order.client,
+        products: order.products,
+        dataEntry: order.dataEntry,
+        total: order.total,
+      }
+      this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
+        this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+        this.getOrders();
+        console.log('Editado con éxito');
+      })
+    } else {
+      this.getOrders();
+    }
   }
 }

@@ -22,9 +22,9 @@ export interface orders {
 export interface order {
       id?:number;
       userId?: number;
-      client: string;
-      products: ordersProduct[];
+      client?: string;
+      products?: ordersProduct[];
       status: string;
-      dataEntry: string;
-      total: number;
+      dataEntry?: string;
+      total?: number;
 }
