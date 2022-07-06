@@ -26,7 +26,7 @@ export class HomePedidosListComponent implements OnInit {
   deleteOrder(order: order) {
     this.bdordersService.deleteBdOrderService(order).subscribe(() => {
       this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
-      this.listOrders = this.listOrders.filter(orderdelete => orderdelete.id !== order.id)
+      this.listOrders = this.listOrders.filter(orderdelete => orderdelete.id !== order.id);
       console.log('El producto fue eliminado');
     },error => {console.log(error)})
   }

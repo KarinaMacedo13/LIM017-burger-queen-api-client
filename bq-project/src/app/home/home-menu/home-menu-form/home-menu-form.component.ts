@@ -15,7 +15,7 @@ export class HomeMenuFormComponent implements OnInit {
   productNew: ordersProduct[] = [];
   Products: Products[] = [];
   ordersForm: FormGroup;
-  number: number = 0;
+  totalOrder: number = 0;
   title = 'Agregar Nueva Orden';
   dataOrder: string = new Date().toLocaleString();
   constructor(private fb: FormBuilder, private bdproductsService:  BdProductService, private bdordersService:  BdOrdersService, private toastr: ToastrService) {     
@@ -34,6 +34,7 @@ export class HomeMenuFormComponent implements OnInit {
       products: this.productNew,
       status: "pending",
       dataEntry: this.ordersForm.get('dataEntry')?.value,
+      total: this.totalOrder,
     }
     console.log(ORDERS);
     this.bdordersService.postBdOrderService(ORDERS).subscribe( () => {
@@ -47,7 +48,18 @@ export class HomeMenuFormComponent implements OnInit {
     this.bdproductsService.disparador.subscribe(data => {
       console.log('Recibiendo dataProduct:', data);
       this.productNew = data.dataProduct;
+      // this.productNew = [...new Set(this.productNew)];
+      // // this.productNew.reduce((acc,item)=>{
+      // //   if(!acc.includes(item)){
+      // //     acc.push(item);
+      // //   }
+      // //   return acc;
+      // // },[])
+      // console.log(this.productNew, "Me filtran elementos unicos")
+      this.productNew.map((product => product.total=product.qty*product.product.price));
       console.log('Recibo esto', this.productNew)
+      this.totalOrder = this.productNew.reduce((acumulador, actual) => acumulador + actual.total, 0);
+      console.log('Total order', this.totalOrder)
     });
   }
 }

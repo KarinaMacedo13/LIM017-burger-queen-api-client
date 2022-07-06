@@ -50,7 +50,7 @@
                 {{ product.qty }}
               </div>
               <div class="card-text" style="font-size: 0.8em">
-                {{ product.qty | currency: 'USD' }}
+                {{ product.total | currency: 'USD' }}
               </div>
             </div>
           </div>
@@ -58,7 +58,7 @@
       </div>
       <hr />
       <span class="form-label">Total: </span>
-      <span> $100 </span>
+      <span> {{ totalOrder | currency: 'USD' }} </span>
       <div class="form-group mt-4 text-center">
         <input
           type="submit"

@@ -73,13 +73,15 @@
                   {{ product.qty }}
                 </div>
                 <div class="card-text" style="font-size: 0.8em">
-                  {{ product.qty | currency: 'USD' }}
+                  {{ product.total | currency: 'USD' }}
                 </div>
               </div>
             </div>
           </div>
-          <hr/>
+          <hr />
         </div>
+        <span class="form-label">Total: </span>
+        <span> {{ order.total | currency: 'USD' }} </span>
         <!-- <img
           class="card-img mt-1"
           style="height: 3rem; width: 3rem"

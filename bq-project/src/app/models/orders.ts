@@ -9,7 +9,7 @@ export interface orders {
                   product: {
                         id: number;
                         name: string;
-                        price: string;
+                        price: number;
                         image: string;
                         type: string;
                         dateEntry: string;
@@ -26,4 +26,5 @@ export interface order {
       products: ordersProduct[];
       status: string;
       dataEntry: string;
+      total: number;
 }
