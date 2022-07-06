@@ -64,17 +64,26 @@ export class LoginComponent implements OnInit {
         this.bduserService.getOneUser(res).subscribe(res=>{
           localStorage.setItem('id', res.id);
           localStorage.setItem('email', res.email);
-          if (res.roles.admin === true) {
-            this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen');
-            this.router.navigate(['/admin']);
-          } else {
-            this.toastr.success('Buen turno', 'Buen turno');
-            this.router.navigate(['/home/menu'])
+          switch(res.roles.description) {
+            case 'admin': 
+            this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'),
+            this.router.navigate(['/admin/user'])
+            break
+            case 'weiter':
+              this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'),
+              this.router.navigate(['/home/menu'])
+              break
+            case 'chef':
+              this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'),
+            this.router.navigate(['/chef'])
+            break
           }
         })
       },
       error: error => {
         // mostrar error igualando propiedad:
+        this.toastr.error('Acceso denegado', 'Solicita los permisos a BurgerQueen'),
+        this.loginForm.reset();
         this.messageError = error.status;
       },
     });

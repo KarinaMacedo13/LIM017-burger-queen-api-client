@@ -45,11 +45,11 @@ export class AdminUserListComponent implements OnInit {
       this.valueSearch = data.valueSearch;
     });
     }
-  optionClick(option:any){
+  optionClick(option: string){
     this.optionAdmin = option;
     console.log(typeof this.optionAdmin);
     console.log(this.optionAdmin);
-    this.boolValue = JSON.parse(this.optionAdmin);
+    //this.boolValue = JSON.parse(this.optionAdmin);
     console.log(typeof this.boolValue);
     console.log(this.boolValue);
   }

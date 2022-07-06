@@ -7,6 +7,7 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { HomeMenuComponent } from './home/home-menu/home-menu.component';
 import { HomePedidosComponent } from './home/home-pedidos/home-pedidos.component';
+import { HomeChefComponent } from './home-chef/home-chef.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
     {path: 'user', component: AdminUserComponent },
     {path: 'products', component: AdminProductComponent },
   ] },
+  { path: 'chef', component: HomeChefComponent },
 ];
 
 @NgModule({
