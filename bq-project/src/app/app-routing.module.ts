@@ -7,13 +7,21 @@ import { AdminUserComponent } from './admin/admin-user/admin-user.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
 import { HomeMenuComponent } from './home/home-menu/home-menu.component';
 import { HomePedidosComponent } from './home/home-pedidos/home-pedidos.component';
+import { HomeMenuListDesayunoComponent } from './home/home-menu/home-menu-list/home-menu-list-desayuno/home-menu-list-desayuno.component';
+import { HomeMenuListAlmuerzoComponent } from './home/home-menu/home-menu-list/home-menu-list-almuerzo/home-menu-list-almuerzo.component';
+import { HomeMenuListAllComponent } from './home/home-menu/home-menu-list/home-menu-list-all/home-menu-list-all.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent,
   children: [
     {path: 'orders', component: HomePedidosComponent},
-    {path: 'menu', component: HomeMenuComponent},
+    {path: 'menu', component: HomeMenuComponent,
+  children: [
+    {path:"desayuno", component: HomeMenuListDesayunoComponent},
+    {path:"almuerzoycena", component: HomeMenuListAlmuerzoComponent},
+    {path:"all", component: HomeMenuListAllComponent},
+  ]},
   ] },
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: AdminComponent ,

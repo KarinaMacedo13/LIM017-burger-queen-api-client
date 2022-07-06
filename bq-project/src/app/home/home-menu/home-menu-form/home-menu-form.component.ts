@@ -48,7 +48,7 @@ export class HomeMenuFormComponent implements OnInit {
     this.bdproductsService.disparador.subscribe(data => {
       console.log('Recibiendo dataProduct:', data);
       this.productNew = data.dataProduct;
-      // this.productNew = [...new Set(this.productNew)];
+      this.productNew = [...new Set(this.productNew)];
       // // this.productNew.reduce((acc,item)=>{
       // //   if(!acc.includes(item)){
       // //     acc.push(item);

@@ -1,4 +1,4 @@
-<select
+<!-- <select
   class="form-select"
   style="width: 25%; border-radius: 10px; margin: 1.5%"
   aria-label="Default select example"
@@ -7,92 +7,43 @@
   <option value="none" selected>Categoría</option>
   <option value="desayuno">Desayuno</option>
   <option value="almuerzo">Almuerzo y cena</option>
-</select>
-<!-- <div
-  class="btn-group"
-  role="group"
-  aria-label="Basic mixed styles example"
-  (change)="optionClick(txtSearch.value)">
-  <button type="button" value="none" class="btn btn-success active">Categoría</button>
-  <button type="button" value="desayuno" class="btn btn-danger" #txtSearch>
+</select> -->
+<!-- <button type="button" class="btn-nav mt-3" routerLink="menu">
+  <i class="fa-solid fa-people-line"></i> Menú
+</button>
+<button type="button" class="btn-nav mt-4" routerLink="orders">
+  <i class="fa-solid fa-cubes"></i> Pedidos
+</button> -->
+<!-- <div class="row" style="justify-content: space-evenly; margin: 0">
+  <div class="col-12 col-sm-12" style="justify-content: center">
+    <router-outlet></router-outlet>
+  </div>
+</div> -->
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+  <button
+    type="button"
+    value="none"
+    class="btn btn-success active"
+    routerLink="all">
+    Todos
+  </button>
+  <button
+    type="button"
+    value="desayuno"
+    class="btn btn-danger"
+    routerLink="desayuno">
     Desayuno
   </button>
-  <button type="button" value="almuerzo" class="btn btn-warning" #txtSearch>
+  <button
+    type="button"
+    value="almuerzo"
+    class="btn btn-warning"
+    routerLink="almuerzoycena">
     Almuerzo y cena
   </button>
-</div> -->
+</div>
 <div
   class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
   style="justify-content: space-evenly; max-height: 400px">
-  <div
-    class="card col-12 col-sm-6 col-lg-3 m-1"
-    style="
-      align-items: center;
-      width: 30%;
-      border-radius: 20px;
-      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    "
-    *ngFor="let product of productNew">
-    <span
-      class="badge bg-success rounded-pill mt-2"
-      style="width: 7rem; align-items: center"
-      >{{ product.product.type }}</span
-    >
-    <img
-      class="card-img mt-1"
-      style="height: 3rem; width: 3rem"
-      src="{{ product.product.image }}"
-      alt="Card image cap" />
-    <div
-      class="card-body"
-      style="
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      ">
-      <h5 class="card-title" style="margin: 0">
-        #{{ product.product.id }} | {{ product.product.name }}
-      </h5>
-      <p class="card-text" style="margin: 0">
-        <strong> Price: </strong>{{ product.product.price | currency: 'USD' }}
-      </p>
-      <p class="data_entry" style="margin: 0">
-        <strong>Date: </strong>{{ product.product.dateEntry | date: 'short' }}
-      </p>
-      <div class="btn-icons p-1 m-2">
-        <button
-          type="button"
-          class="btn btn-danger mx-2"
-          [disabled]="product.qty <= 0"
-          (click)="shareProductDelete(product)"
-          style="
-            font-size: 0.5em;
-            width: 3em;
-            height: 3em;
-            border-radius: 100%;
-            text-align: center;
-            justify-content: center;
-          ">
-          <i class="fa-solid fa-minus"></i>
-        </button>
-        <span> {{ product.qty }} </span>
-        <button
-          type="button"
-          class="btn btn-warning mx-2"
-          (click)="shareProductPlus(product)"
-          style="
-            font-size: 0.5em;
-            width: 3em;
-            height: 3em;
-            border-radius: 100%;
-            text-align: center;
-            justify-content: center;
-          ">
-          <i class="fa-solid fa-plus"></i>
-        </button>
-      </div>
-    </div>
-  </div>
+  <router-outlet></router-outlet>
 </div>

@@ -8,84 +8,77 @@ import { BdProductService } from '../../../services/bd-product.service';
   styleUrls: ['./home-menu-list.component.scss']
 })
 export class HomeMenuListComponent implements OnInit {
+  searchArray: ordersProduct[] = [];
   listProductsOrder!: ordersProduct;
   productNew: ordersProduct[] = [];
   listProducts: Products[] = [];
-  optionPCategory!: string;
-  valueSearch: string = '';
-  valueId!: number;
-  number: number = 0;
-  searchArray: ordersProduct[] = [];
-  // Products: Products[] = [];
   constructor(private bdproductsService:  BdProductService) { }
 
   ngOnInit(): void {
-    // Inicializa los siguientes métodos
-    this.getProducts();
-    this.obtainValueSearh();
+    this.shareProductPlus();
+    this.shareProductDelete();
+    // this.getProducts();
   }
-  // Obtener productos de la BD de productos
-  getProducts(){
-    this.bdproductsService. getBdProductService().subscribe(product => {
-      (this.listProducts= product), console.log('esto devuelve getproduct', product);
-      console.log(this.listProducts)
-      this.listProducts.forEach( x=>{
-        this.productNew.push(this.listProductsOrder = {
-            qty: 0,
-            product: {
-              id: x.id,
-              name: x.name,
-              price: x.price,
-              image: x.image,
-              type: x.type,
-              dateEntry: x.dateEntry,
-            }
-          })
-        })
-        // console.log('SOY EL NUEVO ARRAY',this.productNew);
-        // console.log('AYUDA',this.productNew.forEach(x=>console.log(x.product.type)));
-    },error => {console.log(error)})
+  // getProducts(){
+  //   this.bdproductsService. getBdProductService().subscribe(product => {
+  //     (this.listProducts= product);
+  //     console.log(this.listProducts)
+  //     this.listProducts.forEach( x=>{
+  //       this.productNew.push(this.listProductsOrder = {
+  //           qty: 0,
+  //           total: 0,
+  //           product: {
+  //             id: x.id,
+  //             name: x.name,
+  //             price: x.price,
+  //             image: x.image,
+  //             type: x.type,
+  //             dateEntry: x.dateEntry,
+  //           }
+  //         })
+  //       })
+  //     this.bdproductsService.disparadorShare.emit({
+  //       dataProduct: this.productNew,
+  //     });
+  //   },error => {console.log(error)})
+  // }
+  shareProductPlus() {
+    this.bdproductsService.disparadorShare.subscribe(data => {
+      console.log('Recibiendo dataProduct:', data);
+      if(data.dataProduct.qty>0){
+        this.shareProduct(data.dataProduct);
+      }
+    })
   }
-  // Recibir el valor de búsqueda del componente HomeComponent, ValueSearch es pasado al pipe en el HTML de HomeMenuListComponent y realizar la búsqueda de lo que escribe
-  obtainValueSearh() {
-    this.bdproductsService.disparadorSearchProducts.subscribe(data => {
-      this.valueSearch = data.valueSearch;
-      // console.log(this.valueSearch);
-    });
+  shareProductDelete() {
+    this.bdproductsService.disparadorShare.subscribe(data => {
+      console.log('Recibiendo dataProduct:', data);
+      if(data.dataProduct.qty==0){
+        this.shareDelete(data.dataProduct);
+      } else {
+        this.shareProduct(data.dataProduct);
+      }
+    })
   }
-  // Obtiene el click del selector del HTML de HomeMenuListComponent, para enviar la opción al pipe y realizar la función de filtrado según la categoria
-  optionClick(option:string){
-    this.optionPCategory = option;
-    console.log('Que es optionClick', this.optionPCategory);
-  }
-  shareProductPlus(product: ordersProduct) {
-    product.qty+=1;
-    if(product.qty>0){
-      this.shareProduct(product);
-    }
-  }
-  shareProductDelete(product: ordersProduct) {
-    product.qty-=1;
-    if(product.qty==0){
-      this.shareDelete(product);
-    }
-  }
+
   shareProduct(product: ordersProduct) {
     this.searchArray.push(product);
-    console.log(this.searchArray)
-    let mySet = [...new Set(this.searchArray)];
-    console.log("Compartiendo esto",mySet)
+    // let updatedOSArray = this.searchArray.map(p =>p.product.id === product.product.id? p.qty = product.qty : p);
+    // this.searchArray.filter(item => item.product.id !== product.product.id)
+    // console.log("Soy el array donde llegan los productos",updatedOSArray)
+    // let mySet = [...new Set(this.searchArray)];
+    // console.log("Compartiendo esto",mySet)
     this.bdproductsService.disparador.emit({
-      dataProduct: mySet
+      dataProduct: this.searchArray
     });
   }
   shareDelete(product: ordersProduct){
     console.log("filtro");
     this.searchArray = this.searchArray.filter((item) => item.product.id !== product.product.id)
-    console.log(this.searchArray)
-    let mySet = [...new Set(this.searchArray)];
+    console.log("Soy el array donde llegan los productos",this.searchArray)
+    // let mySet = [...new Set(this.searchArray)];
     this.bdproductsService.disparador.emit({
-      dataProduct: mySet
+      dataProduct: this.searchArray
     });
   }
 }
