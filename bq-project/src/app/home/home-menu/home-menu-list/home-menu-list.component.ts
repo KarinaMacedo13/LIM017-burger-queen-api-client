@@ -30,8 +30,10 @@ export class HomeMenuListComponent implements OnInit {
       (this.listProducts= product), console.log('esto devuelve getproduct', product);
       console.log(this.listProducts)
       this.listProducts.forEach( x=>{
-        this.productNew.push(this.listProductsOrder = {
+        this.productNew.push(
+          this.listProductsOrder = {
             qty: 0,
+            total: 0,
             product: {
               id: x.id,
               name: x.name,
@@ -68,6 +70,8 @@ export class HomeMenuListComponent implements OnInit {
     product.qty-=1;
     if(product.qty==0){
       this.shareDelete(product);
+    } else {
+      this.shareProduct(product);
     }
   }
   shareProduct(product: ordersProduct) {
