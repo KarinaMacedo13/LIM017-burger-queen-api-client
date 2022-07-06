@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Workers, Users, tokenLogin} from '../models/workers';
+import { Workers, Users, tokenLogin, Credentials, User} from '../models/workers';
 @Injectable({
   providedIn: 'root',
 })
@@ -13,7 +13,14 @@ export class BdUserService {
   @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
   urlOnly = 'http://localhost:8080/';
   url = 'http://localhost:8080/users';
-  worker!: Workers;
+  
+  public user = {
+    email: '',
+    roles: {
+      admin: true,
+    },
+    id: 0
+  }
 
   constructor(private http: HttpClient) {}
   accessToken = localStorage.getItem('accessToken')
@@ -33,30 +40,30 @@ export class BdUserService {
   }
 
   //Logueo de usuarios
- loginUsers(credentials: Users): Observable<tokenLogin> {
+ loginUsers(credentials: Credentials): Observable<tokenLogin> {
     return this.http.post<tokenLogin>(`${this.urlOnly}login`, credentials)
   }
 
   // Obtener todos los usuarios
   getBdUserService(): Observable<Workers[]> {
-    return this.http.get<Workers[]>(this.url);
+    return this.http.get<Workers[]>(this.url, this.httpOptions());
   }
 // Obteniendo usuarios por id
-  getOneUser(tokenLogin: any): Observable<Workers>{
-  return this.http.get<Workers>(`${this.url}/${tokenLogin.worker.id}`, this.httpOptions())
+  getOneUser(tokenLogin: any): Observable<User>{
+  return this.http.get<User>(`${this.url}/${tokenLogin.user.id}`, this.httpOptions())
   }
 
   deleteBdUserService(workers: Workers): Observable<Workers> {
     const urlDelete = `${this.url}/${workers.id}`;
-    return this.http.delete<Workers>(urlDelete);
+    return this.http.delete<Workers>(urlDelete, this.httpOptions());
   }
   postBdUserService(workers: Users): Observable<Users> {
-    return this.http.post<Users>(this.url, workers);
+    return this.http.post<Users>(this.url, workers, this.httpOptions());
   }
 // Este es nuestro editor
   editBdUserService(id:number, workers: Users): Observable<Users>{
     const urlUpdate = `${this.url}/${id}`;
     console.log(urlUpdate);
-    return this.http.put<Users>(urlUpdate, workers);
+    return this.http.put<Users>(urlUpdate, workers, this.httpOptions());
   }
 }

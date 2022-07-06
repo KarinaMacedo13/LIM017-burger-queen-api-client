@@ -12,6 +12,7 @@ import { BdUserService } from '../services/bd-user.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  messageError: any;
   constructor(private fb: FormBuilder,private toastr: ToastrService, private bduserService: BdUserService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.loginForm.reset();
       }
     }) */
-    class User {
+    class user {
       email: string;
       password: string;
       constructor(email: string, password: string) {
@@ -49,14 +50,34 @@ export class LoginComponent implements OnInit {
         this.password = password;
       }
     }
-    const USER: User = {
+    const USER: user = {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };
     console.log('soy user', USER);
-    this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen');
-  
-  
+    
+    this.bduserService.loginUsers(USER)
+    .subscribe({
+      next: res => {
+      console.log('recibiendo respuesta', res)
+        this.bduserService.getToken(res)
+        this.bduserService.getOneUser(res).subscribe(res=>{
+          localStorage.setItem('id', res.id);
+          localStorage.setItem('email', res.email);
+          if (res.roles.admin === true) {
+            this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen');
+            this.router.navigate(['/admin']);
+          } else {
+            this.toastr.success('Buen turno', 'Buen turno');
+            this.router.navigate(['/home/menu'])
+          }
+        })
+      },
+      error: error => {
+        // mostrar error igualando propiedad:
+        this.messageError = error.status;
+      },
+    });
   }
 
   // obtenerBd() {

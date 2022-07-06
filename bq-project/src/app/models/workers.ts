@@ -18,3 +18,15 @@ export interface Users {
 export interface tokenLogin{
   accessToken: string;
 }
+export interface Credentials{
+  email: string;
+  password: string;
+  id?: any;
+}
+export interface User {
+  id: string;
+  email: string;
+  roles : {
+    admin: boolean;
+  }
+ }
