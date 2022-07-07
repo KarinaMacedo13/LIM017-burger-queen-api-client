@@ -39,7 +39,8 @@ export class AdminUserFormComponent implements OnInit {
       email: this.userForm.get('email')?.value,
       password: this.userForm.get('password')?.value,
       roles: {
-        admin: this.userForm.get('roles')?.value=== 'true'? true:false,
+        description: this.userForm.get('roles')?.value,
+        admin: this.userForm.get('roles')?.value=== 'admin'? true:false,
       }
     };
     console.log(USERS);
@@ -68,8 +69,8 @@ export class AdminUserFormComponent implements OnInit {
         this.title = 'Editar Usuario';
         this.userForm.setValue({
           email: data.dataUser.email,
-          password: data.dataUser.password,
-          roles: data.dataUser.roles.admin=== true? 'true':'false',
+          password: '',
+          roles: data.dataUser.roles.description ==='admin'?'admin':data.dataUser.roles.description ==='weiter'?'weiter':'chef'
         })
       }
     })

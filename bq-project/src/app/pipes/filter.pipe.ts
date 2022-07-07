@@ -19,11 +19,19 @@ export class FilterPipe implements PipeTransform {
       return filterSearch;
     }
 
-    if(optionAdmin === "true" || optionAdmin === "false"){
-      this.valueoption = optionAdmin==='true'?true:false;
+    if(optionAdmin === "admin" /* || optionAdmin === "false" */){
+      //his.valueoption = optionAdmin==='true'/* ?true:false */;
       // console.log('entro a option admin');
-      const filterAdmin = workers.filter(value => value.roles.admin===this.valueoption?true : false);
+      const filterAdmin = workers.filter(value => value.roles.description===optionAdmin);
       // console.log(filterAdmin)
+      return filterAdmin;
+    }
+    if(optionAdmin === "weiter"){
+      const filterAdmin = workers.filter(value => value.roles.description===optionAdmin);
+      return filterAdmin;
+    }
+    if(optionAdmin === "chef"){
+      const filterAdmin = workers.filter(value => value.roles.description===optionAdmin);
       return filterAdmin;
     }
     if(optionAdmin==='none'){
