@@ -1,56 +1,65 @@
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BdProductService } from '../../../services/bd-product.service';
-import { Products } from '../../../models/products';
+import { Products, ordersProduct } from '../../../models/products';
+import { order } from '../../../models/orders';
+import { BdOrdersService } from 'src/app/services/bd-orders.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home-menu-form',
   templateUrl: './home-menu-form.component.html',
   styleUrls: ['./home-menu-form.component.scss']
 })
 export class HomeMenuFormComponent implements OnInit {
+  listProductsOrder!: ordersProduct;
+  productNew: ordersProduct[] = [];
   Products: Products[] = [];
   ordersForm: FormGroup;
+  totalOrder: number = 0;
   title = 'Agregar Nueva Orden';
-  number: number = 0;
-  constructor(private fb: FormBuilder, private bdproductsService:  BdProductService) { 
+  dataOrder: string = new Date().toLocaleString();
+  constructor(private fb: FormBuilder, private bdproductsService:  BdProductService, private bdordersService:  BdOrdersService, private toastr: ToastrService) {     
     this.ordersForm = this.fb.group({
       client: ['', Validators.required],
-      // name: ['', Validators.required],
-      // price: ['', Validators.required],
-      // image: ['', Validators.required],
-      // type: ['', Validators.required],
-      // status: ['', Validators.required],
+      dataEntry: [ this.dataOrder ],
     })
   }
   ngOnInit(): void {
     this.getProduct();
   }
-
   addOrders(){
-    // const ORDERS: Orders[];
+    console.log("Soy oRDERRR",this.ordersForm);
+    const ORDERS: order = {
+      client: this.ordersForm.get('client')?.value,
+      products: this.productNew,
+      status: "pending",
+      dataEntry: this.ordersForm.get('dataEntry')?.value,
+      total: this.totalOrder,
+    }
+    console.log(ORDERS);
+    this.bdordersService.postBdOrderService(ORDERS).subscribe( () => {
+      console.log('Producto agregado con éxito');
+      this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
+    },error => {console.log(error)}
+    )
   }
   //Obtiene un array de valores únicos del HomeMenuListComponent para recorrerlo en el html del homeMenuFormComponent
   getProduct() {
     this.bdproductsService.disparador.subscribe(data => {
       console.log('Recibiendo dataProduct:', data);
-      this.Products = data.dataProducts;
-      console.log('Variable Product:', this.Products)
+      this.productNew = data.dataProduct;
+      // this.productNew = [...new Set(this.productNew)];
+      // // this.productNew.reduce((acc,item)=>{
+      // //   if(!acc.includes(item)){
+      // //     acc.push(item);
+      // //   }
+      // //   return acc;
+      // // },[])
+      // console.log(this.productNew, "Me filtran elementos unicos")
+      this.productNew.map((product => product.total=product.qty*product.product.price));
+      console.log('Recibo esto', this.productNew)
+      this.totalOrder = this.productNew.reduce((acumulador, actual) => acumulador + actual.total, 0);
+      console.log('Total order', this.totalOrder)
     });
-  }
-  // Contador de HTML, agrega una unidad por cada click
-  addNumber() {
-    this.number+=1;
-  }
-  // Contador de HTML, quita una unidad por cada click
-  deleteNumber() {
-    this.number-=1;
-  }
-  deleteProduct(idProduct: number) {
-    console.log('Soy el id: ',idProduct)
-    this.bdproductsService.disparadorID.emit({
-      dataId: idProduct
-    });
-    this.Products = this.Products.filter((item) => item.id !== idProduct)
-    console.log('Nuevo Array borrado: ',this.Products)
   }
 }

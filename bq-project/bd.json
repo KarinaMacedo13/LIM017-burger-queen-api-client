@@ -1,4 +1,4 @@
-{
+/* {
   "users": [
     {
       "id": 1,
@@ -181,30 +181,70 @@
   ],
   "orders": [
     {
-    "id": 2324,
-    "userId": 15254,
-    "client": "Jude Milhon",
-    "products": [
-      {
-        "qty": 1,
-        "product": {
-          "id": 1214,
-          "name": "Sandwich de jamón y queso",
-          "price": 1000,
-          "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/sandwich.jpg",
-          "type": "Desayuno",
-          "dateEntry": "2022-03-05 15:14:10"
+      "client": "Jude Milhon",
+      "products": [
+        {
+          "qty": 1,
+          "product": {
+            "id": 3,
+            "name": "Sandwich de jamón y queso",
+            "price": 10,
+            "image": "https://thumbs.dreamstime.com/b/queso-y-embutidos-tostados-cl%C3%A1sico-s%C3%A1ndwich-de-jam%C3%B3n-tostado-cortado-la-mitad-aislado-en-blanco-170821066.jpg",
+            "type": "Desayuno",
+            "dateEntry": "2022-03-05 15:14:10"
+          }
+        },
+        {
+          "qty": 1,
+          "product": {
+            "id": 6,
+            "name": "Hamburguesa doble",
+            "price": 15,
+            "image": "http://bk-latam-prod.s3.amazonaws.com/sites/burgerking.com.pe/files/MegaTocino_300x270px_0.png",
+            "type": "Almuerzo y cena",
+            "dateEntry": "2022-03-05 15:14:10"
+          }
         }
-      },
-      {
-        "qty": 1,
-        "product": {
-          "id": 7450,
-          "name": "Café americano",
-          "price": 500,
-          "image": "https://github.com/Laboratoria/bootcamp/tree/main/projects/04-burger-queen-api/resources/images/coffe.jpg",
-          "type": "Desayuno",
-          "dateEntry": "2022-03-05 15:14:10"
+      ],
+      "status": "pending",
+      "dataEntry": "5/7/2022, 16:38:47",
+      "id": 1
+    },
+    {
+      "client": "Katie Bouman",
+      "products": [
+        {
+          "qty": 1,
+          "product": {
+            "id": 3,
+            "name": "Sandwich de jamón y queso",
+            "price": 10,
+            "image": "https://thumbs.dreamstime.com/b/queso-y-embutidos-tostados-cl%C3%A1sico-s%C3%A1ndwich-de-jam%C3%B3n-tostado-cortado-la-mitad-aislado-en-blanco-170821066.jpg",
+            "type": "Desayuno",
+            "dateEntry": "2022-03-05 15:14:10"
+          }
+        },
+        {
+          "qty": 1,
+          "product": {
+            "id": 6,
+            "name": "Hamburguesa doble",
+            "price": 15,
+            "image": "http://bk-latam-prod.s3.amazonaws.com/sites/burgerking.com.pe/files/MegaTocino_300x270px_0.png",
+            "type": "Almuerzo y cena",
+            "dateEntry": "2022-03-05 15:14:10"
+          }
+        },
+        {
+          "qty": 2,
+          "product": {
+            "id": 5,
+            "name": "Hamburguesa simple",
+            "price": 10,
+            "image": "https://img.freepik.com/foto-gratis/deliciosa-hamburguesa-queso_1232-503.jpg?w=2000",
+            "type": "Almuerzo y cena",
+            "dateEntry": "2022-03-05 15:14:10"
+          }
         }
       }
     ],
@@ -244,4 +284,4 @@
     "dateProcessed": "2022-03-05 16:00"
   }
 ]
-}
+} */

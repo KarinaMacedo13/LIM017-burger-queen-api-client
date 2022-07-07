@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from '../../../models/products';
+import { Products, ordersProduct } from '../../../models/products';
 import { BdProductService } from '../../../services/bd-product.service';
 
 @Component({
@@ -8,24 +8,44 @@ import { BdProductService } from '../../../services/bd-product.service';
   styleUrls: ['./home-menu-list.component.scss']
 })
 export class HomeMenuListComponent implements OnInit {
+  listProductsOrder!: ordersProduct;
+  productNew: ordersProduct[] = [];
   listProducts: Products[] = [];
   optionPCategory!: string;
   valueSearch: string = '';
   valueId!: number;
   number: number = 0;
-  Products: Products[] = [];
+  searchArray: ordersProduct[] = [];
+  // Products: Products[] = [];
   constructor(private bdproductsService:  BdProductService) { }
 
   ngOnInit(): void {
     // Inicializa los siguientes métodos
     this.getProducts();
     this.obtainValueSearh();
-    this.deleteProduct();
   }
   // Obtener productos de la BD de productos
   getProducts(){
     this.bdproductsService. getBdProductService().subscribe(product => {
-      (this.listProducts = product), console.log('esto devuelve getproduct', product);
+      (this.listProducts= product), console.log('esto devuelve getproduct', product);
+      console.log(this.listProducts)
+      this.listProducts.forEach( x=>{
+        this.productNew.push(
+          this.listProductsOrder = {
+            qty: 0,
+            total: 0,
+            product: {
+              id: x.id,
+              name: x.name,
+              price: x.price,
+              image: x.image,
+              type: x.type,
+              dateEntry: x.dateEntry,
+            }
+          })
+        })
+        // console.log('SOY EL NUEVO ARRAY',this.productNew);
+        // console.log('AYUDA',this.productNew.forEach(x=>console.log(x.product.type)));
     },error => {console.log(error)})
   }
   // Recibir el valor de búsqueda del componente HomeComponent, ValueSearch es pasado al pipe en el HTML de HomeMenuListComponent y realizar la búsqueda de lo que escribe
@@ -40,24 +60,36 @@ export class HomeMenuListComponent implements OnInit {
     this.optionPCategory = option;
     console.log('Que es optionClick', this.optionPCategory);
   }
-  shareProduct(product: Products) {
-    // this.Products = this.Product;
-    this.Products.push(product);
-    let mySet = [...new Set(this.Products)];
-    console.log(this.Products);
-    console.log(mySet);
+  shareProductPlus(product: ordersProduct) {
+    product.qty+=1;
+    if(product.qty>0){
+      this.shareProduct(product);
+    }
+  }
+  shareProductDelete(product: ordersProduct) {
+    product.qty-=1;
+    if(product.qty==0){
+      this.shareDelete(product);
+    } else {
+      this.shareProduct(product);
+    }
+  }
+  shareProduct(product: ordersProduct) {
+    this.searchArray.push(product);
+    console.log(this.searchArray)
+    let mySet = [...new Set(this.searchArray)];
+    console.log("Compartiendo esto",mySet)
     this.bdproductsService.disparador.emit({
-      dataProducts: mySet
+      dataProduct: mySet
     });
   }
-  deleteProduct() {
-    // this.bdproductsService.disparadorID.subscribe(data => {
-    //   this.valueId = data.dataId;
-    //   console.log('Reciben mi ID:', this.valueId);
-    //   this.Product = this.Products.filter((item) => item.id !== this.valueId)
-    //   console.log('Nuevo Array borrado: ',this.Products)
-    // });
-    
-    
+  shareDelete(product: ordersProduct){
+    console.log("filtro");
+    this.searchArray = this.searchArray.filter((item) => item.product.id !== product.product.id)
+    console.log(this.searchArray)
+    let mySet = [...new Set(this.searchArray)];
+    this.bdproductsService.disparador.emit({
+      dataProduct: mySet
+    });
   }
 }
