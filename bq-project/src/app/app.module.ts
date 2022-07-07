@@ -24,10 +24,11 @@ import { HomePedidosComponent } from './home/home-pedidos/home-pedidos.component
 import { HomeMenuListComponent } from './home/home-menu/home-menu-list/home-menu-list.component';
 import { HomeMenuFormComponent } from './home/home-menu/home-menu-form/home-menu-form.component';
 import { HomePedidosListComponent } from './home/home-pedidos/home-pedidos-list/home-pedidos-list.component';
+import { FilterMenuPipe } from './pipes/filter-menu.pipe';
 
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, FilterMenuPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

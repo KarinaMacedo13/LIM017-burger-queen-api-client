@@ -1,4 +1,4 @@
-<select
+<!-- <select
   class="form-select"
   style="width: 25%; border-radius: 10px; margin: 1.5%"
   aria-label="Default select example"
@@ -7,20 +7,33 @@
   <option value="none" selected>Categoría</option>
   <option value="desayuno">Desayuno</option>
   <option value="almuerzo">Almuerzo y cena</option>
-</select>
-<!-- <div
-  class="btn-group"
-  role="group"
-  aria-label="Basic mixed styles example"
-  (change)="optionClick(txtSearch.value)">
-  <button type="button" value="none" class="btn btn-success active">Categoría</button>
-  <button type="button" value="desayuno" class="btn btn-danger" #txtSearch>
+</select> -->
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+  <button
+    type="button"
+    value="none"
+    class="btn btn-success active"
+    #btnnone
+    (click)="optionClick(btnnone.value)">
+    Categoría
+  </button>
+  <button
+    type="button"
+    value="desayuno"
+    class="btn btn-danger"
+    #btndesayuno
+    (click)="optionClick(btndesayuno.value)">
     Desayuno
   </button>
-  <button type="button" value="almuerzo" class="btn btn-warning" #txtSearch>
+  <button
+    type="button"
+    value="almuerzo"
+    class="btn btn-warning"
+    #btnalmuerzo
+    (click)="optionClick(btnalmuerzo.value)">
     Almuerzo y cena
   </button>
-</div> -->
+</div>
 <div
   class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
   style="justify-content: space-evenly; max-height: 400px">
@@ -32,7 +45,9 @@
       border-radius: 20px;
       box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
     "
-    *ngFor="let product of productNew">
+    *ngFor="
+      let product of productNew | filterMenu: valueSearch:optionPCategory
+    ">
     <span
       class="badge bg-success rounded-pill mt-2"
       style="width: 7rem; align-items: center"
