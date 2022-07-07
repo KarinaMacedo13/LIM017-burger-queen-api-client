@@ -25,10 +25,9 @@ import { HomeMenuListComponent } from './home/home-menu/home-menu-list/home-menu
 import { HomeMenuFormComponent } from './home/home-menu/home-menu-form/home-menu-form.component';
 import { HomePedidosListComponent } from './home/home-pedidos/home-pedidos-list/home-pedidos-list.component';
 import { HomeChefComponent } from './home-chef/home-chef.component';
-
-
+import { FilterMenuPipe } from './pipes/filter-menu.pipe';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, HomeChefComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, FilterMenuPipe, HomeChefComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

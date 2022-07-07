@@ -19,145 +19,46 @@
           <span>El nombre del cliente <strong> es obligatorio.</strong></span>
         </div>
       </div>
-      <div class="products-sales" *ngFor="let product of Products">
-        <div class="card">
-          <img
-            src="{{ product.image }}"
-            class="card-img"
-            alt=""
-            style="width: 2em" />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.price }}</p>
-          </div>
-          <div class="card-body">
-            <button
-              type="button"
-              class="btn btn-danger mx-2"
-              [disabled]="number <= 0"
-              (click)="deleteNumber()"
-              style="
-                font-size: 0.5em;
-                width: 3em;
-                height: 3em;
-                border-radius: 100%;
-                text-align: center;
-                justify-content: center;
-              ">
-              <i class="fa-solid fa-minus"></i>
-            </button>
-            <span> {{ number }} </span>
-            <button
-              type="button"
-              class="btn btn-warning mx-2"
-              (click)="addNumber()"
-              style="
-                font-size: 0.5em;
-                width: 3em;
-                height: 3em;
-                border-radius: 100%;
-                text-align: center;
-                justify-content: center;
-              ">
-              <i class="fa-solid fa-plus"></i>
-            </button>
-            <a class="btn" style="margin: 0px 12px; font-size: 25%" (click)="deleteProduct(product.id)">
-              <i class="fa-solid fa-trash" style="font-size: 380%"> </i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- <div class="form-group">
-        <label for="validationName" class="form-label">Name</label>
-        <input
-          type="name"
-          formControlName="name"
-          class="form-control"
-          id="validationName"
-          placeholder="Ingresa el nombre" />
-        <div
-          class="text"
-          *ngIf="
-            ordersForm.get('name')?.hasError('required') &&
-            ordersForm.get('name')?.touched
-          ">
-          <span>El nombre <strong> es obligatorio.</strong></span>
-        </div>
-      </div>
       <div class="form-group">
-        <label for="validationPrice" class="form-label">Price</label>
-        <input
-          type="price"
-          class="form-control"
-          formControlName="price"
-          id="validationPrice"
-          placeholder="Ingresa el precio" />
-        <div
-          class="text"
-          *ngIf="
-            ordersForm.get('price')?.hasError('required') &&
-            ordersForm.get('price')?.touched
-          ">
-          <span>El precio <strong>es obligatorio.</strong></span>
-        </div>
-      </div> -->
-
-      <!-- <div class="form-group">
-        <label for="validateUrl" class="form-label">Imagen</label>
-        <input
-          type="url"
-          class="form-control"
-          formControlName="image"
-          id="validateUrl"
-          placeholder="Ingresa la url" />
-        <div
-          class="text"
-          *ngIf="
-            ordersForm.get('image')?.hasError('required') &&
-            ordersForm.get('image')?.touched
-          ">
-          <span>La url <strong>es obligatoria.</strong></span>
-        </div>
-      </div> -->
-      <!-- <label for="validationStatus" class="form-label mt-4">Status</label>
-      <br />
-      <div class="form-check">
-        <input
-          id="validationStatus"
-          type="radio"
-          value="pending"
-          name="status"
-          formControlName="status" />
-        <label class="text-status" for="validationStatus"> Pending </label>
+        <label class="form-label"> Fecha de pedido: </label>
+        <p class="form-control" formControlName="dataEntry">{{ dataOrder }}</p>
       </div>
-      <div class="form-check">
-        <input
-          id="validationStatus"
-          type="radio"
-          value="canceled"
-          name="status"
-          formControlName="status" />
-        <label class="text-status" for="validationStatus"> Canceled </label>
-      </div> -->
-      <!-- <div class="form-check">
-        <input
-          id="validationStatus"
-          type="radio"
-          value="delivering"
-          name="status"
-          formControlName="status" />
-        <label class="text-status" for="validationStatus"> Delivering </label>
+      <label class="form-label"> Productos: </label>
+      <div
+        class="products-sales scroller-container"
+        *ngFor="let product of productNew">
+        <div
+          class="card p-1 m-1"
+          style="
+            border-radius: 1em;
+            display: flex;
+            flex-direction: row;
+            align-items: baseline;
+          ">
+          <img
+            src="{{ product.product.image }}"
+            style="height: 2rem; width: 2rem" />
+          <div class="card-body">
+            <h5 class="card-title">{{ product.product.name }}</h5>
+            <div
+              class="card-info"
+              style="display: flex; justify-content: space-between">
+              <div class="card-text" style="font-size: 0.8em">
+                {{ product.product.price | currency: 'USD' }}
+              </div>
+              <div class="card-text" style="font-size: 0.8em">
+                {{ product.qty }}
+              </div>
+              <div class="card-text" style="font-size: 0.8em">
+                {{ product.total | currency: 'USD' }}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-check">
-        <input
-          id="validationStatus"
-          type="radio"
-          value="delivere"
-          name="status"
-          formControlName="status" />
-        <label class="text-status" for="validationStatus"> Delivere </label>
-      </div> -->
+      <hr />
+      <span class="form-label">Total: </span>
+      <span> {{ totalOrder | currency: 'USD' }} </span>
       <div class="form-group mt-4 text-center">
         <input
           type="submit"

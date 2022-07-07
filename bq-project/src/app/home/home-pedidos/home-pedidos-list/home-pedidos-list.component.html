@@ -1,1 +1,120 @@
-<p>home-pedidos-list works!</p>
+<!-- <select
+  class="form-select"
+  style="width: 25%; border-radius: 10px; margin: 1.5%"
+  aria-label="Default select example"
+  #txtSearch
+  (change)="optionClick(txtSearch.value)">
+  <option value="none" selected>Categoría</option>
+  <option value="desayuno">Desayuno</option>
+  <option value="almuerzo">Almuerzo y cena</option>
+</select> -->
+<!-- <div
+  class="btn-group"
+  role="group"
+  aria-label="Basic mixed styles example"
+  (change)="optionClick(txtSearch.value)">
+  <button type="button" value="none" class="btn btn-success active">Categoría</button>
+  <button type="button" value="desayuno" class="btn btn-danger" #txtSearch>
+    Desayuno
+  </button>
+  <button type="button" value="almuerzo" class="btn btn-warning" #txtSearch>
+    Almuerzo y cena
+  </button>
+</div> -->
+<div>
+  <div
+    class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
+    style="justify-content: space-evenly; max-height: 400px">
+    <div
+      class="card col-12 col-sm-6 col-lg-3 m-1"
+      style="
+        align-items: center;
+        width: 30%;
+        border-radius: 20px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+      "
+      *ngFor="let order of listOrders">
+      <select
+        class="form-select"
+        style="width: 100%; border-radius: 10px; margin: 1.5%"
+        aria-label="Default select example"
+        #txtSearch
+        (change)="optionClick(txtSearch.value, order)">
+        <option value="none" selected>Cambia de Estado</option>
+        <option value="delivery">delivery</option>
+        <option value="pending">pending</option>
+      </select>
+      <span
+        class="badge bg-success rounded-pill mt-2"
+        style="width: 7rem; align-items: center"
+        >{{ order.status }}</span
+      >
+      <div
+        class="card-body"
+        style="
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        ">
+        <h5 class="card-title" style="margin: 0">
+          {{ order.client }}
+        </h5>
+        <p class="data_entry" style="margin: 0">
+          <strong>Date: </strong>{{ order.dataEntry | date: 'short' }}
+        </p>
+        <div
+          class="products-sales scroller-container"
+          *ngFor="let product of order.products">
+          <div class="p-1 m-1" style="display: flex; flex-direction: row">
+            <img
+              src="{{ product.product.image }}"
+              style="height: 2rem; width: 2rem" />
+            <div class="" style="display: flex; flex-direction: column">
+              <h5 class="card-title">{{ product.product.name }}</h5>
+              <div
+                class="card-info"
+                style="display: flex; justify-content: space-between">
+                <div class="card-text" style="font-size: 0.8em">
+                  {{ product.product.price | currency: 'USD' }}
+                </div>
+                <div class="card-text" style="font-size: 0.8em">
+                  {{ product.qty }}
+                </div>
+                <div class="card-text" style="font-size: 0.8em">
+                  {{ product.total | currency: 'USD' }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <span class="form-label">Total: </span>
+        <span> {{ order.total | currency: 'USD' }} </span>
+        <!-- <img
+          class="card-img mt-1"
+          style="height: 3rem; width: 3rem"
+          src="{{ order.products.product.name }}"
+          alt="Card image cap" />
+        <p class="card-text" style="margin: 0">
+          <strong>Price: </strong>{{ product.product.price | currency: 'USD' }}
+        </p> -->
+        <div class="btn-icons p-1 m-2">
+          <a
+            class="btn"
+            style="margin: 0px 12px; font-size: 25%"
+            (click)="deleteOrder(order)">
+            <i class="fa-solid fa-trash" style="font-size: 380%"> </i>
+          </a>
+          <a
+            class="btn"
+            style="margin: 0px 12px; font-size: 25%"
+            (click)="updateOrder(order)"
+            ><i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
