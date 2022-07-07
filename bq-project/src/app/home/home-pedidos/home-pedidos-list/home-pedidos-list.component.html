@@ -41,7 +41,7 @@
         #txtSearch
         (change)="optionClick(txtSearch.value, order)">
         <option value="none" selected>Cambia de Estado</option>
-        <option value="delivery">delivery</option>
+        <option value="delivered">delivered</option>
         <option value="pending">pending</option>
       </select>
       <span
@@ -63,6 +63,10 @@
         </h5>
         <p class="data_entry" style="margin: 0">
           <strong>Date: </strong>{{ order.dataEntry | date: 'short' }}
+        </p>
+        <p class="data_entry" style="margin: 0" *ngIf="order.dateProcessed">
+          <strong>Date Delivered: </strong
+          >{{ order.dateProcessed | date: 'short' }}
         </p>
         <div
           class="products-sales scroller-container"
@@ -107,12 +111,15 @@
             (click)="deleteOrder(order)">
             <i class="fa-solid fa-trash" style="font-size: 380%"> </i>
           </a>
-          <a
+          <button
             class="btn"
             style="margin: 0px 12px; font-size: 25%"
-            (click)="updateOrder(order)"
-            ><i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
-          </a>
+            [disabled]="
+              order.status === 'pending' || order.status === 'delivered'
+            "
+            (click)="updateOrder(order)">
+            <i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
+          </button>
         </div>
       </div>
     </div>

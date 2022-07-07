@@ -13,12 +13,14 @@ export class AdminProductsFormComponent implements OnInit {
   productForm: FormGroup;
   title = 'Agregar Producto';
   productID !:number;
+  dataOrder: string = new Date().toLocaleString();
   constructor(private fb: FormBuilder, private bdproductService:  BdProductService, private toastr: ToastrService) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       price: ['', Validators.required],
       image: ['', Validators.required],
-      type: ['', Validators.required]
+      type: ['', Validators.required],
+      dateEntry: [ this.dataOrder ],
     })
   }
   
@@ -38,6 +40,7 @@ obtainIdProduct() {
       price: this.productForm.get('price')?.value,
       image: this.productForm.get('image')?.value,
       type: this.productForm.get('type')?.value,
+      dateEntry: this.productForm.get('dateEntry')?.value,
     };
     console.log(PRODUCTS);
 if(this.productID!== undefined) {
@@ -67,6 +70,7 @@ window.location.reload();
     price: data.dataProduct.price,
     image: data.dataProduct.image,
     type: data.dataProduct.type,
+    dateEntry: this.dataOrder,
   })
       }
     })

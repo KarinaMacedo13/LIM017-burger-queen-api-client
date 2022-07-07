@@ -1,1 +1,193 @@
-<p>home-chef works!</p>
+<section class="home-section">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0">
+      <div class="container-fluid">
+        <a class="navbar-brand">
+          <button
+            class="btn"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasScrolling"
+            aria-controls="offcanvasScrolling">
+            <img class="img-logo" src="assets/logo.png" alt="" width="150" />
+          </button>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <div
+          class="collapse navbar-collapse"
+          id="navbarSupportedContent"
+          style="gap: 6%">
+          <form class="d-flex" style="width: 70%; padding-left: 8%">
+            <input
+              class="form-control me-2 bg-light"
+              style="height: 40px"
+              type="text"
+              placeholder="Buscar"
+              aria-label="Search"
+              #txtSearch
+              (keyup)="searchInput(txtSearch.value)" />
+          </form>
+        </div> -->
+      </div>
+    </nav>
+  </header>
+  <!-- NavSIDE -->
+
+  <div
+    class="offcanvas offcanvas-start"
+    data-bs-scroll="true"
+    data-bs-backdrop="false"
+    tabindex="-1"
+    id="offcanvasScrolling"
+    aria-labelledby="offcanvasScrollingLabel">
+    <div class="offcanvas-header">
+      <button
+        type="button"
+        class="btn-close text-reset"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="btn-group-vertical botones m-1">
+        <h1 class="badge-dashboard">DASHBOARD</h1>
+        <h4 class="text-nav">Pepito el Mozo</h4>
+        <span class="badge">Mozo</span>
+        <!-- <button type="button" class="btn-nav mt-3" routerLink="menu">
+          <i class="fa-solid fa-people-line"></i> Menú
+        </button>
+        <button type="button" class="btn-nav mt-4" routerLink="orders">
+          <i class="fa-solid fa-cubes"></i> Pedidos
+        </button> -->
+        <div class="out-btn">
+          <button type="button" class="btn-out">
+            <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- componentes renderizados de user -->
+  <div class="row" style="justify-content: space-evenly; margin: 0">
+    <div
+      class="col-10 col-sm-8 bg-light"
+      style="border-radius: 25px; height: 480px">
+      <div class="row" style="justify-content: space-evenly; margin: 0">
+        <div class="col-12 col-sm-12" style="justify-content: center">
+          <div>
+            <div
+              class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
+              style="justify-content: space-evenly; max-height: 400px">
+              <div
+                class="card col-12 col-sm-6 col-lg-3 m-1"
+                style="
+                  align-items: center;
+                  width: 30%;
+                  border-radius: 20px;
+                  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+                "
+                *ngFor="let order of listOrders">
+                <select
+                  class="form-select"
+                  style="width: 100%; border-radius: 10px; margin: 1.5%"
+                  aria-label="Default select example"
+                  #txtSearch
+                  (change)="optionClick(txtSearch.value, order)">
+                  <option value="none" selected>Cambia de Estado</option>
+                  <option value="delivering">delivery</option>
+                  <option value="pending">pending</option>
+                </select>
+                <span
+                  class="badge bg-success rounded-pill mt-2"
+                  style="width: 7rem; align-items: center"
+                  >{{ order.status }}</span
+                >
+                <div
+                  class="card-body"
+                  style="
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                  ">
+                  <h5 class="card-title" style="margin: 0">
+                    {{ order.client }}
+                  </h5>
+                  <p class="data_entry" style="margin: 0">
+                    <strong>Date: </strong>{{ order.dataEntry | date: 'short' }}
+                  </p>
+                  <div
+                    class="products-sales scroller-container"
+                    *ngFor="let product of order.products">
+                    <div
+                      class="p-1 m-1"
+                      style="display: flex; flex-direction: row">
+                      <img
+                        src="{{ product.product.image }}"
+                        style="height: 2rem; width: 2rem" />
+                      <div
+                        class=""
+                        style="display: flex; flex-direction: column">
+                        <h5 class="card-title">{{ product.product.name }}</h5>
+                        <div
+                          class="card-info"
+                          style="display: flex; justify-content: space-between">
+                          <div class="card-text" style="font-size: 0.8em">
+                            {{ product.product.price | currency: 'USD' }}
+                          </div>
+                          <div class="card-text" style="font-size: 0.8em">
+                            {{ product.qty }}
+                          </div>
+                          <div class="card-text" style="font-size: 0.8em">
+                            {{ product.total | currency: 'USD' }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                  <span class="form-label">Total: </span>
+                  <span> {{ order.total | currency: 'USD' }} </span>
+                  <!-- <img
+                          class="card-img mt-1"
+                          style="height: 3rem; width: 3rem"
+                          src="{{ order.products.product.name }}"
+                          alt="Card image cap" />
+                        <p class="card-text" style="margin: 0">
+                          <strong>Price: </strong>{{ product.product.price | currency: 'USD' }}
+                        </p> -->
+                  <div class="btn-icons p-1 m-2">
+                    <button
+                      class="btn"
+                      style="margin: 0px 12px; font-size: 25%"
+                      [disabled]="
+                        order.status === 'delivered' ||
+                        order.status === 'delivering'
+                      "
+                      (click)="updateOrder(order)">
+                      <i
+                        class="fa-solid fa-pen-to-square"
+                        style="font-size: 400%"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-10 col-sm-3" style="border-radius: 25px">
+      <!-- <app-home-menu-form></app-home-menu-form> -->
+    </div>
+  </div>
+</section>
