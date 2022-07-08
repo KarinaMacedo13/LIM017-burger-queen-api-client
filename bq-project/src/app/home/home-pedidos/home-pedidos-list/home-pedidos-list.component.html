@@ -34,16 +34,6 @@
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
       "
       *ngFor="let order of listOrders">
-      <select
-        class="form-select"
-        style="width: 100%; border-radius: 10px; margin: 1.5%"
-        aria-label="Default select example"
-        #txtSearch
-        (change)="optionClick(txtSearch.value, order)">
-        <option value="none" selected>Cambia de Estado</option>
-        <option value="delivered">delivered</option>
-        <option value="pending">pending</option>
-      </select>
       <span
         class="badge bg-success rounded-pill mt-2"
         style="width: 7rem; align-items: center"

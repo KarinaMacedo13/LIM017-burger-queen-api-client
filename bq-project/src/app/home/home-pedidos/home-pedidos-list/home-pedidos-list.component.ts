@@ -16,77 +16,36 @@ export class HomePedidosListComponent implements OnInit {
   ngOnInit(): void {
     this.getOrders();
   }
+  // Get the orders and order
   getOrders(){
     this.bdordersService.getBdOrderService().subscribe(order => {
-      (this.listOrders = order), console.log('esto devuelve getproduct', order);
-      console.log("Soy la lista de ordenes",this.listOrders);
+      this.listOrders = order;
+      //Sort by date from newest to oldest
       this.listOrders.sort((a, b) => <any> new Date(b.dataEntry) - <any> new Date(a.dataEntry));
     }
     )
   }
+  //Delete orders
   deleteOrder(order: order) {
     this.bdordersService.deleteBdOrderService(order).subscribe(() => {
       this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
       this.listOrders = this.listOrders.filter(orderdelete => orderdelete.id !== order.id);
-      console.log('El producto fue eliminado');
     },error => {console.log(error)})
   }
+  //Update the delivery status of a delivered
   updateOrder(order: order) {
-    console.log(order.status)
-    if(order.status==="delivery"){
-      console.log("Actualizo a delivery")
-      const ORDERS: order = {
-        id: order.id,
-        status: "pending",
-        client: order.client,
-        products: order.products,
-        dataEntry: order.dataEntry,
-        total: order.total,
-      }
-      this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
-        this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
-        this.getOrders();
-        console.log('Editado con éxito');
-      })
-      } else {
-        console.log("Actualizo a delivery")
-      const ORDERS: order = {
-        id: order.id,
-        status: "delivered",
-        client: order.client,
-        products: order.products,
-        dataEntry: order.dataEntry,
-        total: order.total,
-        dateProcessed: this.dataChange,
-      }
-      this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
-        this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
-        this.getOrders();
-        console.log('Editado con éxito');
-      })
-      }
-  }
-  optionClick(option:string,order:order) {
-    console.log('Que es optionClick', option);
-    console.log("la orden seleccionada", order)
-    if(option !=="none"){
-      console.log("Actualizo a delivery")
-      const ORDERS: order = {
-        id: order.id,
-        status: option,
-        client: order.client,
-        products: order.products,
-        dataEntry: order.dataEntry,
-        total: order.total,
-        dateProcessed: this.dataChange,
-      }
-      this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
-        this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
-        this.getOrders();
-        console.log('Editado con éxito');
-      })
-    } else {
-      this.getOrders();
+    const ORDERS: order = {
+      id: order.id,
+      status: "delivered",
+      client: order.client,
+      products: order.products,
+      dataEntry: order.dataEntry,
+      total: order.total,
+      dateProcessed: this.dataChange,
     }
+    this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
+      this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+      this.getOrders();
+    })
   }
 }

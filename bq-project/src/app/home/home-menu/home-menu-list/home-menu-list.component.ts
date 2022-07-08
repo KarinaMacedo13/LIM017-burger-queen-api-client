@@ -8,27 +8,26 @@ import { BdProductService } from '../../../services/bd-product.service';
   styleUrls: ['./home-menu-list.component.scss']
 })
 export class HomeMenuListComponent implements OnInit {
+
   listProductsOrder!: ordersProduct;
   productNew: ordersProduct[] = [];
   listProducts: Products[] = [];
   optionPCategory!: string;
   valueSearch: string = '';
-  valueId!: number;
   number: number = 0;
   searchArray: ordersProduct[] = [];
-  // Products: Products[] = [];
+
   constructor(private bdproductsService:  BdProductService) { }
 
   ngOnInit(): void {
-    // Inicializa los siguientes métodos
+    // Initialize the following methods
     this.getProducts();
     this.obtainValueSearh();
   }
-  // Obtener productos de la BD de productos
+  // Get products from the product database
   getProducts(){
     this.bdproductsService. getBdProductService().subscribe(product => {
-      (this.listProducts= product), console.log('esto devuelve getproduct', product);
-      console.log(this.listProducts)
+      (this.listProducts= product),
       this.listProducts.forEach( x=>{
         this.productNew.push(
           this.listProductsOrder = {
@@ -44,28 +43,27 @@ export class HomeMenuListComponent implements OnInit {
             }
           })
         })
-        // console.log('SOY EL NUEVO ARRAY',this.productNew);
-        // console.log('AYUDA',this.productNew.forEach(x=>console.log(x.product.type)));
     },error => {console.log(error)})
   }
-  // Recibir el valor de búsqueda del componente HomeComponent, ValueSearch es pasado al pipe en el HTML de HomeMenuListComponent y realizar la búsqueda de lo que escribe
+  // Receive the search value from the HomeComponent, ValueSearch is passed to the pipe in the HTML of the HomeMenuListComponent and perform the search on what you type
   obtainValueSearh() {
     this.bdproductsService.disparadorSearchProducts.subscribe(data => {
       this.valueSearch = data.valueSearch;
-      // console.log(this.valueSearch);
     });
   }
-  // Obtiene el click del selector del HTML de HomeMenuListComponent, para enviar la opción al pipe y realizar la función de filtrado según la categoria
+  // Gets the click of the HomeMenuListComponent HTML selector, to send the option to the pipe and perform the filter function according to the category
   optionClick(option:string){
     this.optionPCategory = option;
     console.log('Que es optionClick', this.optionPCategory);
   }
+  // Depending on the quantity of each product, execute another method
   shareProductPlus(product: ordersProduct) {
     product.qty+=1;
     if(product.qty>0){
       this.shareProduct(product);
     }
   }
+  // Depending on the amount, share the product to either increase or remove a product
   shareProductDelete(product: ordersProduct) {
     product.qty-=1;
     if(product.qty==0){
@@ -74,20 +72,19 @@ export class HomeMenuListComponent implements OnInit {
       this.shareProduct(product);
     }
   }
+  // Share the product in an array with unique elements
   shareProduct(product: ordersProduct) {
     this.searchArray.push(product);
-    console.log(this.searchArray)
     let mySet = [...new Set(this.searchArray)];
-    console.log("Compartiendo esto",mySet)
     this.bdproductsService.disparador.emit({
       dataProduct: mySet
     });
   }
+
   shareDelete(product: ordersProduct){
-    console.log("filtro");
-    this.searchArray = this.searchArray.filter((item) => item.product.id !== product.product.id)
-    console.log(this.searchArray)
+    this.searchArray = this.searchArray.filter((item) => item.product.id !== product.product.id) // Delete the id
     let mySet = [...new Set(this.searchArray)];
+    // Share the array with the deleted item
     this.bdproductsService.disparador.emit({
       dataProduct: mySet
     });

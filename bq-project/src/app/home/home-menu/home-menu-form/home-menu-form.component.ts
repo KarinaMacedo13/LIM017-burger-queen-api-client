@@ -11,24 +11,26 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./home-menu-form.component.scss']
 })
 export class HomeMenuFormComponent implements OnInit {
-  listProductsOrder!: ordersProduct;
+
   productNew: ordersProduct[] = [];
-  Products: Products[] = [];
   ordersForm: FormGroup;
   totalOrder: number = 0;
   title = 'Agregar Nueva Orden';
   dataOrder: string = new Date().toLocaleString();
-  constructor(private fb: FormBuilder, private bdproductsService:  BdProductService, private bdordersService:  BdOrdersService, private toastr: ToastrService) {     
+
+  constructor(private fb: FormBuilder, private bdproductsService:  BdProductService, private bdordersService:  BdOrdersService, private toastr: ToastrService) {
+   
     this.ordersForm = this.fb.group({
       client: ['', Validators.required],
       dataEntry: [ this.dataOrder ],
     })
   }
+  //Keeps this method initialized, keeping the menu items in view
   ngOnInit(): void {
     this.getProduct();
   }
+  //Method that allows me to obtain the value of each input of the form and post it in the database
   addOrders(){
-    console.log("Soy oRDERRR",this.ordersForm);
     const ORDERS: order = {
       client: this.ordersForm.get('client')?.value,
       products: this.productNew,
@@ -36,30 +38,17 @@ export class HomeMenuFormComponent implements OnInit {
       dataEntry: this.ordersForm.get('dataEntry')?.value,
       total: this.totalOrder,
     }
-    console.log(ORDERS);
     this.bdordersService.postBdOrderService(ORDERS).subscribe( () => {
-      console.log('Producto agregado con éxito');
       this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
     },error => {console.log(error)}
     )
   }
-  //Obtiene un array de valores únicos del HomeMenuListComponent para recorrerlo en el html del homeMenuFormComponent
+  //Gets an array of unique values ​​from the HomeMenuListComponent to loop through in the html of the homeMenuFormComponent
   getProduct() {
     this.bdproductsService.disparador.subscribe(data => {
-      console.log('Recibiendo dataProduct:', data);
       this.productNew = data.dataProduct;
-      // this.productNew = [...new Set(this.productNew)];
-      // // this.productNew.reduce((acc,item)=>{
-      // //   if(!acc.includes(item)){
-      // //     acc.push(item);
-      // //   }
-      // //   return acc;
-      // // },[])
-      // console.log(this.productNew, "Me filtran elementos unicos")
       this.productNew.map((product => product.total=product.qty*product.product.price));
-      console.log('Recibo esto', this.productNew)
       this.totalOrder = this.productNew.reduce((acumulador, actual) => acumulador + actual.total, 0);
-      console.log('Total order', this.totalOrder)
     });
   }
 }
