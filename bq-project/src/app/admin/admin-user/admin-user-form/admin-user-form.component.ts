@@ -14,6 +14,7 @@ export class AdminUserFormComponent implements OnInit {
   title = 'Agregar Usuario';
   userID !:number;
   constructor(private fb: FormBuilder,private bduserService: BdUserService, private toastr: ToastrService) {
+    //Get the values ​​using the formBuilder method
     this.userForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -24,17 +25,14 @@ export class AdminUserFormComponent implements OnInit {
     this.editForm();
     this.obtainId();
   }
+  //Get the id of the admin user list
   obtainId() {
-  this.bduserService.disparador.subscribe(data => {
-    console.log('asdasdasdasdsadasdasdasdasd', data)
-    console.log(data.dataUser.id)
-    this.userID = data.dataUser.id;
-    return this.userID;
-  })
+    this.bduserService.disparador.subscribe(data => {
+      return this.userID = data.dataUser.id;
+    })
   }
+  //Edit person and create persona, create object user
   addPerson() {
-    // console.log(this.userForm.value);
-    // console.log(this.userForm.get('roles')?.value);
     const USERS: Users = {
       email: this.userForm.get('email')?.value,
       password: this.userForm.get('password')?.value,
@@ -43,25 +41,21 @@ export class AdminUserFormComponent implements OnInit {
         admin: this.userForm.get('roles')?.value=== 'admin'? true:false,
       }
     };
-    console.log(USERS);
-    console.log(this.userID);
     if(this.userID!== undefined) {
       //Edit product
-      console.log(this.userID)
       this.bduserService.editBdUserService(this.userID,USERS).subscribe( () => {
         this.toastr.success('El usuario fue actualizado con éxito', 'Usuario Actualizado');
-        console.log('Actualizado con éxito');
       },error => {console.log(error)}
       )
     } else {
-      //Creat product
+      //Creat product if id is defined
       this.bduserService.postBdUserService(USERS).subscribe(data => {
-        console.log('Producto agregado con éxito');
         this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
       },error => {console.log(error)})
     }
     window.location.reload();
   }
+  //Get data from userListComponent and reassign values
   editForm() {
     this.bduserService.disparador.subscribe(data => {
       console.log('Recibiendo Data:', data)

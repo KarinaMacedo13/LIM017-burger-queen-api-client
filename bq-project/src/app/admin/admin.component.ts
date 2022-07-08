@@ -8,12 +8,12 @@ import { BdUserService } from '../services/bd-user.service';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  workers: Worker[] = [];
   searchValue: string = '';
   constructor(private bduserService: BdUserService, private bdproductsService:  BdProductService) {}
   ngOnInit(): void {
   }
   searchInput(search: string) {
+    // definición de la variable search
     this.searchValue = search;
    //Enviando el valor de la busqueda a user-list en la variable ValueSearch
     this.bduserService.disparadorSearch.emit({
@@ -25,4 +25,3 @@ export class AdminComponent implements OnInit {
     });
   }
 }
-

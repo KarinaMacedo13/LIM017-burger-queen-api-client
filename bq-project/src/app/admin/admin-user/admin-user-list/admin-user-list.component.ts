@@ -12,46 +12,42 @@ export class AdminUserListComponent implements OnInit {
   Users!: Workers;
   valueSearch: string = '';
   optionAdmin !: any;
-  boolValue!:boolean;
+  
   constructor(private bduserService: BdUserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getUser();
     this.obtainValueSearh();
   }
+  //Obtain workers by bduserService
   getUser() {
     this.bduserService.getBdUserService().subscribe(worker => {
-      (this.listWorkers = worker), console.log(worker);
+      (this.listWorkers = worker);
     },error => {console.log(error)});
   }
+  //Delete user by bduserService
   deleteUser(workers:Workers) {
     this.bduserService.deleteBdUserService(workers).subscribe(() =>{
       this.listWorkers = this.listWorkers.filter(workerUnDelete => workerUnDelete.id !== workers.id)
       this.toastr.error('El usuario fue eliminado con éxito', 'Usuario Eliminado');
-      console.log('El usuario fue eliminado');
     },error => {console.log(error)})
   }
+  // Update user by bduserService
   updateUser(workers: Workers) {
     this.Users = workers;
-    console.log(this.Users)
     this.bduserService.disparador.emit({
       dataUser: this.Users
     });
   }
+  //Get search value from general filter and match them
   obtainValueSearh() {
     this.bduserService.disparadorSearch.subscribe(data => {
-      // console.log('asdasdasdasdsadasdasdasdasd', data)
-      // console.log(data.valueSearch)
       this.valueSearch = data.valueSearch;
     });
     }
+    //Select the values ​​of the search options
   optionClick(option: string){
     this.optionAdmin = option;
-    console.log(typeof this.optionAdmin);
-    console.log(this.optionAdmin);
-    //this.boolValue = JSON.parse(this.optionAdmin);
-    console.log(typeof this.boolValue);
-    console.log(this.boolValue);
   }
 }
 

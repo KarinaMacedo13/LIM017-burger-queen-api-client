@@ -13,24 +13,27 @@ export class AdminProductsListComponent implements OnInit {
   Produc!: Products;
   valueSearch: string = '';
   optionPCategory!: string;
+  
   constructor(private bdproductsService:  BdProductService, private toastr: ToastrService) {}
 
   ngOnInit(): void {
     this.getProducts();
     this.obtainValueSearh();
   }
+  //Mostrar los elementos de la base de datos
   getProducts(){
     this.bdproductsService. getBdProductService().subscribe(product => {
-      (this.listProducts = product), console.log('esto devuelve getproduct', product);
+      (this.listProducts = product);
     },error => {console.log(error)})
   }
+  //Borrar productos
   deleteProduct(product: Products) {
     this.bdproductsService.deleteBdProductService(product).subscribe(() => {
       this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
-      this.listProducts = this.listProducts.filter(productUnDelete => productUnDelete.id !== product.id)
-      console.log('El producto fue eliminado');
+      this.listProducts = this.listProducts.filter(productUnDelete => productUnDelete.id !== product.id);
     },error => {console.log(error)})
   }
+  //Actualiza el producto
   updateProduct(product: Products) {
     this.Produc = product;
     console.log(this.Produc);
@@ -38,16 +41,14 @@ export class AdminProductsListComponent implements OnInit {
       dataProduct: this.Produc
     });
   }
-   // Obteniendo los datos del filtrador general
- // mediante un disparadorSearch
- //valueSearch contiene el valor de la busqueda.
- obtainValueSearh() {
+  // Obteniendo los datos del filtrador general mediante un disparadorSearch, valueSearch contiene el valor de la busqueda.
+  obtainValueSearh() {
   this.bdproductsService.disparadorSearchProducts.subscribe(data => {
     this.valueSearch = data.valueSearch;
   });
   }
+  // Obtiene la opción elegida 
   optionClick(option:string){
     this.optionPCategory = option;
-    console.log('Que es optionClick', this.optionPCategory);
   }
 }

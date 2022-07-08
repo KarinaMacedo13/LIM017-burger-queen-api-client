@@ -1,3 +1,11 @@
+/* Navbar ------------------------------------------*/
+.container-nav{
+    margin: 0;
+}
+.cont-collapse{
+    gap: 6%;
+}
+/* Navbar -------------------------------------------------------------------*/
 .admin-section{
     background-image: url('../../assets/fondo.png');
     background-position: center;
@@ -7,10 +15,10 @@
     height: 100vh;
 }
 
-/* .navbar{
-    background: rgba(235, 231, 37, 0.288);
-} */
-
+.form-Admin{
+    width: 70%; 
+    padding-left: 8%;
+}
 .dashboard-container{
     background: #FFF6A6;
     border-radius: 25px;
@@ -87,3 +95,17 @@
     background-color: #FFC501;
 }
 
+// Componente Renderizado del User
+.row {
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+.rowPrincipal {
+    justify-content: center;
+}
+
+// Search Bar----------------------
+.search {
+    height: 40px;
+}
