@@ -26,6 +26,7 @@ import { HomeMenuFormComponent } from './home/home-menu/home-menu-form/home-menu
 import { HomePedidosListComponent } from './home/home-pedidos/home-pedidos-list/home-pedidos-list.component';
 import { HomeChefComponent } from './home-chef/home-chef.component';
 import { FilterMenuPipe } from './pipes/filter-menu.pipe';
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, FilterMenuPipe, HomeChefComponent],
   imports: [
@@ -37,7 +38,8 @@ import { FilterMenuPipe } from './pipes/filter-menu.pipe';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers:
+  [CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

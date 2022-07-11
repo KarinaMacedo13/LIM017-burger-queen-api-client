@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Workers } from '../models/workers';
 import { BdUserService } from '../services/bd-user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ import { BdUserService } from '../services/bd-user.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   messageError: any;
-  constructor(private fb: FormBuilder,private toastr: ToastrService, private bduserService: BdUserService, private router: Router) {
+  accesToken: any;
+  constructor(private fb: FormBuilder,private toastr: ToastrService, private bduserService: BdUserService, private router: Router, private cookieService: CookieService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
@@ -55,28 +57,36 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.get('password')?.value,
     };
     console.log('soy user', USER);
-    
     this.bduserService.loginUsers(USER)
     .subscribe({
       next: res => {
       console.log('recibiendo respuesta', res)
+      console.log('Recibo acces token', res.accessToken)
+      this.accesToken = res.accessToken;
         this.bduserService.getToken(res)
         this.bduserService.getOneUser(res).subscribe(res=>{
+          console.log('ENCUENTRAME', res);
           localStorage.setItem('id', res.id);
           localStorage.setItem('email', res.email);
           switch(res.roles.description) {
-            case 'admin': 
-            this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'),
-            this.router.navigate(['/admin/user'])
-            break
+            case 'admin':
+              this.cookieService.set('roles_access', res.roles.description, 1, '/'),
+              // this.cookieService.set('token_access', this.accesToken, 1, '/')
+              this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'),
+              this.router.navigate(['/admin/user'])
+              break
             case 'weiter':
+              this.cookieService.set('roles_access', res.roles.description, 1, '/' ),
+              // this.cookieService.set('token_access', this.accesToken, 1, '/home' && 'home/orders' && 'home/menu')
               this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'),
               this.router.navigate(['/home/menu'])
               break
             case 'chef':
+              this.cookieService.set('roles_access', res.roles.description, 1, '/' ),
+              // this.cookieService.set('token_access', this.accesToken, 1, '/chef' && '/login')
               this.toastr.success('Te has logeado con exito', 'Bienvenido a BurgerQueen'),
-            this.router.navigate(['/chef'])
-            break
+              this.router.navigate(['/chef'])
+              break
           }
         })
       },
