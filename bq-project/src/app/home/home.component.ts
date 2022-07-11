@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { BdProductService } from '../services/bd-product.service';
+import { ToastrService } from 'ngx-toastr';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +11,7 @@ import { BdProductService } from '../services/bd-product.service';
 })
 export class HomeComponent implements OnInit {
   searchValue: string = '';
-  constructor(private bdproductsService:  BdProductService) {}
+  constructor(private bdproductsService:  BdProductService,private toastr: ToastrService,private cookieService: CookieService, private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -18,5 +21,13 @@ export class HomeComponent implements OnInit {
     this.bdproductsService.disparadorSearchProducts.emit({
       valueSearch: this.searchValue,
     });
+  }
+  logOut() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('id');
+    localStorage.removeItem('email');
+    this.cookieService.delete('roles_access');
+    this.router.navigate(['/login']);
+    this.toastr.success('Se cerro sesión con éxito', 'Cerrar Sesión');
   }
 }

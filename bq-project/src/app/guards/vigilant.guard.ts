@@ -18,6 +18,10 @@ export class VigilantGuard implements CanActivate {
   }
   redirect(flag: boolean): any {
     if(!flag) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('id');
+      localStorage.removeItem('email');
+      this.cookieService.delete('roles_access');
       this.router.navigate(['/login']);
       this.toastr.error('No cuentas con acceso a está ruta','Acceso Denegado');
     }
