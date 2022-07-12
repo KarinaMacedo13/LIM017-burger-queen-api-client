@@ -95,7 +95,7 @@
                   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
                 "
                 *ngFor="let order of listOrders">
-                <select
+                <!--   <select
                   class="form-select"
                   style="width: 100%; border-radius: 10px; margin: 1.5%"
                   aria-label="Default select example"
@@ -104,7 +104,7 @@
                   <option value="none" selected>Cambia de Estado</option>
                   <option value="delivering">delivery</option>
                   <option value="pending">pending</option>
-                </select>
+                </select> -->
                 <span
                   class="badge bg-success rounded-pill mt-2"
                   style="width: 7rem; align-items: center"
@@ -170,8 +170,8 @@
                       class="btn"
                       style="margin: 0px 12px; font-size: 25%"
                       [disabled]="
-                        order.status === 'delivered' ||
-                        order.status === 'delivering'
+                        order.status === 'entregado' ||
+                        order.status === 'preparado'
                       "
                       (click)="updateOrder(order)">
                       <i

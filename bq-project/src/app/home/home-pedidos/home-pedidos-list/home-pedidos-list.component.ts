@@ -30,7 +30,7 @@ export class HomePedidosListComponent implements OnInit {
   //Delete orders
   deleteOrder(order: order) {
     this.bdordersService.deleteBdOrderService(order).subscribe(() => {
-      this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
+      this.toastr.error('La orden fue eliminado con éxito', 'Orden Eliminada');
       this.listOrders = this.listOrders.filter(orderdelete => orderdelete.id !== order.id);
     },error => {console.log(error)})
   }
@@ -38,7 +38,7 @@ export class HomePedidosListComponent implements OnInit {
   updateOrder(order: order) {
     const ORDERS: order = {
       id: order.id,
-      status: "delivered",
+      status: "entregado",
       client: order.client,
       products: order.products,
       dataEntry: order.dataEntry,
@@ -46,7 +46,7 @@ export class HomePedidosListComponent implements OnInit {
       dateProcessed: this.dataChange,
     }
     this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
-      this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+      this.toastr.success('La orden fue actualizada con éxito', 'Orden Actualizada');
       this.getOrders();
     })
   }
