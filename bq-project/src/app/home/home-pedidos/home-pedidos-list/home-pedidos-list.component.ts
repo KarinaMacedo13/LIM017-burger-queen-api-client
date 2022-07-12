@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 export class HomePedidosListComponent implements OnInit {
   listOrders: order[] = [];
   dataChange: string = new Date().toLocaleString();
+  optionStatus: string = '';
+
   constructor( private bdordersService:  BdOrdersService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -47,5 +49,9 @@ export class HomePedidosListComponent implements OnInit {
       this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
       this.getOrders();
     })
+  }
+  optionClick(option:string){
+    this.optionStatus = option;
+    console.log('Que es optionClick', this.optionStatus);
   }
 }

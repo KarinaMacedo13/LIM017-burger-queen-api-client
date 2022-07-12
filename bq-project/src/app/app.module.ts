@@ -27,8 +27,9 @@ import { HomePedidosListComponent } from './home/home-pedidos/home-pedidos-list/
 import { HomeChefComponent } from './home-chef/home-chef.component';
 import { FilterMenuPipe } from './pipes/filter-menu.pipe';
 import { CookieService } from 'ngx-cookie-service';
+import { FilterOrderPipe } from './pipes/filter-order.pipe';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, FilterMenuPipe, HomeChefComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, FilterMenuPipe, HomeChefComponent, FilterOrderPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,26 +1,37 @@
-<!-- <select
-  class="form-select"
-  style="width: 25%; border-radius: 10px; margin: 1.5%"
-  aria-label="Default select example"
-  #txtSearch
-  (change)="optionClick(txtSearch.value)">
-  <option value="none" selected>Categoría</option>
-  <option value="desayuno">Desayuno</option>
-  <option value="almuerzo">Almuerzo y cena</option>
-</select> -->
-<!-- <div
-  class="btn-group"
-  role="group"
-  aria-label="Basic mixed styles example"
-  (change)="optionClick(txtSearch.value)">
-  <button type="button" value="none" class="btn btn-success active">Categoría</button>
-  <button type="button" value="desayuno" class="btn btn-danger" #txtSearch>
-    Desayuno
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+  <button
+    type="button"
+    value="none"
+    class="btn btn-success active"
+    #btnnone
+    (click)="optionClick(btnnone.value)">
+    Categoría
   </button>
-  <button type="button" value="almuerzo" class="btn btn-warning" #txtSearch>
-    Almuerzo y cena
+  <button
+    type="button"
+    value="pendiente"
+    class="btn btn-danger"
+    #btnpendiente
+    (click)="optionClick(btnpendiente.value)">
+    Pendiente
   </button>
-</div> -->
+  <button
+    type="button"
+    value="preparado"
+    class="btn btn-warning"
+    #btnpreparada
+    (click)="optionClick(btnpreparada.value)">
+    Preparada
+  </button>
+  <button
+    type="button"
+    value="entregado"
+    class="btn btn-info"
+    #btnentregado
+    (click)="optionClick(btnentregado.value)">
+    Entregado
+  </button>
+</div>
 <div>
   <div
     class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
