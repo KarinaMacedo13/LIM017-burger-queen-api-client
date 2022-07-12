@@ -7,13 +7,6 @@ import { order } from '../models/orders'
 })
 export class BdOrdersService {
   url = 'http://localhost:8080/orders';
-  public user = {
-    email: '',
-    roles: {
-      admin: true,
-    },
-    id: 0
-  }
 
   constructor(private http: HttpClient) { }
   accessToken = localStorage.getItem('accessToken')
@@ -44,9 +37,4 @@ export class BdOrdersService {
     const urlUpdateProduct = `${this.url}/${order.id}`;
     return this.http.put<order>(urlUpdateProduct, order, this.httpOptions());
   }
-//  editBdUserService(id:number, workers: Users): Observable<Users>{
-//   const urlUpdate = `${this.url}/${id}`;
-//   console.log(urlUpdate);
-//   return this.http.put<Users>(urlUpdate, workers);
-// }
 }

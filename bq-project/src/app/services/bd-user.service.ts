@@ -13,7 +13,7 @@ export class BdUserService {
   @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
   urlOnly = 'http://localhost:8080/';
   url = 'http://localhost:8080/users';
-  
+
   public user = {
     email: '',
     roles: {
@@ -40,7 +40,7 @@ export class BdUserService {
   }
 
   //Logueo de usuarios
- loginUsers(credentials: Credentials): Observable<tokenLogin> {
+  loginUsers(credentials: Credentials): Observable<tokenLogin> {
     return this.http.post<tokenLogin>(`${this.urlOnly}login`, credentials)
   }
 
@@ -48,7 +48,7 @@ export class BdUserService {
   getBdUserService(): Observable<Workers[]> {
     return this.http.get<Workers[]>(this.url, this.httpOptions());
   }
-// Obteniendo usuarios por id
+  // Obteniendo usuarios por id
   getOneUser(tokenLogin: any): Observable<User>{
   return this.http.get<User>(`${this.url}/${tokenLogin.user.id}`, this.httpOptions())
   }
@@ -60,7 +60,7 @@ export class BdUserService {
   postBdUserService(workers: Users): Observable<Users> {
     return this.http.post<Users>(this.url, workers, this.httpOptions());
   }
-// Este es nuestro editor
+  // Este es nuestro editor
   editBdUserService(id:number, workers: Users): Observable<Users>{
     const urlUpdate = `${this.url}/${id}`;
     console.log(urlUpdate);

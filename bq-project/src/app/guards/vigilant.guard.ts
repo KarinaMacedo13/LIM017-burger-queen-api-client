@@ -11,11 +11,8 @@ export class VigilantGuard implements CanActivate {
   state: boolean = false;
 
   constructor(private cookieService: CookieService, private router: Router, private toastr: ToastrService) {
-    console.log(this.router.url);
-  //   router.events.subscribe((val) => {
-  //     console.log(val instanceof RoutesRecognized)
-  // });
   }
+
   redirect(flag: boolean): any {
     if(!flag) {
       localStorage.removeItem('accessToken');
@@ -26,11 +23,10 @@ export class VigilantGuard implements CanActivate {
       this.toastr.error('No cuentas con acceso a está ruta','Acceso Denegado');
     }
   }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      //const cookie = this.cookieService.check('token_access');
-      //Con rutas
       const cookie = this.cookieService.get('roles_access');
       console.log(cookie);
       console.log(state.url)
@@ -45,11 +41,5 @@ export class VigilantGuard implements CanActivate {
       }
       this.redirect(this.state);
       return this.state = false;
-      // this.redirect(cookie);
-      // console.log(state);
-      // console.log(state.url);
-      // console.log(route);
-      // console.log(UrlTree);
-      // return cookie;
   }
 }

@@ -12,13 +12,6 @@ export class BdProductService {
   @Output() disparadorID: EventEmitter<any> = new EventEmitter();
   urlProduct = 'http://localhost:8080/products';
   urlOnly = 'http://localhost:8080/';
-  public user = {
-    email: '',
-    roles: {
-      admin: true,
-    },
-    id: 0
-  }
 
   constructor(private http: HttpClient) {}
   accessToken = localStorage.getItem('accessToken')
@@ -30,7 +23,7 @@ export class BdProductService {
         'Authorization': `Bearer ${this.accessToken}`
       })
   })
-  
+
   getToken(tokenLogin:any){
     localStorage.setItem('accessToken', tokenLogin.accessToken);
     this.accessToken = tokenLogin.accessToken;
