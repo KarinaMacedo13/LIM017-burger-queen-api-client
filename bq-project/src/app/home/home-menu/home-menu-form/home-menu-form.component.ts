@@ -15,7 +15,7 @@ export class HomeMenuFormComponent implements OnInit {
   productNew: ordersProduct[] = [];
   ordersForm: FormGroup;
   totalOrder: number = 0;
-  title = 'Agregar Nueva Orden';
+  title = 'Agregar Orden';
   dataOrder: string = new Date().toLocaleString();
 
   constructor(private fb: FormBuilder, private bdproductsService:  BdProductService, private bdordersService:  BdOrdersService, private toastr: ToastrService) {
