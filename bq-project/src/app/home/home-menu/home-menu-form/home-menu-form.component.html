@@ -10,47 +10,41 @@
           class="form-control"
           id="validationClient"
           placeholder="Ingresa el nombre del cliente" />
-        <div
-          class="text"
-          *ngIf="
-            ordersForm.get('client')?.hasError('required') &&
-            ordersForm.get('client')?.touched
-          ">
-          <span>El nombre del cliente <strong> es obligatorio.</strong></span>
-        </div>
       </div>
       <div class="form-group">
         <label class="form-label"> Fecha de pedido: </label>
-        <p class="form-control" formControlName="dataEntry">{{ dataOrder }}</p>
+        <p class="form-control">{{ dataOrder }}</p>
       </div>
       <label class="form-label"> Productos: </label>
       <div
-        class="products-sales scroller-container"
-        *ngFor="let product of productNew">
-        <div
-          class="card p-1 m-1"
-          style="
-            border-radius: 1em;
-            display: flex;
-            flex-direction: row;
-            align-items: baseline;
-          ">
-          <img
-            src="{{ product.product.image }}"
-            style="height: 2rem; width: 2rem" />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.product.name }}</h5>
-            <div
-              class="card-info"
-              style="display: flex; justify-content: space-between">
-              <div class="card-text" style="font-size: 0.8em">
-                {{ product.product.price | currency: 'USD' }}
-              </div>
-              <div class="card-text" style="font-size: 0.8em">
-                {{ product.qty }}
-              </div>
-              <div class="card-text" style="font-size: 0.8em">
-                {{ product.total | currency: 'USD' }}
+        class="overflow-auto row p-1 mb-md-0 mr-md-3"
+        style="justify-content: space-evenly; max-height: 150px">
+        <div class="products-sales" *ngFor="let product of productNew">
+          <div
+            class="card p-1 m-1"
+            style="
+              border-radius: 1em;
+              display: flex;
+              flex-direction: row;
+              align-items: baseline;
+            ">
+            <img
+              src="{{ product.product.image }}"
+              style="height: 2rem; width: 2rem" />
+            <div class="card-body">
+              <h5 class="card-title">{{ product.product.name }}</h5>
+              <div
+                class="card-info"
+                style="display: flex; justify-content: space-between">
+                <div class="card-text" style="font-size: 0.8em">
+                  {{ product.product.price | currency: 'USD' }}
+                </div>
+                <div class="card-text" style="font-size: 0.8em">
+                  {{ product.qty }}
+                </div>
+                <div class="card-text" style="font-size: 0.8em">
+                  {{ product.total | currency: 'USD' }}
+                </div>
               </div>
             </div>
           </div>

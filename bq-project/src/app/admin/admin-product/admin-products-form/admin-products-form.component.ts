@@ -23,7 +23,7 @@ export class AdminProductsFormComponent implements OnInit {
       price: ['', Validators.required],
       image: ['', Validators.required],
       type: ['', Validators.required],
-      dateEntry: [ this.dataOrder ],
+      dateEntry: [ this.dataOrder],
     })
   }
 
