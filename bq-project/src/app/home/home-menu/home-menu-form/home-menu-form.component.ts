@@ -42,6 +42,7 @@ export class HomeMenuFormComponent implements OnInit {
       this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
     },error => {console.log(error)}
     )
+    window.location.reload();
   }
   //Gets an array of unique values ​​from the HomeMenuListComponent to loop through in the html of the homeMenuFormComponent
   getProduct() {

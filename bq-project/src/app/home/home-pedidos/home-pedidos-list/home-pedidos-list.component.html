@@ -63,37 +63,38 @@
           {{ order.client }}
         </h5>
         <p class="data_entry" style="margin: 0">
-          <strong>Date: </strong>{{ order.dataEntry | date: 'short' }}
+          <strong>Date: </strong>{{ order.dataEntry }}
         </p>
         <p class="data_entry" style="margin: 0" *ngIf="order.dateProcessed">
-          <strong>Date Delivered: </strong
-          >{{ order.dateProcessed | date: 'short' }}
+          <strong>Date Delivered: </strong>{{ order.dateProcessed }}
         </p>
         <div
-          class="products-sales scroller-container"
-          *ngFor="let product of order.products">
-          <div class="p-1 m-1" style="display: flex; flex-direction: row">
-            <img
-              src="{{ product.product.image }}"
-              style="height: 2rem; width: 2rem" />
-            <div class="" style="display: flex; flex-direction: column">
-              <h5 class="card-title">{{ product.product.name }}</h5>
-              <div
-                class="card-info"
-                style="display: flex; justify-content: space-between">
-                <div class="card-text" style="font-size: 0.8em">
-                  {{ product.product.price | currency: 'USD' }}
-                </div>
-                <div class="card-text" style="font-size: 0.8em">
-                  {{ product.qty }}
-                </div>
-                <div class="card-text" style="font-size: 0.8em">
-                  {{ product.total | currency: 'USD' }}
+          class="overflow-auto row p-1 mb-md-0 mr-md-3"
+          style="justify-content: space-evenly; max-height: 150px">
+          <div class="products-sales" *ngFor="let product of order.products">
+            <div class="p-1 m-1" style="display: flex; flex-direction: row">
+              <img
+                src="{{ product.product.image }}"
+                style="height: 2rem; width: 2rem" />
+              <div class="" style="display: flex; flex-direction: column">
+                <h5 class="card-title">{{ product.product.name }}</h5>
+                <div
+                  class="card-info"
+                  style="display: flex; justify-content: space-between">
+                  <div class="card-text" style="font-size: 0.8em">
+                    {{ product.product.price | currency: 'USD' }}
+                  </div>
+                  <div class="card-text" style="font-size: 0.8em">
+                    {{ product.qty }}
+                  </div>
+                  <div class="card-text" style="font-size: 0.8em">
+                    {{ product.total | currency: 'USD' }}
+                  </div>
                 </div>
               </div>
             </div>
+            <hr />
           </div>
-          <hr />
         </div>
         <span class="form-label">Total: </span>
         <span> {{ order.total | currency: 'USD' }} </span>

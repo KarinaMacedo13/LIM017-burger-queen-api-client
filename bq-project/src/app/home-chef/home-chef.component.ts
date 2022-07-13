@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class HomeChefComponent implements OnInit {
   listOrders: order[] = [];
+  optionStatus !: string;
 
   constructor( private bdordersService:  BdOrdersService, private toastr: ToastrService,private cookieService: CookieService, private router: Router) { }
 
@@ -26,13 +27,12 @@ export class HomeChefComponent implements OnInit {
     }
     )
   }
-/*   deleteOrder(order: order) {
-    this.bdordersService.deleteBdOrderService(order).subscribe(() => {
-      this.toastr.error('El producto fue eliminado con éxito', 'Producto Eliminado');
-      this.listOrders = this.listOrders.filter(orderdelete => orderdelete.id !== order.id);
-      console.log('El producto fue eliminado');
-    },error => {console.log(error)})
-  } */
+  
+  optionClick(option:string){
+    this.optionStatus = option;
+    console.log('Que es optionClick', this.optionStatus);
+  }
+
   updateOrder(order: order) {
     console.log(order.status)
   
