@@ -21,7 +21,7 @@
     class="btn btn-warning"
     #btnpreparada
     (click)="optionClick(btnpreparada.value)">
-    Preparada
+    Preparado
   </button>
   <button
     type="button"
@@ -44,7 +44,7 @@
         border-radius: 20px;
         box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
       "
-      *ngFor="let order of listOrders">
+      *ngFor="let order of listOrders | filterOrder: optionStatus">
       <span
         class="badge bg-success rounded-pill mt-2"
         style="width: 7rem; align-items: center"
@@ -116,7 +116,7 @@
             class="btn"
             style="margin: 0px 12px; font-size: 25%"
             [disabled]="
-              order.status === 'pending' || order.status === 'delivered'
+              order.status === 'pendiente' || order.status === 'entregado'
             "
             (click)="updateOrder(order)">
             <i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
