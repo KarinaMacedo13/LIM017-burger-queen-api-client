@@ -28,6 +28,8 @@ import { HomeChefComponent } from './home-chef/home-chef.component';
 import { FilterMenuPipe } from './pipes/filter-menu.pipe';
 import { CookieService } from 'ngx-cookie-service';
 import { FilterOrderPipe } from './pipes/filter-order.pipe';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, FilterMenuPipe, HomeChefComponent, FilterOrderPipe],
   imports: [
@@ -38,6 +40,12 @@ import { FilterOrderPipe } from './pipes/filter-order.pipe';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers:
   [CookieService],
