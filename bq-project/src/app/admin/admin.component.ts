@@ -11,9 +11,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
+
   searchValue: string = '';
+  isExpanded: boolean = false;
+  email: any;
+  description:  any;
+
   constructor(private bduserService: BdUserService, private bdproductsService:  BdProductService, private toastr: ToastrService,private cookieService: CookieService, private router: Router) {}
   ngOnInit(): void {
+    this.getUser();
+  }
+  getUser(){
+    this.email = localStorage.getItem('email');
+    this.description = localStorage.getItem('description');
+    if(this.description==='admin') {
+      this.description = "Administrador"
+    }
+    console.log('Datos de la persona', this.description,this.email)
   }
   searchInput(search: string) {
     // definición de la variable search

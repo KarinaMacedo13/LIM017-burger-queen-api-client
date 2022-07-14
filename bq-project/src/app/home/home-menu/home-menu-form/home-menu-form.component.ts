@@ -19,7 +19,6 @@ export class HomeMenuFormComponent implements OnInit {
   dataOrder: string = new Date().toLocaleString();
 
   constructor(private fb: FormBuilder, private bdproductsService:  BdProductService, private bdordersService:  BdOrdersService, private toastr: ToastrService) {
-   
     this.ordersForm = this.fb.group({
       client: ['', Validators.required],
       dataEntry: [ this.dataOrder ],
@@ -39,10 +38,10 @@ export class HomeMenuFormComponent implements OnInit {
       total: this.totalOrder,
     }
     this.bdordersService.postBdOrderService(ORDERS).subscribe( () => {
-      this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
+      this.toastr.success('La orden fue agregada con éxito', 'Orden Agregada');
+      this.ordersForm.reset();
     },error => {console.log(error)}
     )
-    window.location.reload();
   }
   //Gets an array of unique values ​​from the HomeMenuListComponent to loop through in the html of the homeMenuFormComponent
   getProduct() {

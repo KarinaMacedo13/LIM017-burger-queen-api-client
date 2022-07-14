@@ -22,8 +22,10 @@ export class HomePedidosListComponent implements OnInit {
   getOrders(){
     this.bdordersService.getBdOrderService().subscribe(order => {
       this.listOrders = order;
+      console.log('Sort Ordenes',this.listOrders)
       //Sort by date from newest to oldest
       this.listOrders.sort((a, b) => <any> new Date(b.dataEntry) - <any> new Date(a.dataEntry));
+      console.log('Sort Ordenes',this.listOrders)
     }
     )
   }

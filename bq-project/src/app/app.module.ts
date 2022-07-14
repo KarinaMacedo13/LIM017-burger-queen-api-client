@@ -28,6 +28,10 @@ import { HomeChefComponent } from './home-chef/home-chef.component';
 import { FilterMenuPipe } from './pipes/filter-menu.pipe';
 import { CookieService } from 'ngx-cookie-service';
 import { FilterOrderPipe } from './pipes/filter-order.pipe';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, AdminComponent, AdminUserFormComponent, AdminUserListComponent, AdminProductsFormComponent, AdminProductsListComponent, FilterPipe, FiltroPPipe, AdminUserComponent, AdminProductComponent, HomeMenuComponent, HomePedidosComponent, HomeMenuListComponent, HomeMenuFormComponent, HomePedidosListComponent, FilterMenuPipe, HomeChefComponent, FilterOrderPipe],
   imports: [
@@ -38,6 +42,11 @@ import { FilterOrderPipe } from './pipes/filter-order.pipe';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatToolbarModule
   ],
   providers:
   [CookieService],

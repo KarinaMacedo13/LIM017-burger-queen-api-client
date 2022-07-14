@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   messageError: any;
   accesToken: any;
+  roles: any;
   constructor(private fb: FormBuilder,private toastr: ToastrService, private bduserService: BdUserService, private router: Router, private cookieService: CookieService) {
     this.loginForm = this.fb.group({
       email: ['', Validators.required],
@@ -42,8 +43,11 @@ export class LoginComponent implements OnInit {
       this.accesToken = res.accessToken;
         this.bduserService.getToken(res)
         this.bduserService.getOneUser(res).subscribe(res=>{
+          console.log('Es el usuario',res);
           localStorage.setItem('id', res.id);
           localStorage.setItem('email', res.email);
+          this.roles = res.roles.description;
+          localStorage.setItem('description', this.roles);
           switch(res.roles.description) {
             case 'admin':
               this.cookieService.set('roles_access', res.roles.description, 1, '/'),

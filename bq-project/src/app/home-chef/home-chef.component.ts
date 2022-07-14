@@ -13,11 +13,24 @@ import { Router } from '@angular/router';
 export class HomeChefComponent implements OnInit {
   listOrders: order[] = [];
   optionStatus !: string;
+  isExpanded: boolean = false;
+  dataChange: string = new Date().toLocaleString();
+  email: any;
+  description:  any;
 
   constructor( private bdordersService:  BdOrdersService, private toastr: ToastrService,private cookieService: CookieService, private router: Router) { }
 
   ngOnInit(): void {
     this.getOrders();
+    this.getUser();
+  }
+  getUser(){
+    this.email = localStorage.getItem('email');
+    this.description = localStorage.getItem('description');
+    if(this.description==='chef') {
+      this.description = "Cocinero"
+    }
+    console.log('Datos de la persona', this.description,this.email)
   }
   getOrders(){
     this.bdordersService.getBdOrderService().subscribe(order => {
@@ -27,15 +40,12 @@ export class HomeChefComponent implements OnInit {
     }
     )
   }
-  
   optionClick(option:string){
     this.optionStatus = option;
     console.log('Que es optionClick', this.optionStatus);
   }
-
   updateOrder(order: order) {
     console.log(order.status)
-  
       console.log("Actualizo a delivery")
       const ORDERS: order = {
         id: order.id,
@@ -43,7 +53,9 @@ export class HomeChefComponent implements OnInit {
         client: order.client,
         products: order.products,
         dataEntry: order.dataEntry,
+        dataPrepare: this.dataChange,
         total: order.total,
+        time: <any> new Date(this.dataChange) - <any> new Date(order.dataEntry),
       }
       this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
         this.toastr.success('La orden fue actualizada con éxito', 'Orden Actualizada');
@@ -51,7 +63,14 @@ export class HomeChefComponent implements OnInit {
         console.log('Editado con éxito');
       })
   }
-  
+  // gettime() {
+  //   this.bdordersService.getBdOrderService().subscribe(order => {
+  //     (this.listOrders = order),
+  //     this.listOrders.sort((a, b) => <any> new Date(b.dataEntry) - <any> new Date(a.dataEntry));
+  //     console.log("Soy la lista de ordenes",this.listOrders);
+  //   }
+  //   )
+  // }
   logOut() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('id');

@@ -8,4 +8,6 @@ export interface order {
       dataEntry?: any;
       total?: number;
       dateProcessed?:  any;
+      dataPrepare?: any;
+      time?: any;
 }

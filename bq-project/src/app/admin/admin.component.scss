@@ -1,3 +1,29 @@
+mat-sidenav-container {
+    height: 100%;
+    background-image: url('../../assets/fondo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    mat-sidenav {
+        background-color:#FFC501;
+        mat-nav-list {
+          .menu-item {
+            margin-left: 8px;
+          }
+          .chevron-button {
+            transition: 300ms ease-in-out;
+            transform: rotate(0deg);
+            align-items: center;
+          }
+          .chevron-button.rotated {
+            transform: rotate(180deg);
+          }
+          .btn-log-out {
+            margin-top:23em;
+          }
+        }
+      }
+}
 /* Navbar ------------------------------------------*/
 .container-nav{
     margin: 0;
@@ -5,94 +31,10 @@
 .cont-collapse{
     gap: 6%;
 }
-/* Navbar -------------------------------------------------------------------*/
-.admin-section{
-    background-image: url('../../assets/fondo.png');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-}
 
 .form-Admin{
-    width: 70%; 
+    width: 70%;
     padding-left: 8%;
-}
-.dashboard-container{
-    background: #FFF6A6;
-    border-radius: 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-.container-card-body{
-    display: flex;
-    flex-direction: column;
-    margin-top: 5%;
-    align-items: center;
-}
-.datos-admin-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-// nav-css----------------------------------------------------------------------------------------------------------------------------
-
-.offcanvas {
-    width: 250px;
-    background-color:#FFC501;
-}
-
-.btn-group-vertical {
-    align-items: center;
-}
-
-.btn-nav {
-    outline:none;
-    border: none;
-    width: 90%;
-    font-size: 18px;
-    height: 40px;
-    background-color: #FFC501;
-    color: #FD090C;
-    border-radius: 5px;
-}
-
-.btn-nav:hover {
-    background-color:#FD090C;
-    color: white;
-}
-
-.badge {
-    width: 90%;
-    background-color:#FD090C;
-}
-
-.text-nav {
-    text-align: center;
-}
-
-.badge-dashboard {
-    background-color:#FD090C;
-    text-align:center;
-    border-radius: 0.5rem;
-    color: white;
-    width: 90%;
-    font-size: 30px;
-}
-.out-btn {
-    margin-top: 230px;
-}
-.btn-out {
-    outline:none;
-    border: none;
-    color: #FD090C;
-    font-size: 20px;
-    background-color: #FFC501;
 }
 
 // Componente Renderizado del User

@@ -1,81 +1,86 @@
-<section class="admin-section">
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light container-nav">
-      <div class="container-fluid">
-        <a class="navbar-brand">
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon
+          mat-list-icon
+          class="chevron-button sidenav-button"
+          (click)="isExpanded = !isExpanded"
+          [ngClass]="{ rotated: isExpanded }">
+          menu
+        </mat-icon>
+      </mat-list-item>
+      <mat-list-item [routerLink]="'user'">
+        <mat-icon mat-list-icon class="">group</mat-icon>
+        <span *ngIf="isExpanded">Usuarios</span>
+      </mat-list-item>
+      <mat-list-item [routerLink]="'products'">
+        <mat-icon mat-list-icon class="">fastfood</mat-icon>
+        <span *ngIf="isExpanded">Productos</span>
+      </mat-list-item>
+      <mat-list-item
+        class="btn-log-out"
+        [routerLink]="'user'"
+        (click)="logOut()">
+        <mat-icon mat-list-icon class="">subdirectory_arrow_right</mat-icon>
+        <span *ngIf="isExpanded">Cerrar Sesión</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light container-nav">
+        <div class="container-fluid">
+          <img class="img-logo" src="assets/logo.png" alt="" width="150" />
           <button
-            class="btn"
+            class="navbar-toggler"
             type="button"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasScrolling"
-            aria-controls="offcanvasScrolling">
-            <img class="img-logo" src="assets/logo.png" alt="" width="150" />
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse cont-collapse"
-          id="navbarSupportedContent">
-          <form class="d-flex form-Admin">
-            <input
-              class="form-control search me-2 bg-light"
-              type="text"
-              placeholder="Buscar"
-              aria-label="Search"
-              #txtSearch
-              (keyup)="searchInput(txtSearch.value)" />
-          </form>
+          <div
+            class="collapse navbar-collapse cont-collapse"
+            id="navbarSupportedContent">
+            <form class="d-flex form-Admin">
+              <input
+                class="form-control search me-2 bg-light"
+                type="text"
+                placeholder="Buscar"
+                aria-label="Search"
+                #txtSearch
+                (keyup)="searchInput(txtSearch.value)" />
+            </form>
+          </div>
+          <div
+            class="card p-2"
+            style="
+              text-align: center;
+              right: 4em;
+              width: 20em;
+              border-radius: 1em;
+            ">
+            <div class="card-body m-0 p-0">
+              <span
+                class="badge bg-danger"
+                style="width: 7rem; align-items: center"
+                >{{ description }}</span
+              >
+              <div>
+                {{ email }}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <!-- NavSide de Admin -->
-  <div
-    class="offcanvas offcanvas-start"
-    data-bs-scroll="true"
-    data-bs-backdrop="false"
-    tabindex="-1"
-    id="offcanvasScrolling"
-    aria-labelledby="offcanvasScrollingLabel">
-    <div class="offcanvas-header">
-      <button
-        type="button"
-        class="btn-close text-reset"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="btn-group-vertical botones m-1">
-        <h1 class="badge-dashboard">DASHBOARD</h1>
-        <h4 class="text-nav">Pepito de los Palotes</h4>
-        <span class="badge">Administrador</span>
-        <button type="button" class="btn-nav mt-3" routerLink="user">
-          <i class="fa-solid fa-people-line"></i> Colaboradores
-        </button>
-        <button type="button" class="btn-nav mt-4" routerLink="products">
-          <i class="fa-solid fa-cubes"></i> Productos
-        </button>
-        <div class="out-btn">
-          <button type="button" class="btn-out" (click)="logOut()">
-            <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
-          </button>
-        </div>
+      </nav>
+    </header>
+    <div class="row">
+      <div class="rowPrincipal col-12 col-sm-12">
+        <router-outlet></router-outlet>
       </div>
     </div>
-  </div>
-  <!-- componentes renderizados de user -->
-  <div class="row">
-    <div class="rowPrincipal col-12 col-sm-12">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</section>
+  </mat-sidenav-content>
+</mat-sidenav-container>

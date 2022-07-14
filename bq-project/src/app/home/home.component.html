@@ -1,80 +1,88 @@
-<section class="home-section">
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0">
-      <div class="container-fluid">
-        <a class="navbar-brand">
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav mode="side" opened="true">
+    <mat-nav-list>
+      <mat-list-item>
+        <mat-icon
+          mat-list-icon
+          class="chevron-button sidenav-button"
+          (click)="isExpanded = !isExpanded"
+          [ngClass]="{ rotated: isExpanded }">
+          menu
+        </mat-icon>
+      </mat-list-item>
+      <mat-list-item [routerLink]="'menu'">
+        <mat-icon mat-list-icon class="">restaurant</mat-icon>
+        <span *ngIf="isExpanded">Menú</span>
+      </mat-list-item>
+      <mat-list-item [routerLink]="'orders'">
+        <mat-icon mat-list-icon class=""> local_library</mat-icon>
+        <span *ngIf="isExpanded">Pedidos</span>
+      </mat-list-item>
+      <mat-list-item
+        class="btn-log-out"
+        [routerLink]="'user'"
+        (click)="logOut()">
+        <mat-icon mat-list-icon class="">subdirectory_arrow_right</mat-icon>
+        <span *ngIf="isExpanded">Cerrar Sesión</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light container-nav">
+        <div class="container-fluid">
+          <img class="img-logo" src="assets/logo.png" alt="" width="150" />
           <button
-            class="btn"
+            class="btn btn-danger"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasScrolling"
-            aria-controls="offcanvasScrolling">
-            <img class="img-logo" src="assets/logo.png" alt="" width="150" />
+            data-bs-target="#offcanvasRight"
+            aria-controls="offcanvasRight">
+            Agregar Orden
           </button>
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>
-      </div>
-    </nav>
-  </header>
-  <!-- NavSIDE -->
-  <div
-    class="offcanvas offcanvas-start"
-    data-bs-scroll="true"
-    data-bs-backdrop="false"
-    tabindex="-1"
-    id="offcanvasScrolling"
-    aria-labelledby="offcanvasScrollingLabel">
-    <div class="offcanvas-header">
-      <button
-        type="button"
-        class="btn-close text-reset"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div class="btn-group-vertical botones m-1">
-        <h1 class="badge-dashboard">DASHBOARD</h1>
-        <h4 class="text-nav">Pepito el Mozo</h4>
-        <span class="badge">Mozo</span>
-        <button type="button" class="btn-nav mt-3" routerLink="menu">
-          <i class="fa-solid fa-people-line"></i> Menú
-        </button>
-        <button type="button" class="btn-nav mt-4" routerLink="orders">
-          <i class="fa-solid fa-cubes"></i> Pedidos
-        </button>
-        <div class="out-btn">
-          <button type="button" class="btn-out" (click)="logOut()">
-            <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
-          </button>
+          <div
+            class="card p-2"
+            style="
+              text-align: center;
+              right: 4em;
+              width: 20em;
+              border-radius: 1em;
+            ">
+            <div class="card-body m-0 p-0">
+              <span
+                class="badge bg-danger"
+                style="width: 7rem; align-items: center"
+                >{{ description }}</span
+              >
+              <div>
+                {{ email }}
+              </div>
+            </div>
+          </div>
         </div>
+      </nav>
+    </header>
+    <!-- comida -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel">
+      <div class="offcanvas-header">
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <app-home-menu-form></app-home-menu-form>
       </div>
     </div>
-  </div>
-  <!-- comida -->
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <div class="row">
+      <div class="rowPrincipal col-12 col-sm-12">
+        <router-outlet></router-outlet>
+      </div>
     </div>
-    <div class="offcanvas-body">
-      <app-home-menu-form></app-home-menu-form>
-    </div>
-  </div>
-  
-  <!-- componentes renderizados de user -->
-  <div class="row" style="justify-content: space-evenly; margin: 0">
-    <div class="col-12 col-sm-12" style="justify-content: center">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</section>
+  </mat-sidenav-content>
+</mat-sidenav-container>
