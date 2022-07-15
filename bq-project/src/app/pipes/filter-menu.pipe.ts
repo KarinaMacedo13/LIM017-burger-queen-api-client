@@ -15,11 +15,11 @@ export class FilterMenuPipe implements PipeTransform {
       return filterSearchProduct;
     }
     if(optionPCategory==="desayuno" || optionPCategory==="almuerzo"){
-this.valueoption = optionPCategory==='desayuno'? "Desayuno": "Almuerzo y cena";
-// console.log('entro a optionPCcategory');
-const filterProductCategory = product.filter(value => value.product.type === this.valueoption);
-// console.log('que filtra :', filterProductCategory);
-return filterProductCategory;
+      this.valueoption = optionPCategory==='desayuno'? "Desayuno": "Almuerzo y cena";
+      // console.log('entro a optionPCcategory');
+      const filterProductCategory = product.filter(value => value.product.type === this.valueoption);
+      // console.log('que filtra :', filterProductCategory);
+      return filterProductCategory;
     }
     if(optionPCategory==='none'){
       return product;

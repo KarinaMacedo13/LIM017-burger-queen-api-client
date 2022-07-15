@@ -48,6 +48,10 @@
       <span
         class="badge bg-success rounded-pill mt-2"
         style="width: 7rem; align-items: center"
+        [ngClass]="{
+          'bg-danger': order.status === 'pendiente',
+          'bg-warning': order.status === 'preparado'
+        }"
         >{{ order.status }}</span
       >
       <div
@@ -63,13 +67,17 @@
           {{ order.client }}
         </h5>
         <p class="data_entry" style="margin: 0">
-          <strong>Date: </strong>{{ order.dataEntry }}
+          <strong>Fecha: </strong>{{ order.dataEntry | date: 'short' }}
+        </p>
+        <p class="data_dataPrepare" style="margin: 0" *ngIf="order.time">
+          <strong>Tiempo de Preparación: </strong>
+          {{ order.time }}
         </p>
         <p class="data_entry" style="margin: 0" *ngIf="order.dateProcessed">
-          <strong>Date Delivered: </strong>{{ order.dateProcessed }}
+          <strong>Entregado: </strong>{{ order.dateProcessed | date: 'short' }}
         </p>
         <div
-          class="overflow-auto row p-1 mb-md-0 mr-md-3"
+          class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
           style="justify-content: space-evenly; max-height: 150px">
           <div class="products-sales" *ngFor="let product of order.products">
             <div class="p-1 m-1" style="display: flex; flex-direction: row">
@@ -99,20 +107,20 @@
         <span class="form-label">Total: </span>
         <span> {{ order.total | currency: 'USD' }} </span>
         <div class="btn-icons p-1 m-2">
-          <a
-            class="btn"
-            style="margin: 0px 12px; font-size: 25%"
-            (click)="deleteOrder(order)">
-            <i class="fa-solid fa-trash" style="font-size: 380%"> </i>
-          </a>
           <button
-            class="btn"
-            style="margin: 0px 12px; font-size: 25%"
+            class="btn btn-danger"
+            style="margin: 0px 12px; font-size: 75%"
+            (click)="deleteOrder(order)">
+            Cancelar Pedido
+          </button>
+          <button
+            class="btn btn-primary"
+            style="margin: 0px 12px; font-size: 75%"
             [disabled]="
               order.status === 'pendiente' || order.status === 'entregado'
             "
             (click)="updateOrder(order)">
-            <i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
+            Entregar Pedido
           </button>
         </div>
       </div>

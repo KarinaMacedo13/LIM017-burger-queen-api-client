@@ -115,7 +115,11 @@
                   *ngFor="let order of listOrders | filterOrder: optionStatus">
                   <span
                     class="badge bg-success rounded-pill mt-2"
-                    style="width: 7rem; align-items: center"
+                    style="width: 7rem; align-items: center" 
+                    [ngClass]="{
+                      'bg-danger text-white': order.status === 'pendiente',
+                      'bg-warning': order.status === 'preparado'
+                    }"
                     >{{ order.status }}</span
                   >
                   <div
@@ -131,11 +135,25 @@
                       {{ order.client }}
                     </h5>
                     <p class="data_entry" style="margin: 0">
-                      <strong>Date: </strong>
-                      {{ order.dataEntry }}
+                      <strong>Fecha: </strong>
+                      {{ order.dataEntry | date: 'short' }}
+                    </p>
+                    <p
+                      class="data_dataPrepare"
+                      style="margin: 0"
+                      *ngIf="order.dataPrepare">
+                      <strong>Preparado: </strong>
+                      {{ order.dataPrepare | date: 'short' }}
+                    </p>
+                    <p
+                      class="data_dataPrepare"
+                      style="margin: 0"
+                      *ngIf="order.time">
+                      <strong>Tiempo de Preparación: </strong>
+                      {{ order.time }}
                     </p>
                     <div
-                      class="overflow-auto row p-1 mb-md-0 mr-md-3"
+                      class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
                       style="justify-content: space-evenly; max-height: 150px">
                       <div
                         class="products-sales"
@@ -177,16 +195,14 @@
                     <span> {{ order.total | currency: 'USD' }} </span>
                     <div class="btn-icons p-1 m-2">
                       <button
-                        class="btn"
-                        style="margin: 0px 12px; font-size: 25%"
+                        class="btn btn-primary"
+                        style="margin: 0px 12px; font-size: 75%"
                         [disabled]="
                           order.status === 'entregado' ||
                           order.status === 'preparado'
                         "
                         (click)="updateOrder(order)">
-                        <i
-                          class="fa-solid fa-pen-to-square"
-                          style="font-size: 400%"></i>
+                        Orden Preparada
                       </button>
                     </div>
                   </div>

@@ -61,10 +61,10 @@
         #{{ product.product.id }} | {{ product.product.name }}
       </h5>
       <p class="card-text" style="margin: 0">
-        <strong> Price: </strong>{{ product.product.price | currency: 'USD' }}
+        <strong> Precio: </strong>{{ product.product.price | currency: 'USD' }}
       </p>
       <p class="data_entry" style="margin: 0">
-        <strong>Date: </strong>{{ product.product.dateEntry}}
+        <strong> Fecha: </strong>{{ product.product.dateEntry | date: 'short' }}
       </p>
       <div class="btn-icons p-1 m-2">
         <button

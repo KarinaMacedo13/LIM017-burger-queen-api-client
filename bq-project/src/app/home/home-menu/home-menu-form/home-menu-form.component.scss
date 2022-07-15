@@ -23,3 +23,8 @@
 h5{
     font-size: 12px;
 }
+
+.scroller-container::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */  
+    display: none;  /* Ocultar scroll */
+}

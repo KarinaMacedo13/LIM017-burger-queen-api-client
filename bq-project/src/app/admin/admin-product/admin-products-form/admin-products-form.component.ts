@@ -14,7 +14,7 @@ export class AdminProductsFormComponent implements OnInit {
   productForm: FormGroup;
   title = 'Agregar Producto';
   productID !:number;
-  dataOrder: string = new Date().toLocaleString();
+  dataOrder: any = new Date();
 
   constructor(private fb: FormBuilder, private bdproductService:  BdProductService, private toastr: ToastrService) {
     // Obtiene los valores del formulario ProductForm

@@ -55,7 +55,7 @@
       </div>
       <div class="form-group">
         <label class="form-label"> Fecha de pedido: </label>
-        <p class="form-control">{{ dataOrder }}</p>
+        <p class="form-control">{{ dataOrder | date: 'short' }}</p>
       </div>
       <label for="validationType" class="form-label mt-4">Tipo</label>
       <br />

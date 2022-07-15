@@ -37,3 +37,7 @@ mat-sidenav-container {
     justify-content: center;
     align-items: center;
 }
+.scroller-container::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */  
+    display: none;  /* Ocultar scroll */
+}

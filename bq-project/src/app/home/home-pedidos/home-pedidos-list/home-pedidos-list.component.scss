@@ -7,10 +7,7 @@
     border-radius: 1.5rem;
 }
 
-// .btn {
-//     background-color: #8CC63F;
-//     border-radius: 50%;
-//     border-color: none;
-//     color: #fff;
-//     margin-right: 2em;
-// }
+.scroller-container::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */  
+    display: none;  /* Ocultar scroll */
+}

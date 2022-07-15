@@ -16,7 +16,7 @@ export class HomeMenuFormComponent implements OnInit {
   ordersForm: FormGroup;
   totalOrder: number = 0;
   title = 'Agregar Orden';
-  dataOrder: string = new Date().toLocaleString();
+  dataOrder: any = new Date();
 
   constructor(private fb: FormBuilder, private bdproductsService:  BdProductService, private bdordersService:  BdOrdersService, private toastr: ToastrService) {
     this.ordersForm = this.fb.group({
@@ -34,7 +34,7 @@ export class HomeMenuFormComponent implements OnInit {
       client: this.ordersForm.get('client')?.value,
       products: this.productNew,
       status: "pendiente",
-      dataEntry: this.ordersForm.get('dataEntry')?.value,
+      dataEntry: this.dataOrder,
       total: this.totalOrder,
     }
     this.bdordersService.postBdOrderService(ORDERS).subscribe( () => {

@@ -14,7 +14,7 @@ export class HomeChefComponent implements OnInit {
   listOrders: order[] = [];
   optionStatus !: string;
   isExpanded: boolean = false;
-  dataChange: string = new Date().toLocaleString();
+  dataChange: any = new Date();
   email: any;
   description:  any;
 
@@ -35,8 +35,6 @@ export class HomeChefComponent implements OnInit {
   getOrders(){
     this.bdordersService.getBdOrderService().subscribe(order => {
       (this.listOrders = order), console.log('esto devuelve getproduct', order);
-      this.listOrders.sort((a, b) => <any> new Date(b.dataEntry) - <any> new Date(a.dataEntry));
-      console.log("Soy la lista de ordenes",this.listOrders);
     }
     )
   }
@@ -55,7 +53,7 @@ export class HomeChefComponent implements OnInit {
         dataEntry: order.dataEntry,
         dataPrepare: this.dataChange,
         total: order.total,
-        time: <any> new Date(this.dataChange) - <any> new Date(order.dataEntry),
+        time: (Math.round((<any> new Date(this.dataChange).getTime() - <any> new Date(order.dataEntry).getTime())/(1000*60) * 100) / 100),
       }
       this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
         this.toastr.success('La orden fue actualizada con éxito', 'Orden Actualizada');
@@ -63,14 +61,7 @@ export class HomeChefComponent implements OnInit {
         console.log('Editado con éxito');
       })
   }
-  // gettime() {
-  //   this.bdordersService.getBdOrderService().subscribe(order => {
-  //     (this.listOrders = order),
-  //     this.listOrders.sort((a, b) => <any> new Date(b.dataEntry) - <any> new Date(a.dataEntry));
-  //     console.log("Soy la lista de ordenes",this.listOrders);
-  //   }
-  //   )
-  // }
+
   logOut() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('id');

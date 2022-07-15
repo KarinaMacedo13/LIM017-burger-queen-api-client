@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomePedidosListComponent implements OnInit {
   listOrders: order[] = [];
-  dataChange: string = new Date().toLocaleString();
+  dataChange: any = new Date();
   optionStatus: string = '';
 
   constructor( private bdordersService:  BdOrdersService, private toastr: ToastrService) { }
@@ -24,8 +24,6 @@ export class HomePedidosListComponent implements OnInit {
       this.listOrders = order;
       console.log('Sort Ordenes',this.listOrders)
       //Sort by date from newest to oldest
-      this.listOrders.sort((a, b) => <any> new Date(b.dataEntry) - <any> new Date(a.dataEntry));
-      console.log('Sort Ordenes',this.listOrders)
     }
     )
   }
@@ -46,6 +44,8 @@ export class HomePedidosListComponent implements OnInit {
       dataEntry: order.dataEntry,
       total: order.total,
       dateProcessed: this.dataChange,
+      dataPrepare: order.dataPrepare,
+      time: order.time,
     }
     this.bdordersService.editBdOrderService(ORDERS).subscribe(data => {
       this.toastr.success('La orden fue actualizada con éxito', 'Orden Actualizada');

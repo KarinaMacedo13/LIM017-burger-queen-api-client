@@ -7,6 +7,7 @@ import { order } from '../models/orders';
 export class FilterOrderPipe implements PipeTransform {
 
   transform(order: order[], optionStatus:string=''): order[] {
+    order.sort((a, b) => <any> new Date(b.dataEntry) - <any> new Date(a.dataEntry));
     if(optionStatus==='pendiente'){
       const filterOrderCategory = order.filter(value => value.status === optionStatus);
       return filterOrderCategory;
