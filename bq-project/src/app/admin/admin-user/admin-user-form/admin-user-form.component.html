@@ -1,6 +1,6 @@
 <div class="card">
-  <div class="card-body p-5">
-    <h3 class="title text-center">{{ title }}</h3>
+  <div class="card-body p-2.2">
+    <h3 class="title text-center pt-2">{{ title }}</h3>
     <form [formGroup]="userForm" (ngSubmit)="addPerson()">
       <div class="form-group">
         <label for="validationEmail" class="form-label mt-2"> Correo </label>
@@ -49,6 +49,7 @@
           formControlName="roles" />
         <label class="text-type" for="optionAdmin">Administrador</label>
       </div>
+      <br />
       <div class="form-check form-check-inline">
         <input
           id="optionChef"
@@ -58,6 +59,7 @@
           formControlName="roles" />
         <label class="text-type" for="optionChef">Cocinero</label>
       </div>
+      <br />
       <div class="form-check form-check-inline">
         <input
           id="optionWeiter"
@@ -71,7 +73,7 @@
         <input
           type="submit"
           [disabled]="userForm.invalid"
-          class="btnSubmit"
+          class="btnSubmit btn-warning"
           value="{{ title }}" />
       </div>
     </form>

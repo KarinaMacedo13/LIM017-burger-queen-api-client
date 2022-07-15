@@ -37,17 +37,55 @@ mat-sidenav-container {
     padding-left: 8%;
 }
 
-// Componente Renderizado del User
-.row {
-    justify-content: space-evenly;
-    margin: 0;
-}
-
-.rowPrincipal {
-    justify-content: center;
+.card{
+  text-align: center;
+  right: 4em;
+  width: 20em;
+  border-radius: 1em;
 }
 
 // Search Bar----------------------
 .search {
     height: 40px;
+}
+ /* navBar-------------------- */
+@media (max-width: 991px) {
+  .container-fluid{
+    display: grid;
+    grid-auto-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "img-logo . navbar-toggler"
+        "collapse collapse collapse"
+        "card card card";
+  }
+  .navbar-toggler{
+    grid-area: navbar-toggler;
+    margin: auto;
+  }
+  .collapse {
+  grid-area: collapse ;
+  }
+  .img-logo{
+  grid-area: img-logo;
+  width: 8em;
+  margin: auto;
+  }
+  .card{
+    grid-area: card;
+    right: 0;
+    margin: auto;
+    width: 90%;
+  }
+  .form-Admin{
+    margin: auto auto 1em auto;
+    padding:0;
+  }
+  .search{
+    border-radius: 15em;
+    border:none;
+    height: 2.5em;
+    margin:auto;
+    text-align: -webkit-center;
+    font-size: larger;
+  }
 }

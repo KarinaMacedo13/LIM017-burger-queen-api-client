@@ -3,39 +3,74 @@
     border-radius: 50%;
     border-color: none;
     color: #fff;
-    margin-right: 2em;
+    /* margin-right: 2em; */
 }
 
 .badge {
     background-color: #FFC501;
-    width: 8rem
+    width: 9em;
 }
 
 .card{
     border-radius: 1.5rem;
 }
 h5 {
-    font-size: 13px;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+h6{
+    font-size:67%;
     font-weight: bold;
 }
 p {
-    font-size: 12px;
+    font-size: 0.5em;
 }
 
 .form-select {
-    color: #FD090C;
-    border-color: #FD090C;
+    color: #E65F00;
+    border-color: #E65F00;
     font-weight: bold;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 35%; border-radius: 10px; margin: 2% 1.5% 0 1.5%
 }
 
 .scroller-container::-webkit-scrollbar {
-    width: 8px;     /* Tamaño del scroll en vertical */  
+    width: 8px;     /* Tamaño del scroll en vertical */
     display: none;  /* Ocultar scroll */
+}
+.scroller-container{
+    justify-content: space-evenly;
+    max-height: 25em;
+    row-gap: 0.5em;
 }
 .card-body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.btn-icons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0.8em;
+}
+
+@media (min-width: 768px){
+    .card {
+        width: 30%;
+    }
+}
+@media (max-width: 575px){
+    .card{
+        width: 90%;
+    }
+    .row{
+        width: 90%;
+        margin:0 1em 0 1em;
+    }
+    h6{
+        font-size:90%;
+        font-weight: bold;
+    }
 }
