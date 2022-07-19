@@ -43,12 +43,17 @@ mat-sidenav-container {
   width: 20em;
   border-radius: 1em;
 }
+.badge{
+  background: #E65F00;
+  width: 7rem; 
+  align-items: center
+}
 
 // Search Bar----------------------
 .search {
     height: 40px;
 }
- /* navBar-------------------- */
+
 @media (max-width: 991px) {
   .container-fluid{
     display: grid;
@@ -89,3 +94,4 @@ mat-sidenav-container {
     font-size: larger;
   }
 }
+

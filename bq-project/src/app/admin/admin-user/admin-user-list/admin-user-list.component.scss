@@ -3,7 +3,6 @@
     border-radius: 50%;
     border-color: none;
     color: #fff;
-    /* margin-right: 2em; */
 }
 
 .badge {
@@ -13,6 +12,7 @@
 
 .card{
     border-radius: 1.5rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)
 }
 h5 {
     font-size: 0.7em;
@@ -35,8 +35,8 @@ p {
 }
 
 .scroller-container::-webkit-scrollbar {
-    width: 8px;     /* Tamaño del scroll en vertical */
-    display: none;  /* Ocultar scroll */
+    width: 8px;    
+    display: none;  
 }
 .scroller-container{
     justify-content: space-evenly;
