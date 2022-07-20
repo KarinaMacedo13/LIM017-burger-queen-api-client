@@ -3,7 +3,7 @@
     type="button"
     value="none"
     class="btn btn-none btn-success active"
-    style="border-radius: 20px;"
+    style="border-radius: 20px"
     #btnnone
     (click)="optionClick(btnnone.value)">
     Categoría
@@ -11,7 +11,7 @@
   <button
     type="button"
     value="pendiente"
-    style="border-radius: 20px;"
+    style="border-radius: 20px"
     class="btn btn-pendiente btn-danger"
     #btnpendiente
     (click)="optionClick(btnpendiente.value)">
@@ -21,7 +21,7 @@
     type="button"
     value="preparado"
     class="btn btn-preparado btn-warning"
-    style="border-radius: 20px;"
+    style="border-radius: 20px"
     #btnpreparada
     (click)="optionClick(btnpreparada.value)">
     Preparado
@@ -29,7 +29,7 @@
   <button
     type="button"
     value="entregado"
-    style="border-radius: 20px;"
+    style="border-radius: 20px"
     class="btn btn-entregado btn-info"
     #btnentregado
     (click)="optionClick(btnentregado.value)">
@@ -38,31 +38,17 @@
 </div>
 <div class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container">
   <div
-    class="card col-sm-5 col-md-3 m-1"
-    style="
-      align-items: center;
-      border-radius: 20px;
-      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    "
+    class="card col-sm-5 col-md-5 col-lg-3 m-1"
     *ngFor="let order of listOrders | filterOrder: optionStatus">
     <span
       class="badge bg-success rounded-pill mt-2"
-      style="width: 7rem; align-items: center"
       [ngClass]="{
         'bg-danger': order.status === 'pendiente',
         'bg-warning': order.status === 'preparado'
       }"
       >{{ order.status }}</span
     >
-    <div
-      class="card-body"
-      style="
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      ">
+    <div class="card-body">
       <h5 class="card-title" style="margin: 0">
         {{ order.client }}
       </h5>
@@ -77,10 +63,9 @@
         <strong>Entregado: </strong>{{ order.dateProcessed | date: 'short' }}
       </p>
       <div
-        class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
-        style="justify-content: space-evenly; max-height: 150px">
+        class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container min-scroller-container">
         <div class="products-sales" *ngFor="let product of order.products">
-          <div class="p-1 m-1" style="display: flex; flex-direction: row">
+          <div class="product-order-container p-1 m-1">
             <img
               src="{{ product.product.image }}"
               style="height: 2rem; width: 2rem" />
@@ -117,7 +102,8 @@
           class="btn btn-primary"
           style="margin: 0px 12px; font-size: 75%"
           [disabled]="
-            order.status === 'pendiente' || order.status === 'entregado'"
+            order.status === 'pendiente' || order.status === 'entregado'
+          "
           (click)="updateOrder(order)">
           Entregar Pedido
         </button>
