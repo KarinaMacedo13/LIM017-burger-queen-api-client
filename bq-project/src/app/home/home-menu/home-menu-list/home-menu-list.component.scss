@@ -1,29 +1,113 @@
-h5{
-    font-size: 13px;
+.btn-group{
+    margin-left: 0.5rem;
+}
+.scroller-container::-webkit-scrollbar {
+    width: 8px;
+    display: none;
+}
+.scroller-container{
+    justify-content: space-evenly;
+    max-height: 25rem;
+    row-gap: 0.5em;
+}
+
+.badge {
+    background-color: #FFC501;
+    width: 7rem;
+    align-items: center
+}
+.card{
+    border-radius: 1.5rem;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    align-items: center;
+}
+h5 {
+    font-size: 0.9rem;
     font-weight: bold;
 }
-p{
-    font-size: 12px;
+p {
+    font-size: 1em;
+}
+
+.form-select {
+    color: #E65F00;
+    border-color: #E65F00;
+    font-weight: bold;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    width: 35%;
+    border-radius: 10px;
+    margin: 2% 1.5% 0 1.5%
+}
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 .btn-icons{
     display: flex;
     flex-direction: row;
-    row-gap: 2%;
-}
-.card{
-    border-radius: 1.5rem;
+    justify-content: space-between;
+    gap: 0.8em;
 }
 
-.form-select {
-    color: #FD090C;
-    border-color: #FD090C;
-    font-weight: bold;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+@media (min-width: 768px) and (max-width: 991px){
+   
+    .scroller-container{
+        max-height: 30em;
+    }
+    .btn-group{
+        flex-direction: row;
+        gap: 1rem;
+        margin: 0 10% 0 11%;
+    }
 }
-.scroller-container::-webkit-scrollbar {
-    width: 8px;     /* Tamaño del scroll en vertical */  
-    display: none;  /* Ocultar scroll */
+@media (max-width: 575px){
+    .btn-group{
+        display: grid;
+        grid-template-areas: "categ categ" "launcher dinner";
+        margin-left: 0.5rem;
+    }
+    .categ{
+        grid-area: categ;
+    }
+    .launcher{
+        grid-area: launcher;
+    }
+    .dinner{
+        grid-area: dinner;
+    }
+    .card{
+        width: 90%;
+    }
+    .row{
+        width: 90%;
+        margin:0 1em 0 1em;
+    }
+    h6{
+        font-size:90%;
+        font-weight: bold;
+    }
+    .data_entry{
+        display:none;
+    }
+    .scroller-container{
+        margin-top: 1rem;
+       max-height: 21.5rem;
+    }
 }
-.card-body{
-    justify-content: center;
+@media (min-width: 707px)and(max-width:751px){
+    .scroller-container{
+        max-height: 32em;
+    }
+}
+@media (max-width: 393px){
+    .btn-group{
+        display: grid;
+        grid-template-areas: "categ categ" "launcher dinner";
+        margin-left: 0;
+    }
 }

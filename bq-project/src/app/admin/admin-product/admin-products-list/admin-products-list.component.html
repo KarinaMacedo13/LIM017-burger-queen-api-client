@@ -1,6 +1,5 @@
 <select
   class="form-select"
-  style="width: 25%; border-radius: 10px; margin: 1.5%"
   aria-label="Default select example"
   #txtSearch
   (change)="optionClick(txtSearch.value)">
@@ -8,37 +7,17 @@
   <option value="desayuno">Desayuno</option>
   <option value="almuerzo">Almuerzo y cena</option>
 </select>
-<div
-  class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
-  style="justify-content: space-evenly; max-height: 400px">
+<div class="overflow-auto row pt-2 pb-2 mb-md-0 mr-md-3 scroller-container">
   <div
-    class="card col-12 col-sm-6 col-lg-3 m-1"
-    style="
-      align-items: center;
-      width: 30%;
-      border-radius: 20px;
-      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    "
+    class="card col-sm-5 col-md-5 m-1"
     *ngFor="let product of listProducts | filtroP: valueSearch:optionPCategory">
-    <span
-      class="badge bg-success rounded-pill mt-2"
-      style="width: 7rem; align-items: center"
-      >{{ product.type }}</span
-    >
-    <img
-      class="card-img mt-1"
-      style="height: 3rem; width: 3rem"
-      src="{{ product.image }}"
-      alt="Card image cap" />
-    <div
-      class="card-body"
-      style="
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      ">
+    <div class="card-body">
+      <span class="badge bg-success rounded-pill mt-2">{{ product.type }}</span>
+      <img
+        class="card-img mt-1"
+        style="height: 3rem; width: 3rem"
+        src="{{ product.image }}"
+        alt="Card image cap" />
       <h5 class="card-title" style="margin: 0">
         #{{ product.id }} | {{ product.name }}
       </h5>
@@ -55,11 +34,8 @@
           (click)="deleteProduct(product)">
           <i class="fa-solid fa-trash" style="font-size: 380%"> </i>
         </a>
-        <a
-          class="btn"
-          style="margin: 0px 12px; font-size: 25%"
-          (click)="updateProduct(product)"
-          ><i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
+        <a class="btn" (click)="updateProduct(product)">
+          <i class="fa-solid fa-pen-to-square" style="font-size: 400%"></i>
         </a>
       </div>
     </div>

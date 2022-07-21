@@ -11,7 +11,7 @@
 }
 .title {
     font-size: 2em;
-    color: #FD090C;
+    color: #E65F00;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -45,6 +45,15 @@
 .form-label {
     color: #822719;
     font-family: 'Poppins', sans-serif;
+}
+
+.btnSubmit{
+    color: #ffffff;
+    border-radius: 10em;
+    border: none;
+    height: 2em;
+    width: 90%;
+    font-weight: bold;
 }
 
 @media (max-width: 768px) {

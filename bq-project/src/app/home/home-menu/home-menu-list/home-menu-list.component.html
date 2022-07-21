@@ -1,8 +1,11 @@
-<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+<div
+  class="btn-group mt-3"
+  role="group"
+  aria-label="Basic mixed styles example">
   <button
     type="button"
     value="none"
-    class="btn btn-success active"
+    class="btn categ btn-success active"
     #btnnone
     (click)="optionClick(btnnone.value)">
     Categoría
@@ -10,7 +13,7 @@
   <button
     type="button"
     value="desayuno"
-    class="btn btn-danger"
+    class="btn launcher btn-danger"
     #btndesayuno
     (click)="optionClick(btndesayuno.value)">
     Desayuno
@@ -18,45 +21,27 @@
   <button
     type="button"
     value="almuerzo"
-    class="btn btn-warning"
+    class="btn dinner btn-warning"
     #btnalmuerzo
     (click)="optionClick(btnalmuerzo.value)">
     Almuerzo y cena
   </button>
 </div>
-<div
-  class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
-  style="justify-content: space-evenly; max-height: 400px">
+<div class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container">
   <div
-    class="card col-12 col-sm-6 col-lg-3 m-1"
-    style="
-      align-items: center;
-      width: 30%;
-      border-radius: 20px;
-      box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-    "
+    class="card col-sm-5 col-md-5 col-lg-3 m-1"
     *ngFor="
       let product of productNew | filterMenu: valueSearch:optionPCategory
     ">
-    <span
-      class="badge bg-success rounded-pill mt-2"
-      style="width: 7rem; align-items: center"
-      >{{ product.product.type }}</span
-    >
+    <span class="badge bg-success rounded-pill mt-2">{{
+      product.product.type
+    }}</span>
     <img
       class="card-img mt-1"
       style="height: 3rem; width: 3rem"
       src="{{ product.product.image }}"
       alt="Card image cap" />
-    <div
-      class="card-body"
-      style="
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      ">
+    <div class="card-body">
       <h5 class="card-title" style="margin: 0">
         #{{ product.product.id }} | {{ product.product.name }}
       </h5>
@@ -66,7 +51,7 @@
       <p class="data_entry" style="margin: 0">
         <strong> Fecha: </strong>{{ product.product.dateEntry | date: 'short' }}
       </p>
-      <div class="btn-icons p-1 m-2">
+      <div class="btn-icons p-1 m-1">
         <button
           type="button"
           class="btn btn-danger mx-2"

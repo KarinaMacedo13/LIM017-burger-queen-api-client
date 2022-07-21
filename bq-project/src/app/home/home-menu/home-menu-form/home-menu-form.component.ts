@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BdProductService } from '../../../services/bd-product.service';
-import { Products, ordersProduct } from '../../../models/products';
+import { ordersProduct } from '../../../models/products';
 import { order } from '../../../models/orders';
 import { BdOrdersService } from 'src/app/services/bd-orders.service';
 import { ToastrService } from 'ngx-toastr';
@@ -39,9 +39,10 @@ export class HomeMenuFormComponent implements OnInit {
     }
     this.bdordersService.postBdOrderService(ORDERS).subscribe( () => {
       this.toastr.success('La orden fue agregada con éxito', 'Orden Agregada');
-      this.ordersForm.reset();
+     /*  this.ordersForm.reset(); */
     },error => {console.log(error)}
     )
+    window.location.reload();
   }
   //Gets an array of unique values ​​from the HomeMenuListComponent to loop through in the html of the homeMenuFormComponent
   getProduct() {

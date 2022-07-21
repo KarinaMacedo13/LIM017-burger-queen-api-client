@@ -28,32 +28,22 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
+    <!-- NavBar------------------------------- -->
     <header>
       <nav class="navbar navbar-expand-lg navbar-light container-nav">
         <div class="container-fluid">
           <img class="img-logo" src="assets/logo.png" alt="" width="150" />
           <button
-            class="btn btn-danger"
+            class="btn btn-add"
             type="button"
             data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasRight"
             aria-controls="offcanvasRight">
-            Agregar Orden
+            <i class="fa fa-cart-plus"></i>
           </button>
-          <div
-            class="card p-2"
-            style="
-              text-align: center;
-              right: 4em;
-              width: 20em;
-              border-radius: 1em;
-            ">
+          <div class="card p-2">
             <div class="card-body m-0 p-0">
-              <span
-                class="badge bg-danger"
-                style="width: 7rem; align-items: center"
-                >{{ description }}</span
-              >
+              <span class="badge">{{ description }}</span>
               <div>
                 {{ email }}
               </div>
@@ -79,10 +69,6 @@
         <app-home-menu-form></app-home-menu-form>
       </div>
     </div>
-    <div class="row">
-      <div class="rowPrincipal col-12 col-sm-12">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

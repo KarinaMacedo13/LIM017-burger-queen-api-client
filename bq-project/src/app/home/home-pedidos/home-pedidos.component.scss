@@ -1,0 +1,21 @@
+.home-pedidos {
+    border-radius: 1.5rem;
+    height: 31rem;
+}
+
+@media (max-width: 393px){
+    .home-pedidos{
+        padding: 0;
+        height: 33rem;
+    }
+}
+@media (min-width:768px){
+    .home-pedidos{
+        height: 29rem
+    }
+}
+@media (min-width: 575px)and(max-width:768px){
+    .home-pedidos{
+        height: 28rem;
+    }
+}
