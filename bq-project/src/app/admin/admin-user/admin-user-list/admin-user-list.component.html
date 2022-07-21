@@ -1,6 +1,5 @@
 <select
   class="form-select"
-  style="width: 25%; border-radius: 10px; margin: 1.5%"
   aria-label="Default select example"
   #txtSearch
   (change)="optionClick(txtSearch.value)">
@@ -9,19 +8,16 @@
   <option value="weiter">Mozo</option>
   <option value="chef">Cocinero</option>
 </select>
-<div
-  class="overflow-auto row p-2 mb-md-0 mr-md-3 scroller-container"
-  style="justify-content: space-evenly; max-height: 400px">
+<div class="overflow-auto row pt-2 pb-2 mb-md-0 mr-md-3 scroller-container">
   <div
-    class="card col-12 col-sm-5 m-2"
-    style="box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2)"
+    class="card col-sm-5 col-md-3 m-1"
     *ngFor="let worker of listWorkers | filter: valueSearch:optionAdmin">
     <div class="card-body">
       <span class="badge rounded-pill mt-2">
         {{ worker.roles.description }}
       </span>
       <h5 class="card-title m-1">#{{ worker.id }}</h5>
-      <h5 class="card-title">{{ worker.email }}</h5>
+      <h6 class="card-title">{{ worker.email }}</h6>
       <div class="btn-icons">
         <a class="btn" (click)="deleteUser(worker)">
           <i class="fa-solid fa-trash"> </i>

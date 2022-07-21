@@ -1,0 +1,30 @@
+.home-form {
+    border-radius: 1.5rem;
+    padding: 0;
+}
+
+.home-list {
+    border-radius: 1.5rem;
+    height: 35em;
+}
+
+@media (max-width: 991px) {
+    .home-list{
+        height: 32rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .home-form{
+        display: none;
+    }
+    .home-list{
+        max-height:31rem;
+    }
+}
+@media (max-width: 393px){
+    .home-list{
+        max-height:31rem;
+        padding: 0;
+    }
+}

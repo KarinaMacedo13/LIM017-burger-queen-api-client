@@ -27,7 +27,72 @@ mat-sidenav-container {
 .container-nav{
     margin: 0;
 }
+/* Card-description */
+.card{
+  text-align: center;
+  right: 2%;
+  width: 50%;
+  border-radius: 1em;
+}
+.badge{
+  background: #8CC63F;
+  width: 7rem;
+  align-items: center;
+}
+/* Canvas------------- */
+.btn-add{
+  display:none;
+}
 
-.btn-danger {
-    display: none;
+ @media (max-width: 575px) {
+  .container-fluid{
+    display: grid;
+    grid-auto-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "img-logo card card"
+        ". btn-add .";
+  }
+  .img-logo{
+  grid-area: img-logo;
+  width: 8em;
+  margin: auto;
+  }
+  .card{
+    grid-area: card;
+    right: 0;
+    margin: auto;
+    width: 90%;
+  }
+  .btn-add{
+    display: block;
+    grid-area: btn-add;
+    font-size: -webkit-xxx-large;
+    background: #ffff;
+    padding: 2%;
+    border-radius: 50%;
+    width: 50%;
+    margin: 4% auto 4% auto;
+  }
+  i{
+    height:100%;
+    color: #E65F00;
+   }
+   .badge{
+    width: 90%;
+}
+}
+@media (max-width: 393px){
+  .container-fluid{
+    display: grid;
+    grid-auto-columns: 1fr 2fr 1fr;
+    grid-template-areas:
+        "img-logo card card"
+        "btn-add btn-add .";
+  }
+  .img-logo{
+    width: 6rem;
+  }
+  .btn-add{
+    margin-left: 30%;
+  }
 }

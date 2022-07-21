@@ -1,10 +1,34 @@
-<div class="row" style="justify-content: space-evenly">
-  <div
-    class="col-10 col-sm-7 bg-light"
-    style="border-radius: 25px; height: 480px">
-    <app-admin-user-list></app-admin-user-list>
+<div class="container-user-component">
+  <div class="row m-2" style="justify-content: space-evenly">
+    <div class="col-list col-sm-7 col-md-8 bg-light">
+      <app-admin-user-list></app-admin-user-list>
+    </div>
+    <div class="col-form col-sm-4 col-md-3">
+      <app-admin-user-form></app-admin-user-form>
+    </div>
   </div>
-  <div class="col-10 col-sm-4">
-    <app-admin-user-form></app-admin-user-form>
+  <button
+    class="btn btn-add"
+    type="button"
+    data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasRight"
+    aria-controls="offcanvasRight">
+    <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+  </button>
+  <div
+    class="offcanvas offcanvas-end"
+    tabindex="-1"
+    id="offcanvasRight"
+    aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="offcanvas"
+        aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <app-admin-user-form></app-admin-user-form>
+    </div>
   </div>
 </div>

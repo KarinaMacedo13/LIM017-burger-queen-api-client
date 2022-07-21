@@ -1,9 +1,23 @@
 // form-css----------------------------------------------------------------------------------------------------------------------------
-
+.card {
+    border-radius: 1.5rem;
+}
+form{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+}
+.data-entry{
+    margin: 0.2em 0 0 0;
+}
 .title {
-    font-size: 1.5em;
-    color: #FD090C;
-    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: #E65F00;
+    font-family: "Poppins", sans-serif;
+    margin: auto auto 0.5em auto;
+    width: 5em;
 }
 
 .form-label {
@@ -18,6 +32,17 @@
 }
 
 .text-type {
-    font-size: 0.8em;
+    font-size: 1em;
     color: #822719;
+}
+.text-center{
+    width: 90%;
+}
+.btnSubmit{
+    color: #ffffff;
+    border-radius: 10em;
+    border: none;
+    height: 2em;
+    width: 90%;
+    font-weight: bold;
 }

@@ -41,9 +41,9 @@ export class AdminUserListComponent implements OnInit {
   }
   //Get search value from general filter and match them
   obtainValueSearh() {
-    this.bduserService.disparadorSearch.subscribe(data => {
+   /*  this.bduserService.disparadorSearch.subscribe(data => {
       this.valueSearch = data.valueSearch;
-    });
+    }); */
     }
     //Select the values ​​of the search options
   optionClick(option: string){

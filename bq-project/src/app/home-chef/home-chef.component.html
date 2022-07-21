@@ -21,33 +21,14 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0">
-        <div class="container-fluid">
-          <img class="img-logo" src="assets/logo.png" alt="" width="150" />
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            class="card p-2"
-            style="
-              text-align: center;
-              right: 4em;
-              width: 20em;
-              border-radius: 1em;
-            ">
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="margin: 0; justify-content: space-around; padding: 0">
+        <div class="container-fluid row m-2">
+          <img class="img-logo" src="assets/logo.png" alt="" width="120" />
+          <div class="card card-description p-2">
             <div class="card-body m-0 p-0">
-              <span
-                class="badge bg-danger"
-                style="width: 7rem; align-items: center"
-                >{{ description }}</span
-              >
+              <span class="badge badge-description">{{ description }}</span>
               <div>
                 {{ email }}
               </div>
@@ -56,157 +37,126 @@
         </div>
       </nav>
     </header>
-    <div class="row" style="justify-content: space-evenly; margin: 0">
-      <div
-        class="col-10 col-sm-10 bg-light"
-        style="border-radius: 25px; height: 480px">
-        <div class="row" style="justify-content: space-evenly; margin: 0">
-          <div class="col-12 col-sm-12" style="justify-content: center">
-            <!------------------------- Botones de búsqueda---------------------------- -->
-            <div
-              class="btn-group"
-              role="group"
-              aria-label="Basic mixed styles example">
-              <button
-                type="button"
-                value="none"
-                class="btn btn-success active"
-                #btnnone
-                (click)="optionClick(btnnone.value)">
-                Categoría
-              </button>
-              <button
-                type="button"
-                value="pendiente"
-                class="btn btn-danger"
-                #btnpendiente
-                (click)="optionClick(btnpendiente.value)">
-                Pendiente
-              </button>
-              <button
-                type="button"
-                value="preparado"
-                class="btn btn-warning"
-                #btnpreparada
-                (click)="optionClick(btnpreparada.value)">
-                Preparado
-              </button>
-              <button
-                type="button"
-                value="entregado"
-                class="btn btn-info"
-                #btnentregado
-                (click)="optionClick(btnentregado.value)">
-                Entregado
-              </button>
-            </div>
-            <div>
+    <div class="row m-2" style="justify-content: space-evenly; margin: 0">
+      <div class="col-sm-10 card-principal col-md-11 col-lg-11 bg-light">
+        <!------------------------- Botones de búsqueda---------------------------- -->
+        <div
+          class="btn-group col-sm-11"
+          role="group"
+          aria-label="Basic mixed styles example">
+          <button
+            type="button"
+            value="none"
+            class="btn btn-none btn-info active"
+            style="border-radius: 20px"
+            #btnnone
+            (click)="optionClick(btnnone.value)">
+            Categoría
+          </button>
+          <button
+            type="button"
+            value="pendiente"
+            class="btn btn-pendiente btn-danger"
+            style="border-radius: 20px"
+            #btnpendiente
+            (click)="optionClick(btnpendiente.value)">
+            Pendiente
+          </button>
+          <button
+            type="button"
+            value="preparado"
+            class="btn btn-preparado btn-warning"
+            style="border-radius: 20px"
+            #btnpreparada
+            (click)="optionClick(btnpreparada.value)">
+            Preparado
+          </button>
+          <button
+            type="button"
+            value="entregado"
+            class="btn btn-entregado btn-success"
+            style="border-radius: 20px"
+            #btnentregado
+            (click)="optionClick(btnentregado.value)">
+            Entregado
+          </button>
+        </div>
+
+        <div class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container">
+          <div
+            class="card card-sales col-sm-5 col-md-5 col-lg-3 m-1"
+            *ngFor="let order of listOrders | filterOrder: optionStatus">
+            <span
+              class="badge bg-success rounded-pill mt-2"
+              style="width: 7rem; align-items: center"
+              [ngClass]="{
+                'bg-danger text-white': order.status === 'pendiente',
+                'bg-warning': order.status === 'preparado'
+              }"
+              >{{ order.status }}</span
+            >
+            <div class="card-body card-body-sales">
+              <h5 class="card-title" style="margin: 0">
+                {{ order.client }}
+              </h5>
+              <p class="data_entry" style="margin: 0">
+                <strong>Fecha: </strong>
+                {{ order.dataEntry | date: 'short' }}
+              </p>
+              <p
+                class="data_dataPrepare"
+                style="margin: 0"
+                *ngIf="order.dataPrepare">
+                <strong>Preparado: </strong>
+                {{ order.dataPrepare | date: 'short' }}
+              </p>
+              <p class="data_dataPrepare" style="margin: 0" *ngIf="order.time">
+                <strong>Tiempo de Preparación: </strong>
+                {{ order.time }}
+              </p>
               <div
-                class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
-                style="justify-content: space-evenly; max-height: 400px">
+                class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container min-scroller-container">
                 <div
-                  class="card col-12 col-sm-6 col-lg-3 m-1"
-                  style="
-                    align-items: center;
-                    width: 30%;
-                    border-radius: 20px;
-                    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-                  "
-                  *ngFor="let order of listOrders | filterOrder: optionStatus">
-                  <span
-                    class="badge bg-success rounded-pill mt-2"
-                    style="width: 7rem; align-items: center" 
-                    [ngClass]="{
-                      'bg-danger text-white': order.status === 'pendiente',
-                      'bg-warning': order.status === 'preparado'
-                    }"
-                    >{{ order.status }}</span
-                  >
-                  <div
-                    class="card-body"
-                    style="
-                      margin: 0;
-                      padding: 0;
-                      display: flex;
-                      flex-direction: column;
-                      align-items: center;
-                    ">
-                    <h5 class="card-title" style="margin: 0">
-                      {{ order.client }}
-                    </h5>
-                    <p class="data_entry" style="margin: 0">
-                      <strong>Fecha: </strong>
-                      {{ order.dataEntry | date: 'short' }}
-                    </p>
-                    <p
-                      class="data_dataPrepare"
-                      style="margin: 0"
-                      *ngIf="order.dataPrepare">
-                      <strong>Preparado: </strong>
-                      {{ order.dataPrepare | date: 'short' }}
-                    </p>
-                    <p
-                      class="data_dataPrepare"
-                      style="margin: 0"
-                      *ngIf="order.time">
-                      <strong>Tiempo de Preparación: </strong>
-                      {{ order.time }}
-                    </p>
-                    <div
-                      class="overflow-auto row p-1 mb-md-0 mr-md-3 scroller-container"
-                      style="justify-content: space-evenly; max-height: 150px">
+                  class="products-sales"
+                  *ngFor="let product of order.products">
+                  <div class="product-order-container p-1 m-1">
+                    <img
+                      class="img-product-sales"
+                      src="{{ product.product.image }}" />
+                    <div class="" style="display: flex; flex-direction: column">
+                      <h5 class="card-title">
+                        {{ product.product.name }}
+                      </h5>
                       <div
-                        class="products-sales"
-                        *ngFor="let product of order.products">
-                        <div
-                          class="p-1 m-1"
-                          style="display: flex; flex-direction: row">
-                          <img
-                            src="{{ product.product.image }}"
-                            style="height: 2rem; width: 2rem" />
-                          <div
-                            class=""
-                            style="display: flex; flex-direction: column">
-                            <h5 class="card-title">
-                              {{ product.product.name }}
-                            </h5>
-                            <div
-                              class="card-info"
-                              style="
-                                display: flex;
-                                justify-content: space-between;
-                              ">
-                              <div class="card-text" style="font-size: 0.8em">
-                                {{ product.product.price | currency: 'USD' }}
-                              </div>
-                              <div class="card-text" style="font-size: 0.8em">
-                                {{ product.qty }}
-                              </div>
-                              <div class="card-text" style="font-size: 0.8em">
-                                {{ product.total | currency: 'USD' }}
-                              </div>
-                            </div>
-                          </div>
+                        class="card-info"
+                        style="display: flex; justify-content: space-between">
+                        <div class="card-text" style="font-size: 0.8em">
+                          {{ product.product.price | currency: 'USD' }}
                         </div>
-                        <hr />
+                        <div class="card-text" style="font-size: 0.8em">
+                          {{ product.qty }}
+                        </div>
+                        <div class="card-text" style="font-size: 0.8em">
+                          {{ product.total | currency: 'USD' }}
+                        </div>
                       </div>
                     </div>
-                    <span class="form-label">Total: </span>
-                    <span> {{ order.total | currency: 'USD' }} </span>
-                    <div class="btn-icons p-1 m-2">
-                      <button
-                        class="btn btn-primary"
-                        style="margin: 0px 12px; font-size: 75%"
-                        [disabled]="
-                          order.status === 'entregado' ||
-                          order.status === 'preparado'
-                        "
-                        (click)="updateOrder(order)">
-                        Orden Preparada
-                      </button>
-                    </div>
                   </div>
+                  <hr />
                 </div>
+              </div>
+              <span class="form-label">Total: </span>
+              <span> {{ order.total | currency: 'USD' }} </span>
+              <div class="btn-icons p-1 m-2">
+                <button
+                  class="btn btn-primary"
+                  style="margin: 0px 12px; font-size: 75%"
+                  [disabled]="
+                    order.status === 'entregado' || order.status === 'preparado'
+                  "
+                  (click)="updateOrder(order)">
+                  Orden Preparada
+                </button>
               </div>
             </div>
           </div>
