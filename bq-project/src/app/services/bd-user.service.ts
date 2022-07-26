@@ -11,8 +11,10 @@ export class BdUserService {
   }
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
-  urlOnly = 'http://localhost:8080/';
-  url = 'http://localhost:8080/users';
+  urlOnly = 'https://api-bq-project.herokuapp.com/';
+  url = 'https://api-bq-project.herokuapp.com/users';
+
+  
 
   public user = {
     email: '',
