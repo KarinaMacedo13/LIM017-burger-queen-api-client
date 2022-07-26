@@ -48,6 +48,7 @@ export class AdminUserListComponent implements OnInit {
     //Select the values ​​of the search options
   optionClick(option: string){
     this.optionAdmin = option;
+    console.log('soy optionAdmin:', this.optionAdmin);
   }
 }
 
