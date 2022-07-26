@@ -4,7 +4,6 @@ import { BdUserService } from '../../../services/bd-user.service';
 import { AdminUserListComponent } from './admin-user-list.component';
 import { FilterPipe } from '../../../pipes/filter.pipe';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { By } from '@angular/platform-browser';
 
 fdescribe('AdminUserListComponent', () => {
   let fixture: ComponentFixture<AdminUserListComponent>;
@@ -60,19 +59,14 @@ beforeEach(async () => {
   })
 
   it('should search for option, optionClick(option: string)', () => {
-    let some = fixture.debugElement.query(By.css('.form-select'));
-    spyOn(component, 'optionClick');
-    some.triggerEventHandler('change', {});
-    console.log('optionClick:', component.optionClick)
-    expect(component.optionClick).toHaveBeenCalled();
+const mockedData = {option:'admin'};
+
   })
 
   it('getBdUserService should return a user object', () => {
+    //component.getUser();
     expect(component.listWorkers.length).toBe(1);
   });
-  it('should', ()=> {
-    
-  })
 
 });
 //TEST DE JEIMMY
