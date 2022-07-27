@@ -10,8 +10,8 @@ export class BdProductService {
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearchProducts: EventEmitter<any> = new EventEmitter();
   @Output() disparadorID: EventEmitter<any> = new EventEmitter();
-  urlProduct = 'http://localhost:8080/products';
-  urlOnly = 'http://localhost:8080/';
+  urlProduct = 'https://project-api-bq.herokuapp.com/products/';
+  urlOnly = 'https://project-api-bq.herokuapp.com/';
 
   constructor(private http: HttpClient) {}
   accessToken = localStorage.getItem('accessToken')
@@ -33,14 +33,14 @@ export class BdProductService {
     return this.http.get<Products[]>(this.urlProduct, this.httpOptions());
   }
   deleteBdProductService(products: Products): Observable<Products>{
-    const urlDeleteProduct = `${this.urlProduct}/${products.id}`;
+    const urlDeleteProduct = `${this.urlProduct}${products.id}`;
     return this.http.delete<Products>(urlDeleteProduct, this.httpOptions());
   }
   postBdProductService(products: productSinId): Observable<productSinId>{
     return this.http.post<productSinId>(this.urlProduct, products, this.httpOptions());
   }
   editBdProductService(id:number, products: productSinId): Observable<productSinId>{
-    const urlUpdateProduct = `${this.urlProduct}/${id}`;
-    return this.http.put<productSinId>(urlUpdateProduct, products, this.httpOptions());
- }
+    const urlUpdateProduct = `${this.urlProduct}${id}`;
+    return this.http.patch<productSinId>(urlUpdateProduct, products, this.httpOptions());
+  }
 }

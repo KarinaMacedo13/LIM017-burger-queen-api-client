@@ -43,7 +43,7 @@ export class AdminUserFormComponent implements OnInit {
     };
     if(this.userID!== undefined) {
       //Edit product
-      this.bduserService.editBdUserService(this.userID,USERS).subscribe( () => {
+      this.bduserService.editBdUserService(this.userID,USERS).subscribe(data => {
         this.toastr.success('El usuario fue actualizado con éxito', 'Usuario Actualizado');
       },error => {console.log(error)}
       )
@@ -53,7 +53,7 @@ export class AdminUserFormComponent implements OnInit {
         this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
       },error => {console.log(error)})
     }
-    window.location.reload();
+    // window.location.reload();
   }
   //Get data from userListComponent and reassign values
   editForm() {

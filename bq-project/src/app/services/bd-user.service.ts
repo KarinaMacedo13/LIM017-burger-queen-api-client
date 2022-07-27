@@ -9,10 +9,11 @@ export class BdUserService {
   subscribe(arg0: (res: any) => void) {
     throw new Error('Method not implemented.');
   }
+
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
-  urlOnly = 'http://localhost:8080/';
-  url = 'http://localhost:8080/users';
+  urlOnly = 'https://project-api-bq.herokuapp.com/';
+  url = 'https://project-api-bq.herokuapp.com/users/';
 
   public user = {
     email: '',
@@ -50,11 +51,11 @@ export class BdUserService {
   }
   // Obteniendo usuarios por id
   getOneUser(tokenLogin: any): Observable<User>{
-  return this.http.get<User>(`${this.url}/${tokenLogin.user.id}`, this.httpOptions())
+  return this.http.get<User>(`${this.url}${tokenLogin.user.id}`, this.httpOptions())
   }
 
   deleteBdUserService(workers: Workers): Observable<Workers> {
-    const urlDelete = `${this.url}/${workers.id}`;
+    const urlDelete = `${this.url}${workers.id}`;
     return this.http.delete<Workers>(urlDelete, this.httpOptions());
   }
   postBdUserService(workers: Users): Observable<Users> {
@@ -62,8 +63,7 @@ export class BdUserService {
   }
   // Este es nuestro editor
   editBdUserService(id:number, workers: Users): Observable<Users>{
-    const urlUpdate = `${this.url}/${id}`;
-    console.log(urlUpdate);
-    return this.http.put<Users>(urlUpdate, workers, this.httpOptions());
+    const urlUpdate = `${this.url}${id}`;
+    return this.http.patch<Users>(urlUpdate, workers, this.httpOptions());
   }
 }

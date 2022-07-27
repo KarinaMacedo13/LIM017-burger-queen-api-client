@@ -37,12 +37,13 @@ export class HomeMenuFormComponent implements OnInit {
       dataEntry: this.dataOrder,
       total: this.totalOrder,
     }
-    this.bdordersService.postBdOrderService(ORDERS).subscribe( () => {
+    this.bdordersService.postBdOrderService(ORDERS).subscribe( data => {
+      console.log(data);
       this.toastr.success('La orden fue agregada con éxito', 'Orden Agregada');
-     /*  this.ordersForm.reset(); */
+      this.ordersForm.reset();
     },error => {console.log(error)}
     )
-    window.location.reload();
+    // window.location.reload();
   }
   //Gets an array of unique values ​​from the HomeMenuListComponent to loop through in the html of the homeMenuFormComponent
   getProduct() {

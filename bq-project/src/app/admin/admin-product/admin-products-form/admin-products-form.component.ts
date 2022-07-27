@@ -58,7 +58,7 @@ export class AdminProductsFormComponent implements OnInit {
       },error => {console.log(error)}
       )
     }
-    window.location.reload();
+    // window.location.reload();
   }
 // Obtiene los valores del servidor los muestra en el formulario y permite su reasignación
   editFormProduct() {

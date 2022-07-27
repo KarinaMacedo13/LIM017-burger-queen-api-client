@@ -6,7 +6,7 @@ import { order } from '../models/orders'
   providedIn: 'root'
 })
 export class BdOrdersService {
-  url = 'http://localhost:8080/orders';
+  url = 'https://project-api-bq.herokuapp.com/orders/';
 
   constructor(private http: HttpClient) { }
   accessToken = localStorage.getItem('accessToken')
@@ -30,11 +30,11 @@ export class BdOrdersService {
     return this.http.post<order>(this.url, order, this.httpOptions());
   }
   deleteBdOrderService(order: order): Observable<order> {
-    const urlDelete = `${this.url}/${order.id}`;
+    const urlDelete = `${this.url}${order.id}`;
     return this.http.delete<order>(urlDelete, this.httpOptions());
   }
   editBdOrderService(order: order): Observable<order>{
-    const urlUpdateProduct = `${this.url}/${order.id}`;
-    return this.http.put<order>(urlUpdateProduct, order, this.httpOptions());
+    const urlUpdateProduct = `${this.url}${order.id}`;
+    return this.http.patch<order>(urlUpdateProduct, order, this.httpOptions());
   }
 }
