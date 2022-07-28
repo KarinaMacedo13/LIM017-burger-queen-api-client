@@ -10,24 +10,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-
   searchValue: string = '';
   isExpanded: boolean = false;
   email: any;
-  description:  any;
+  description: any;
 
-  constructor(private bdproductsService:  BdProductService,private toastr: ToastrService,private cookieService: CookieService, private router: Router) {}
+  constructor(
+    private bdproductsService: BdProductService,
+    private toastr: ToastrService,
+    private cookieService: CookieService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getUser();
   }
-  getUser(){
+  getUser() {
     this.email = localStorage.getItem('email');
     this.description = localStorage.getItem('description');
-    if(this.description==='weiter') {
-      this.description = "Mozo"
+    if (this.description === 'weiter') {
+      this.description = 'Mozo';
     }
-    console.log('Datos de la persona', this.description,this.email)
   }
   searchInput(search: string) {
     this.searchValue = search;
@@ -40,6 +43,7 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('id');
     localStorage.removeItem('email');
+    localStorage.removeItem('description');
     this.cookieService.delete('roles_access');
     this.router.navigate(['/login']);
     this.toastr.success('Se cerro sesión con éxito', 'Cerrar Sesión');

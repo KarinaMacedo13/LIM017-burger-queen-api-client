@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { BdUserService } from '../../../services/bd-user.service';
@@ -80,7 +81,6 @@ export class AdminUserFormComponent implements OnInit {
         }
       );
     }
-    // window.location.reload();
   }
   //Get data from userListComponent and reassign values
   editForm() {
@@ -91,12 +91,7 @@ export class AdminUserFormComponent implements OnInit {
         this.userForm.setValue({
           email: data.dataUser.email,
           password: '',
-          roles:
-            data.dataUser.roles.description === 'admin'
-              ? 'admin'
-              : data.dataUser.roles.description === 'weiter'
-              ? 'weiter'
-              : 'chef',
+          roles:data.dataUser.roles.description === 'admin'? 'admin':data.dataUser.roles.description === 'weiter'?'weiter':'chef',
         });
       }
     });

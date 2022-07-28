@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, NavigationEnd, Router, RouterStateSnapshot, ActivatedRoute, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
@@ -29,8 +30,6 @@ export class VigilantGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       const cookie = this.cookieService.get('roles_access');
-      console.log(cookie);
-      console.log(state.url)
       if((state.url==='/admin'||state.url==='/admin/user'||state.url==='/admin/products') && cookie ==='admin') {
         return this.state = true;
       }

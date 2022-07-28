@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Products } from '../../../models/products';
@@ -13,7 +14,7 @@ export class AdminProductsListComponent implements OnInit {
   Produc!: Products;
   valueSearch: string = '';
   optionPCategory!: string;
-  
+
   constructor(private bdproductsService:  BdProductService, private toastr: ToastrService) {}
 
   ngOnInit(): void {

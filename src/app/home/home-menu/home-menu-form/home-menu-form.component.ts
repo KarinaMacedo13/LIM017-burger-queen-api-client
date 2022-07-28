@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BdProductService } from '../../../services/bd-product.service';
@@ -65,10 +66,7 @@ export class HomeMenuFormComponent implements OnInit {
         this.productNew.map(
           product => (product.total = product.qty * product.product.price)
         );
-        this.totalOrder = this.productNew.reduce(
-          (acumulador, actual) => acumulador + actual.total,
-          0
-        );
+        this.totalOrder = this.productNew.reduce((acumulador, actual) => acumulador + actual.total,0);
       });
     } else {
       this.productNew = [];

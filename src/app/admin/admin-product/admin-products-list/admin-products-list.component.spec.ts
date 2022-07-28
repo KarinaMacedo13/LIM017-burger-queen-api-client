@@ -20,4 +20,3 @@ describe('AdminProductsListComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-// Test KARINA

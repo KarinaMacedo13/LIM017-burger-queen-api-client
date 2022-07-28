@@ -20,5 +20,3 @@ describe('AdminUserFormComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-//TEST DE JEIMMY

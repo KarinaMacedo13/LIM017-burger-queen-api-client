@@ -1,15 +1,13 @@
+/* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home-pedidos',
   templateUrl: './home-pedidos.component.html',
-  styleUrls: ['./home-pedidos.component.scss']
+  styleUrls: ['./home-pedidos.component.scss'],
 })
 export class HomePedidosComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

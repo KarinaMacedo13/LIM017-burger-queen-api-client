@@ -73,6 +73,7 @@ export class HomeChefComponent implements OnInit {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('id');
     localStorage.removeItem('email');
+    localStorage.removeItem('description');
     this.cookieService.delete('roles_access');
     this.router.navigate(['/login']);
     this.toastr.success('Se cerro sesión con éxito', 'Cerrar Sesión');

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HomeMenuListComponent } from './home-menu-list.component';
 
 describe('HomeMenuListComponent', () => {
@@ -8,9 +7,8 @@ describe('HomeMenuListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeMenuListComponent ]
-    })
-    .compileComponents();
+      declarations: [HomeMenuListComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeMenuListComponent);
     component = fixture.componentInstance;

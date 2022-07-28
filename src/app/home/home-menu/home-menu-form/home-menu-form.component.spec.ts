@@ -8,9 +8,8 @@ describe('HomeMenuFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HomeMenuFormComponent ]
-    })
-    .compileComponents();
+      declarations: [HomeMenuFormComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeMenuFormComponent);
     component = fixture.componentInstance;

@@ -48,7 +48,7 @@ mat-sidenav-container {
   background-color:#FFC501;
 }
 
- @media (max-width: 575px) {
+@media (max-width: 575px) {
   .container-fluid{
     display: grid;
     grid-auto-columns: 1fr 2fr 1fr;
