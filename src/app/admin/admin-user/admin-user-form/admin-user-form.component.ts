@@ -45,6 +45,7 @@ export class AdminUserFormComponent implements OnInit {
       //Edit product
       this.bduserService.editBdUserService(this.userID,USERS).subscribe(data => {
         this.toastr.success('El usuario fue actualizado con éxito', 'Usuario Actualizado');
+        this.userForm.reset();
         this.bduserService.update.emit({
           update:true
         });
@@ -54,6 +55,7 @@ export class AdminUserFormComponent implements OnInit {
       //Creat product if id is defined
       this.bduserService.postBdUserService(USERS).subscribe(data => {
         this.toastr.success('El usuario fue agregado con éxito', 'Usuario Agregado');
+        this.userForm.reset();
         this.bduserService.update.emit({
           update:true
         });

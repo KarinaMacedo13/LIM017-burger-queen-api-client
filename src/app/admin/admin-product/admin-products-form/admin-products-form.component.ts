@@ -50,6 +50,7 @@ export class AdminProductsFormComponent implements OnInit {
       //editar Producto de
       this.bdproductService.editBdProductService(this.productID, PRODUCTS).subscribe(data => {
         this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+        this.productForm.reset();
         this.bdproductsService.update.emit({
           update:true
         });
@@ -58,6 +59,7 @@ export class AdminProductsFormComponent implements OnInit {
       // Crear producto, emitir mensaje
       this.bdproductService.postBdProductService(PRODUCTS).subscribe(data => {
         this.toastr.success('El producto fue agregado con éxito', 'Producto Actualizado');
+        this.productForm.reset();
         this.bdproductsService.update.emit({
           update:true
         });
