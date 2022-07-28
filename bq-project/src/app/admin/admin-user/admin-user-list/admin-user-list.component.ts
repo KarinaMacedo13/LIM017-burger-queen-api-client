@@ -18,6 +18,7 @@ export class AdminUserListComponent implements OnInit {
   ngOnInit(): void {
     this.getUser();
     this.obtainValueSearh();
+    this.updateDataComponent();
   }
   //Obtain workers by bduserService
   getUser() {
@@ -48,6 +49,13 @@ export class AdminUserListComponent implements OnInit {
     //Select the values ​​of the search options
   optionClick(option: string){
     this.optionAdmin = option;
+  }
+  updateDataComponent() {
+    this.bduserService.update.subscribe(data => {
+      if(data.update===true){
+        this.getUser();
+      };
+    });
   }
 }
 

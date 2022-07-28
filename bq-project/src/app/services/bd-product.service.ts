@@ -10,6 +10,8 @@ export class BdProductService {
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearchProducts: EventEmitter<any> = new EventEmitter();
   @Output() disparadorID: EventEmitter<any> = new EventEmitter();
+  @Output() update: EventEmitter<any> = new EventEmitter();
+  
   urlProduct = 'https://project-api-bq.herokuapp.com/products/';
   urlOnly = 'https://project-api-bq.herokuapp.com/';
 

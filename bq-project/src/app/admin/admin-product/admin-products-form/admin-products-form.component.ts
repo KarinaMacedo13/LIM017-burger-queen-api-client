@@ -16,7 +16,7 @@ export class AdminProductsFormComponent implements OnInit {
   productID !:number;
   dataOrder: any = new Date();
 
-  constructor(private fb: FormBuilder, private bdproductService:  BdProductService, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private bdproductService:  BdProductService, private toastr: ToastrService,private bdproductsService:  BdProductService) {
     // Obtiene los valores del formulario ProductForm
     this.productForm = this.fb.group({
       name: ['', Validators.required],
@@ -50,11 +50,17 @@ export class AdminProductsFormComponent implements OnInit {
       //editar Producto de
       this.bdproductService.editBdProductService(this.productID, PRODUCTS).subscribe(data => {
         this.toastr.success('El producto fue actualizado con éxito', 'Producto Actualizado');
+        this.bdproductsService.update.emit({
+          update:true
+        });
       },error => {console.log(error)})
     } else{
       // Crear producto, emitir mensaje
       this.bdproductService.postBdProductService(PRODUCTS).subscribe(data => {
         this.toastr.success('El producto fue agregado con éxito', 'Producto Actualizado');
+        this.bdproductsService.update.emit({
+          update:true
+        });
       },error => {console.log(error)}
       )
     }

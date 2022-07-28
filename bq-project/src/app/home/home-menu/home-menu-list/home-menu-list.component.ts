@@ -23,6 +23,7 @@ export class HomeMenuListComponent implements OnInit {
     // Initialize the following methods
     this.getProducts();
     this.obtainValueSearh();
+    this.updateDataComponent();
   }
   // Get products from the product database
   getProducts(){
@@ -44,6 +45,13 @@ export class HomeMenuListComponent implements OnInit {
           })
         })
     },error => {console.log(error)})
+  }
+  updateDataComponent() {
+    this.bdproductsService.update.subscribe(data => {
+      if(data.update){
+        this.getProducts();
+      };
+    });
   }
   // Receive the search value from the HomeComponent, ValueSearch is passed to the pipe in the HTML of the HomeMenuListComponent and perform the search on what you type
   obtainValueSearh() {

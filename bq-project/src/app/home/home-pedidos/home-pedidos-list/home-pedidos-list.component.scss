@@ -7,15 +7,35 @@
 }
 .btn-none{
     grid-area: none;
+    height: 2em;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .btn-pendiente{
     grid-area: pendiente;
+    height: 2em;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .btn-preparado{
     grid-area: preparado;
+    height: 2em;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .btn-entregado{
     grid-area: entregado;
+    height: 2em;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .scroller-container::-webkit-scrollbar {
     width: 8px;
@@ -70,6 +90,11 @@ p {
 @media (min-width: 768px) and (max-width: 991px){
     .scroller-container{
         height: 23rem;
+    }
+    .btn-group{
+        display: grid;
+        grid-template-areas: "none pendiente" "preparado entregado";
+        margin: 2% 1% 0 1%;
     }
 }
 @media (max-width: 575px){

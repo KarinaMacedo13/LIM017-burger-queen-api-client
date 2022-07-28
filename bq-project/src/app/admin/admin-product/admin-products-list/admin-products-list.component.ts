@@ -19,6 +19,7 @@ export class AdminProductsListComponent implements OnInit {
   ngOnInit(): void {
     this.getProducts();
     this.obtainValueSearh();
+    this.updateDataComponent();
   }
   //Mostrar los elementos de la base de datos
   getProducts(){
@@ -47,8 +48,15 @@ export class AdminProductsListComponent implements OnInit {
     this.valueSearch = data.valueSearch;
   });
   }
-  // Obtiene la opción elegida 
+  // Obtiene la opción elegida
   optionClick(option:string){
     this.optionPCategory = option;
+  }
+  updateDataComponent() {
+    this.bdproductsService.update.subscribe(data => {
+      if(data.update===true){
+        this.getProducts();
+      };
+    });
   }
 }

@@ -12,6 +12,8 @@ export class BdUserService {
 
   @Output() disparador: EventEmitter<any> = new EventEmitter();
   @Output() disparadorSearch: EventEmitter<any> = new EventEmitter();
+  @Output() update: EventEmitter<any> = new EventEmitter();
+
   urlOnly = 'https://project-api-bq.herokuapp.com/';
   url = 'https://project-api-bq.herokuapp.com/users/';
 

@@ -29,7 +29,7 @@ mat-sidenav-container {
   grid-template-columns: 0.1fr 0.5fr 0.5fr 0.5fr 1fr 1fr 0.1fr;
 }
 .img-logo{
-  grid-column: 2/4;
+  grid-column: 2/3;
 }
 .card-description{
   grid-column: 5/7;
@@ -42,6 +42,13 @@ mat-sidenav-container {
   align-items: center
 }
 /* botones */
+.btn {
+  height: 2em;
+  font-size: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .btn-group{
   display: grid;
   grid-template-areas:
@@ -119,18 +126,27 @@ mat-sidenav-container {
     text-align: center;
     border-radius: 1em;
   }
+  .btn-group{
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    grid-template-areas:
+        "none pendiente"
+        "preparado entregado";
+    margin-top: 8%;
+    gap: 0;
+  }
 }
 @media (max-width: 280px){
   .card-principal{
   padding: 0;
   }
   .btn-group{
-  display: grid;
-  grid-template-columns: 0.5fr 0.5fr;
-  grid-template-areas:
-      "none pendiente"
-      "preparado entregado";
-  margin-top: 8%;
-  gap: 0;
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    grid-template-areas:
+        "none pendiente"
+        "preparado entregado";
+    margin-top: 8%;
+    gap: 0;
   }
 }
