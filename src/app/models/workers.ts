@@ -2,25 +2,25 @@ export interface Workers {
   id: number;
   email: string;
   password: string;
-  roles : {
-    description ?: string;
+  roles: {
+    description?: string;
     admin: boolean;
-  }
+  };
 }
 
 export interface Users {
   email: string;
   password: string;
-  roles : {
-    description ?: string;
+  roles: {
+    description?: string;
     admin: boolean;
-  }
+  };
 }
 
-export interface tokenLogin{
+export interface tokenLogin {
   accessToken: string;
 }
-export interface Credentials{
+export interface Credentials {
   email: string;
   password: string;
   id?: any;
@@ -28,8 +28,8 @@ export interface Credentials{
 export interface User {
   id: string;
   email: string;
-  roles : {
-    description ?: string;
+  roles: {
+    description?: string;
     admin: boolean;
-  }
- }
+  };
+}
