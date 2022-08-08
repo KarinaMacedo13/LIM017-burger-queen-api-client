@@ -1,14 +1,14 @@
 # 🍔 Burger Queen 🍔
-<img src="src/img/burguer.png">
+![burguer](https://user-images.githubusercontent.com/98657256/183513556-4c732aa1-e56c-4c26-baae-d3d88f6d397e.png)
 
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
 * [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-* [4. Consideraciones](#4-consideraciones)
-* [5. Criterios de aceptación del proyecto](#5-criterios-de-aceptación-del-proyecto)
-* [6. Pistas / tips](#6-pistas--tips)
+* [3. Desarrollo del proyecto](#3-desarrollo-del-proyecto)
+* [4. Resultado final](#4-resultado-final)
+* [5. Tecnologías del proyecto](#5-tecnologías-del-proyecto)
+* [6. Creadoras](#6-creadoras)
 
 ***
 
@@ -133,8 +133,7 @@ que un pedido está listo para servirlo a un clientx.
 
 * Ver los pedidos ordenados según se van haciendo.
 * Marcar los pedidos que se han preparado y están listos para servirse.
-* Ver el tiempo que tomó prepara el pedido desde que llegó hasta que se
-  marcó como completado.
+* Ver el tiempo que tomó prepara el pedido desde que llegó hasta que se marcó como completado.
 
 ***
 #### [Historia de usuario 4] Meserx debe ver pedidos listos para servir
