@@ -181,13 +181,13 @@ para mantener actualizado el menú.
 
 ## 4. Resultado final
 **Vista del Administrador:**
-<img src="assets/administrador.gif" alt="" />
+<img src="src/assets/administrador.gif" alt="" />
 
 **Vista del Cocinero:**
-<img src="assets/cocinero.gif" alt="" />
+<img src="src/assets/cocinero.gif" alt="" />
 
 **Vista del Mesero:**
-<img src="assets/mesero.gif" alt="" />
+<img src="src/assets/mesero.gif" alt="" />
 
 ## 5. Tecnologías del proyecto
 - Angular
