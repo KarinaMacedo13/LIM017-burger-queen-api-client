@@ -17,13 +17,13 @@
 Este proyecto consiste en la creación de una interfaz web para un restaurante, el cual hemos llamado: "Burger Queen". El objetivo de este proyecto es el uso del framework Angular que permita mantener la interfaz y consumir una API, es decir cada cambio sobre el estado se va a ir reflejando en la interfaz (por ejemplo, cada vez que agregamos un producto a un pedido, la interfaz debe actualizar la lista del pedido y el total).
 
 Para probar más del proyecto:
-**- Administrador:**
+- **Administrador:**
 *Correo:* admin@burguerqueen.com
 *Contraseña:* 123456
-**- Cocinero:**
+- **Cocinero:**
 *Correo:* cocinero@burguerqueen.com
 *Contraseña:* 123456
-**- Mesero:**
+- **Mesero:**
 *Correo:* mesero@burguerqueen.com
 *Contraseña:* 123456
 
