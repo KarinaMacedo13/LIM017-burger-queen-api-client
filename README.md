@@ -16,6 +16,9 @@
 
 Este proyecto consiste en la creación de una interfaz web para un restaurante, el cual hemos llamado: "Burger Queen". El objetivo de este proyecto es el uso del framework Angular que permita mantener la interfaz y consumir una API, es decir cada cambio sobre el estado se va a ir reflejando en la interfaz (por ejemplo, cada vez que agregamos un producto a un pedido, la interfaz debe actualizar la lista del pedido y el total).
 
+🍔 Plataforma Web:
+[BurqerQueen](burgerqueen22.netlify.app/)
+
 Para probar más del proyecto:
 - **Administrador:**
 *Correo:* admin@burguerqueen.com
@@ -177,6 +180,15 @@ para mantener actualizado el menú.
 ***
 
 ## 4. Resultado final
+**Vista del Administrador:**
+<img src="assets/administrador.gif" alt="" />
+
+**Vista del Cocinero:**
+<img src="assets/cocinero.gif" alt="" />
+
+**Vista del Mesero:**
+<img src="assets/mesero.gif" alt="" />
+
 ## 5. Tecnologías del proyecto
 - Angular
 - TypeScript
